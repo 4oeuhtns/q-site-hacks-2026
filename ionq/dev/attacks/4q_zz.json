@@ -1,0 +1,32 @@
+{
+  "name": "Coupled four-qubit chain",
+  "gates": [
+    {
+      "name": "rzz",
+      "targets": [
+        0,
+        1
+      ],
+      "low": 0.55,
+      "high": 0.9
+    },
+    {
+      "name": "rxx",
+      "targets": [
+        1,
+        2
+      ],
+      "low": 0.5,
+      "high": 0.9
+    },
+    {
+      "name": "ryy",
+      "targets": [
+        2,
+        3
+      ],
+      "low": 0.5,
+      "high": 0.9
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "name": "Overlapping entangler ladder",
+  "gates": [
+    {
+      "name": "rx",
+      "targets": [
+        1
+      ],
+      "low": 0.7,
+      "high": 2.3
+    },
+    {
+      "name": "rzz",
+      "targets": [
+        0,
+        1
+      ],
+      "low": 0.6,
+      "high": 1.5
+    },
+    {
+      "name": "rxx",
+      "targets": [
+        1,
+        2
+      ],
+      "low": 0.6,
+      "high": 1.5
+    },
+    {
+      "name": "ry",
+      "targets": [
+        2
+      ],
+      "low": -2.3,
+      "high": -0.7
+    },
+    {
+      "name": "ryy",
+      "targets": [
+        2,
+        3
+      ],
+      "low": 0.6,
+      "high": 1.5
+    },
+    {
+      "name": "rzz",
+      "targets": [
+        0,
+        3
+      ],
+      "low": 0.6,
+      "high": 1.5
+    },
+    {
+      "name": "rz",
+      "targets": [
+        0
+      ],
+      "low": 0.7,
+      "high": 2.3
+    },
+    {
+      "name": "rx",
+      "targets": [
+        3
+      ],
+      "low": 0.7,
+      "high": 2.3
+    },
+    {
+      "name": "ry",
+      "targets": [
+        1
+      ],
+      "low": 0.7,
+      "high": 2.3
+    },
+    {
+      "name": "rz",
+      "targets": [
+        2
+      ],
+      "low": 0.7,
+      "high": 2.3
+    },
+    {
+      "name": "rx",
+      "targets": [
+        0
+      ],
+      "low": -2.3,
+      "high": -0.7
+    },
+    {
+      "name": "ry",
+      "targets": [
+        3
+      ],
+      "low": -2.3,
+      "high": -0.7
+    }
+  ]
+}

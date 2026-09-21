@@ -1,0 +1,75 @@
+{
+  "name": "Conjugated frame",
+  "parameters": {
+    "shell": {
+      "low": 1.4,
+      "high": 1.74
+    },
+    "a": {
+      "low": 0.5,
+      "high": 0.9
+    },
+    "b": {
+      "low": 0.5,
+      "high": 1.0
+    },
+    "frame": {
+      "low": -0.6,
+      "high": 0.6
+    }
+  },
+  "gates": [
+    {
+      "name": "ry",
+      "targets": [
+        0
+      ],
+      "parameter": "frame",
+      "scale": 1
+    },
+    {
+      "name": "ryy",
+      "targets": [
+        1,
+        2
+      ],
+      "parameter": "shell",
+      "scale": 1
+    },
+    {
+      "name": "rxx",
+      "targets": [
+        0,
+        1
+      ],
+      "parameter": "a",
+      "scale": 1
+    },
+    {
+      "name": "rzz",
+      "targets": [
+        2,
+        3
+      ],
+      "parameter": "b",
+      "scale": 1
+    },
+    {
+      "name": "ryy",
+      "targets": [
+        1,
+        2
+      ],
+      "parameter": "shell",
+      "scale": -1
+    },
+    {
+      "name": "ry",
+      "targets": [
+        0
+      ],
+      "parameter": "frame",
+      "scale": -1
+    }
+  ]
+}

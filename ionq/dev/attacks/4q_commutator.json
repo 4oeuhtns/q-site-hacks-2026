@@ -1,0 +1,67 @@
+{
+  "name": "Commutator with cross-register couplings",
+  "parameters": {
+    "a": {
+      "low": 0.5,
+      "high": 1.0
+    },
+    "b": {
+      "low": 0.5,
+      "high": 0.95
+    }
+  },
+  "gates": [
+    {
+      "name": "rx",
+      "targets": [
+        0
+      ],
+      "parameter": "a",
+      "scale": 1
+    },
+    {
+      "name": "rzz",
+      "targets": [
+        0,
+        1
+      ],
+      "parameter": "b",
+      "scale": 1
+    },
+    {
+      "name": "rx",
+      "targets": [
+        0
+      ],
+      "parameter": "a",
+      "scale": -1
+    },
+    {
+      "name": "rzz",
+      "targets": [
+        0,
+        1
+      ],
+      "parameter": "b",
+      "scale": -1
+    },
+    {
+      "name": "ryy",
+      "targets": [
+        1,
+        2
+      ],
+      "low": 0.6,
+      "high": 0.9
+    },
+    {
+      "name": "rxx",
+      "targets": [
+        2,
+        3
+      ],
+      "low": 0.5,
+      "high": 0.9
+    }
+  ]
+}
