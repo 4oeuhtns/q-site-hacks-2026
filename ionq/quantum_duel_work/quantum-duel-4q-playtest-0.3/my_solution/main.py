@@ -97,97 +97,6 @@ def _run_four_qubit(client, rules):
         client.close_checkpoint()
 
 
-BASE_PREP = {"X": "+", "Y": "+i", "Z": "0"}
-FLIP_PREP = {"+": "-", "+i": "-i", "0": "1"}
-
-
-def _parity_panel(n, size, seed):
-    """Panel built as (base, one-qubit-flipped x n) families in a shared readout basis.
-
-    These are still ordinary random product settings, so the dense MLE is
-    unaffected, but the family structure is exactly what the recovery8 parity
-    learner needs. Both candidate generators then read the SAME counts instead
-    of competing for the 180-setting cap.
-    """
-    if size % (n + 1):
-        return None
-    rng = np.random.default_rng(seed)
-    seen, out = set(), []
-    while len(out) < size:
-        axes = rng.choice(list("XYZ"), n)
-        basis = list(rng.choice(list("XYZ"), n))
-        prep = [BASE_PREP[a] for a in axes]
-        family = [(list(prep), basis)]
-        for q in range(n):
-            flipped = list(prep)
-            flipped[q] = FLIP_PREP[flipped[q]]
-            family.append((flipped, basis))
-        key = (tuple(prep), tuple(basis))
-        if key in seen:
-            continue
-        seen.add(key)
-        out.extend({"prep": p, "basis": b} for p, b in family)
-    return out[:size]
-
-
-def _frame_candidate(panel, counts, n, rules):
-    """Algebraic frame model from surviving Pauli relations, read off the panel.
-
-    This is the recovery8 mechanism, which is completely different from the
-    dense-relax-then-project pipeline: it identifies an exactly-Clifford frame
-    from parity structure rather than by descending a likelihood. It wins big on
-    exactly-quarter-turn attacks and returns nothing otherwise, which is exactly
-    what a pooled selector wants from an extra generator.
-    """
-    from duelkit.recovery8.clifford import complete_images, nullspace, parse, rank
-    from duelkit.recovery8.clifford_pair import best_pair
-
-    pairs, have = [], 0
-    for start in range(0, len(panel) - n, n + 1):
-        family = panel[start:start + n + 1]
-        if len(family) != n + 1:
-            break
-        base = counts[start]
-        support = np.flatnonzero(base)
-        if len(support) < 1:
-            continue
-        v0 = int(support[0])
-        parities = nullspace([int(v) ^ v0 for v in support[1:]], n)
-        if not parities:
-            continue
-        axes = "".join({"+": "X", "+i": "Y", "0": "Z"}.get(a, "Z") for a in family[0]["prep"])
-        out_axes = "".join(family[0]["basis"])
-        for parity in parities:
-            sign = (parity & v0).bit_count() % 2
-            coeff, ok = [], True
-            for row in counts[start + 1:start + n + 1]:
-                values = {(int(v) & parity).bit_count() % 2 for v in np.flatnonzero(row)}
-                if len(values) != 1:
-                    ok = False
-                    break
-                coeff.append(next(iter(values)) ^ sign)
-            if not ok:
-                continue
-            inp = "".join(a if bit else "I" for a, bit in zip(axes, coeff))
-            oup = "".join(out_axes[q] if parity & (1 << (n - q - 1)) else "I" for q in range(n))
-            x, z = parse(inp)
-            u, v = parse(oup)
-            keys = [a[0] | (a[1] << n) for a, _ in pairs]
-            grown = rank(keys + [x | (z << n)])
-            if grown > have:
-                pairs.append(((x, z, 1), (u, v, (-1) ** sign)))
-                have = grown
-    if have != 2 * n:
-        return None
-    gates = best_pair(complete_images(pairs, n), n, trials=48)
-    if len(gates) > rules.patch_max_gates:
-        return None
-    if sum(sum(a != "I" for a in g["pauli"]) > 1 for g in gates) > rules.patch_max_entanglers:
-        return None
-    from duelkit.recovery4.quantum import inverse
-    return inverse(gates)
-
-
 def _legal_patch(as_gates, validate, rules, model):
     """Convert a fitted attack model into a validated patch, or None."""
     from duelkit.recovery4.quantum import inverse
@@ -199,7 +108,7 @@ def _legal_patch(as_gates, validate, rules, model):
         return None
 
 
-def _best_model(like, warm, previous, rules, budget, frame=None):
+def _best_model(like, warm, previous, rules, budget):
     """Collect every candidate we can afford, score them all by BIC, return the best."""
     from duelkit.recovery4.quantum import inverse, unitary
     from duelkit.recovery4.recovery import Ensemble, deviance
@@ -222,8 +131,6 @@ def _best_model(like, warm, previous, rules, budget, frame=None):
 
     if previous is not None:
         consider(previous)
-    if frame is not None:
-        consider(frame)
 
     # 1. the persistent ensemble, exactly as the stock defender runs it
     try:
