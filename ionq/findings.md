@@ -171,6 +171,8 @@ Recording these because they were plausible and are wrong.
 | Restarts around dense→project beat stock | **Not uniformly** — big wins on `ladder`, but lost a 100.0 on `interleaved_cycle` by discarding stock's other candidate generators. See §5.3. | `strong2.py` |
 | Seeding the search at quarter turns cracks `near_clifford` | **No effect** — 0.0 at all six configurations. See §5.4. | `cliff.py` |
 | `near_clifford` works by stopping greedy search early | **No** — the pursuit runs to the 18-gate cap, first gain 5000× the BIC penalty. It is a decoy optimum. See §5.4. | `diag.py` |
+| Merged insertions are the right hedge against a frame-aware defender | **Backwards for Cup 1** — the exact quarter turns they require are what makes the frame learner win (100/94/100). Ranged angles beat both learners. See §5.6. | `frame4.py` |
+| The parity panel lets both generators share counts for free | **No** — it cost 100→0 on `conjugated` and `zz` by gutting panel diversity. See §5.7. | reverted |
 | Maximising parameter count is a viable attack | **Capped at ~84 pts of damage.** | §2.2 |
 
 ---
@@ -400,6 +402,56 @@ from 18 types (6 pairs × 3 axes) to ~12. Whether that improves recovery is
 untested; since §5.4 shows `near_clifford` fails through decoy optima rather than
 search-space size, expect gains elsewhere rather than there. This is the strongest
 untried lever.
+
+
+### 5.6 Porting the recovery8 frame learner to 4 qubits (*measured*, `frame4.py`)
+
+`recovery8/quantum.py` is dimension-general and `Recovery` takes `n` as a
+parameter, so the only hard 8 is the adapter's guard. Ported with `n = 4`:
+
+| attack | seed | stock | pooled | frame4 | secs |
+|---|---|---|---|---|---|
+| Exactly-Clifford frame w/ merged insertions | 41 | 0.0 | 0.0 | **100.0** | 0.2 |
+| Exactly-Clifford frame w/ merged insertions | 73 | 0.0 | 28.4 | **94.2** | 0.2 |
+| Exactly-Clifford frame w/ merged insertions | 907 | 0.0 | 0.0 | **100.0** | 0.2 |
+| Ranged quarter-turn frame | 41/73/907 | 0.0 | 27/64/0 | **0.0** | 0.1 |
+| `4q_ladder` | 41 | 0.0 | 56.5 | 0.0 | 0.1 |
+| `4q_conjugated` | 41 | 100.0 | 100.0 | 0.0 | 76.7 |
+| `4q_zz` | 41 | 100.0 | 100.0 | 66.7 | 3.9 |
+
+**The decisive distinction is exact vs ranged quarter turns.** A frame whose gates
+sit at *exactly* ±π/2 has surviving Pauli relations that `ParityLearner` recovers
+exactly, reaching full rank and synthesising the frame in 0.2 s. A frame with
+angles *ranged* across π/2 (e.g. [1.45, 1.69]) is never exactly Clifford, the
+relations do not hold, and the algebraic route returns nothing.
+
+Consequence for the attack: the Cup 2 `merged_frame_example` countermeasure is
+**wrong for Cup 1**. Cup 2's grammar forces exact quarter turns, so merging
+insertions is the only available deception there. Cup 1 has no such constraint,
+so ranged near-quarter-turns are strictly better — they defeat the stock learner
+*and* the frame learner. Both submitted templates use ranged angles.
+
+Frame4 also takes 76.7 s on `4q_conjugated`, so any integration needs a time guard.
+
+### 5.7 Sharing the panel with the frame learner fails (*measured*)
+
+Integrating the frame candidate into the pool requires settings. To avoid a
+budget conflict the 180-setting panel was rebuilt as 36 parity-compatible
+families of (base + 4 single-qubit-flipped preps) in a shared readout basis, so
+both generators could read the same counts. Result:
+
+| attack | before | after |
+|---|---|---|
+| `4q_conjugated@41` | 100.0 | **0.0** |
+| `4q_zz@41` | 100.0 | **0.0** |
+
+`make_panel` samples all six preps independently per qubit; the parity panel
+restricts base preps to {+, +i, 0} and makes four of every five settings differ
+from the base in a single qubit within one readout basis. That is far less
+informationally diverse, the dense MLE degrades, and easy attacks stop being
+recoverable. **Reverted.** The frame candidate is not shipped; a dedicated
+settings slice remains untested and would take budget from a panel that §2.2.1
+shows is already near-optimal.
 
 
 ---

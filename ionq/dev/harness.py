@@ -28,9 +28,17 @@ import importlib.util
 import inspect
 import json
 import math
+import os
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+
+# Every matrix here is 16x16, so BLAS threading buys nothing and actively fights
+# process-level parallelism. Set before numpy loads; spawned workers re-import
+# this module, so they inherit it too.
+for _var in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
+             "NUMEXPR_NUM_THREADS", "VECLIB_MAXIMUM_THREADS"):
+    os.environ.setdefault(_var, "1")
 
 import numpy as np
 
@@ -283,9 +291,36 @@ def run_case(case, rules=None, defender=baseline_defender, *, session_seed=None)
         }
 
 
-def scoreboard(cases, rules=None, defender=baseline_defender, *, verbose=True):
-    """Run every case and print a table. Returns the rows for further analysis."""
+_WORKER_DEFENDER = {}
+
+
+def _resolve_defender(path):
+    """Load (and cache) a defender inside a worker process."""
+    if path is None:
+        return baseline_defender
+    if path not in _WORKER_DEFENDER:
+        _WORKER_DEFENDER[path] = load_defender(path)
+    return _WORKER_DEFENDER[path]
+
+
+def _run_one(payload):
+    """Top-level so it is picklable by ProcessPoolExecutor."""
+    case, rules_dict, defender_path = payload
+    return run_case(case, Rules(**rules_dict), _resolve_defender(defender_path))
+
+
+def scoreboard(cases, rules=None, defender=baseline_defender, *, verbose=True,
+               jobs=1, defender_path=None):
+    """Run every case and print a table. Returns the rows for further analysis.
+
+    jobs > 1 runs cases in separate processes. Cases are fully independent -- each
+    builds its own LocalSession -- so this is embarrassingly parallel. Pass
+    defender_path instead of defender when parallelising: a function loaded from a
+    file cannot be pickled, so workers load it themselves.
+    """
     rules = rules or Rules()
+    if jobs and jobs > 1 and len(cases) > 1:
+        return _scoreboard_parallel(cases, rules, defender_path, jobs, verbose)
     rows = []
     for index, case in enumerate(cases, 1):
         if verbose:
@@ -317,12 +352,65 @@ def scoreboard(cases, rules=None, defender=baseline_defender, *, verbose=True):
 
 # ------------------------------------------------------------------- cli
 
+def _scoreboard_parallel(cases, rules, defender_path, jobs, verbose):
+    """Run cases across a process pool, preserving input order in the output."""
+    from concurrent.futures import ProcessPoolExecutor, as_completed
+
+    jobs = min(int(jobs), len(cases), os.cpu_count() or 1)
+    rules_dict = rules.model_dump()
+    payloads = [(case, rules_dict, defender_path) for case in cases]
+    rows = [None] * len(cases)
+    if verbose:
+        print(f"  running {len(cases)} cases across {jobs} processes ...")
+    with ProcessPoolExecutor(max_workers=jobs) as pool:
+        futures = {pool.submit(_run_one, payload): i for i, payload in enumerate(payloads)}
+        done = 0
+        for future in as_completed(futures):
+            i = futures[future]
+            try:
+                rows[i] = future.result()
+            except BaseException as exc:
+                rows[i] = {"case": cases[i].label, "status": "FAILED",
+                           "error": f"{type(exc).__name__}: {str(exc)[:120]}",
+                           "recovery_points": 0.0, "checkpoint_points": [],
+                           "checkpoint_errors": [], "final_infidelity": float("nan"),
+                           "spent_shots": 0, "settings": 0}
+            done += 1
+            if verbose:
+                print(f"  [{done}/{len(cases)}] {rows[i]['case']} "
+                      f"{rows[i]['status']}  {rows[i]['recovery_points']:6.2f} pts", flush=True)
+    if verbose:
+        _print_summary(rows)
+    return rows
+
+
+def _print_summary(rows):
+    print()
+    print(f"{'attack':<22}{'status':<9}{'points':>8}{'infidelity':>13}{'shots':>8}{'settings':>10}")
+    print("-" * 70)
+    for row in rows:
+        print(f"{row['case'][:21]:<22}{row['status']:<9}{row['recovery_points']:>8.2f}"
+              f"{row['final_infidelity']:>13.3e}{row['spent_shots']:>8}{row['settings']:>10}")
+    scored = [r["recovery_points"] for r in rows]
+    failures = sum(r["status"] == "FAILED" for r in rows)
+    print("-" * 70)
+    print(f"{'mean':<22}{'':<9}{np.mean(scored) if scored else 0:>8.2f}")
+    print(f"{'worst':<22}{'':<9}{min(scored) if scored else 0:>8.2f}")
+    if failures:
+        print(f"\n{failures} case(s) crashed:")
+        for row in rows:
+            if row["status"] == "FAILED":
+                print(f"  {row['case']}: {row['error']}")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--defender", default=None,
                         help="path to a main.py; omit to use the SDK baseline learner")
     parser.add_argument("--attacks", default=str(ATTACK_DIR), help="directory of attack .json files")
     parser.add_argument("--attack", default=None, help="run only attacks whose filename contains this")
+    parser.add_argument("--jobs", "-j", type=int, default=1,
+                        help="run cases in parallel across N processes (0 = one per CPU)")
     parser.add_argument("--seeds", type=int, nargs="+", default=[41],
                         help="template draw seeds; each seed is a separate opponent")
     args = parser.parse_args(argv)
@@ -341,7 +429,8 @@ def main(argv=None):
     for name, reason in skipped:
         print(f"  skipped {name}: {reason}")
 
-    rows = scoreboard(cases, rules, defender)
+    jobs = (os.cpu_count() or 1) if args.jobs == 0 else args.jobs
+    rows = scoreboard(cases, rules, defender, jobs=jobs, defender_path=args.defender)
     return 0 if all(r["status"] == "PASSED" for r in rows) else 1
 
 

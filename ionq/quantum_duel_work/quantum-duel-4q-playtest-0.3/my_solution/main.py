@@ -20,9 +20,6 @@ Design rationale (see ionq/findings.md for the measurements behind each choice):
       - the previous checkpoint's winning patch
       - local-search variants (delete / swap / axis-change), moves that stock's
         insert-only pursuit structurally cannot make
-      - an algebraic frame model ported from recovery8, which identifies an
-        exactly-Clifford frame from surviving Pauli relations; it solves
-        exact-quarter-turn attacks outright and returns nothing elsewhere
   and selects across the whole pool by BIC on the accumulated counts. That
   construction cannot score below stock except through selection noise.
 
@@ -37,7 +34,7 @@ import numpy as np
 
 # Total wall-clock budget. The published local smoke default is 180 s and the
 # server limit is undisclosed, so leave a wide margin.
-TIME_BUDGET = 75.0
+TIME_BUDGET = 55.0
 # Reserve enough to always finish submitting and closing the remaining stages.
 STAGE_RESERVE = 6.0
 
@@ -64,7 +61,7 @@ def _run_four_qubit(client, rules):
 
     started = time.time()
     size = min(180, rules.max_settings, rules.block)
-    panel = _parity_panel(4, size, 60231) or make_panel(4, size, 60231)
+    panel = make_panel(4, size, 60231)
     ids = [experiment_index(e["prep"], "".join(e["basis"]), 4) for e in panel]
     kets, bras = design(panel)
     labels = bitstrings(4)
@@ -86,12 +83,7 @@ def _run_four_qubit(client, rules):
         remaining = TIME_BUDGET - (time.time() - started)
         stage_budget = max(0.0, remaining - STAGE_RESERVE * (rules.checkpoints - checkpoint - 1))
 
-        frame = None
-        try:
-            frame = _frame_candidate(panel, counts, 4, rules)
-        except BaseException:
-            frame = None
-        model = _best_model(like, warm, best_model, rules, stage_budget, frame)
+        model = _best_model(like, warm, best_model, rules, stage_budget)
         if model is not None:
             patch = _legal_patch(as_gates, validate, rules, model)
             if patch is not None:
@@ -255,21 +247,21 @@ def _best_model(like, warm, previous, rules, budget, frame=None):
     # 3. diversified restarts. DenseMLE.fit seeds np.random.default_rng(83177),
     #    a FIXED seed, so a plain second Ensemble reproduces the first exactly.
     #    Perturbing dense.x by hand is what actually buys an independent basin.
-    #    Stop once extra restarts stop paying: easy attacks are solved in the
-    #    first second and burning the whole budget on them is pure timeout risk.
+    #    Stop after several restarts without improvement: easy attacks are solved
+    #    in the first second and burning the whole budget is pure timeout risk.
     rng = np.random.default_rng(17)
     stale = 0
-    while time.time() - started < budget * 0.70 and stale < 3:
-        best_before = min(pool)[0] if pool else np.inf
+    while time.time() - started < budget * 0.70 and stale < 10:
+        best_before = min((v for v, _ in pool), default=np.inf)
         try:
             extra = Ensemble(block=True, max_gates=rules.patch_max_gates,
                              max_entanglers=rules.patch_max_entanglers)
             extra.dense.x = rng.normal(0.0, 0.06, len(extra.dense.ps))
             for candidate in extra.fit(like)["candidates"].values():
                 consider(inverse(candidate))
-        except (ValueError, np.linalg.LinAlgError):
+        except Exception:
             break
-        best_after = min(pool)[0] if pool else np.inf
+        best_after = min((v for v, _ in pool), default=np.inf)
         stale = 0 if best_after < best_before - 1e-6 else stale + 1
 
     if not pool:

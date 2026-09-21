@@ -121,6 +121,9 @@ Run from `ionq/`.
 # score the stock SDK learner against the public bank
 python3 dev/harness.py
 
+# same, but across all cores (-j 0 = one process per CPU)
+python3 dev/harness.py -j 0
+
 # score your defender, on chosen draw seeds
 python3 dev/harness.py --defender quantum_duel_work/quantum-duel-4q-playtest-0.3/my_solution/main.py \
                        --seeds 41 73 907
@@ -133,7 +136,20 @@ PYTHONPATH=dev/experiments python3 -u dev/experiments/crb.py
 ```
 
 `harness.py` captures defender exceptions rather than raising, so a crashing
-defender shows as `FAILED` with its error instead of killing the run.
+defender shows as `FAILED` with its error instead of killing the run. Watch that
+column: a crashed defender and a defender that recovers nothing both score 0.0,
+but only one of them is a bug.
+
+### Parallelism
+
+Cases are fully independent — each builds its own `LocalSession` — so `-j N` runs
+them across N processes and `-j 0` uses one per CPU. Pass `--defender` as a path
+when parallelising; a function loaded from a file cannot be pickled, so workers
+load it themselves.
+
+`harness.py` pins `OMP_NUM_THREADS` and friends to 1 at import, before NumPy
+loads. Every matrix in this project is 16x16, so BLAS threading buys nothing and
+actively fights process-level parallelism.
 
 ### Reproducibility
 
@@ -148,7 +164,131 @@ Draw seeds are the opponent. A template plus a seed is one concrete attack, so
 always compare defender revisions on the **same** seeds and keep a few fresh ones
 in reserve for a final check.
 
-## 6. Building a submission
+## 6. Working on Windows via WSL2
+
+WSL2 is the supported path — the notebook says so explicitly, because archive
+extraction and the local smoke worker use POSIX facilities. WSL**1** is not: it
+emulates syscalls rather than running a real kernel, and it is markedly slower
+for this workload.
+
+### Check which version you have
+
+From PowerShell:
+
+```powershell
+wsl -l -v          # look at the VERSION column
+```
+
+Or from inside the distro:
+
+```bash
+uname -r           # WSL2: ...-microsoft-standard-WSL2   WSL1: ...-Microsoft
+```
+
+### Upgrade to WSL2
+
+```powershell
+wsl --update                        # get the current kernel
+wsl --set-default-version 2         # new distros default to v2
+wsl --set-version Ubuntu 2          # convert the existing one (takes a while)
+wsl -l -v                           # confirm VERSION is now 2
+```
+
+Conversion preserves the filesystem. It needs virtualization enabled in firmware
+and Windows 10 2004+ or Windows 11.
+
+### The single biggest performance rule
+
+**Keep the repo on the Linux filesystem, never under `/mnt/c/`.**
+
+```bash
+cd ~                              # ext4 inside the WSL VHD  -- fast
+git clone <repo> q-site-hacks-2026
+```
+
+Files under `/mnt/c`, `/mnt/d`, etc. are reached through a translation layer, and
+operations on many small files run roughly an order of magnitude slower. This
+project does exactly that kind of I/O: the notebook Setup cell writes ~168 KB of
+SDK source across ~25 files, and every harness run imports the whole SDK in each
+worker process. A repo on `/mnt/c` will feel broken by comparison.
+
+Reach the files from Windows at `\\wsl$\Ubuntu\home\<user>\...`, or run
+`explorer.exe .` from inside WSL. Edit with VS Code's **WSL** extension so the
+language server runs inside the distro rather than across the boundary.
+
+### Give WSL2 the machine
+
+WSL2 defaults to half your RAM and all logical processors. To set it explicitly,
+create `C:\Users\<you>\.wslconfig`:
+
+```ini
+[wsl2]
+processors=16          # match your core count; this is what -j 0 will see
+memory=16GB            # plenty; this workload is compute-bound, not memory-bound
+swap=0
+```
+
+Then `wsl --shutdown` and reopen. Check with `nproc` and `free -h`.
+
+Consider excluding the WSL virtual disk from Windows Defender real-time scanning
+(`%LOCALAPPDATA%\Packages\CanonicalGroupLimited...\LocalState\ext4.vhdx`) —
+it is a common cause of sluggish WSL2 I/O.
+
+### Environment inside WSL
+
+Same as section 2, Option A. Miniconda for Linux:
+
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+exec $SHELL
+conda create -n q-site-hacks-2026 python=3.12
+conda activate q-site-hacks-2026
+python -m pip install jupyterlab ipykernel matplotlib \
+  numpy==2.3.5 scipy==1.17.0 pydantic==2.13.4 httpx==0.28.1 \
+  numba==0.65.1 llvmlite==0.47.0
+```
+
+Pin **exactly** these versions if you intend to compare numbers against results
+produced on another machine. SciPy in particular drives every optimiser in this
+project, and `findings.md` was measured on SciPy 1.18.1 on an Apple M2 — a
+different SciPy will give quietly different recovery numbers.
+
+Then regenerate the SDK by running the notebook Setup cell (section 3).
+
+### Jupyter from WSL
+
+```bash
+jupyter lab --no-browser
+```
+
+WSL2 forwards localhost, so paste the printed `127.0.0.1:8888/lab?token=...` URL
+into your Windows browser.
+
+### Is it actually faster? Measure.
+
+```bash
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -u dev/experiments/bench.py
+```
+
+Compare against the reference on the machine `findings.md` was measured on:
+
+```
+Apple M2, 8 cores, arm64, numpy 2.3.5
+circuit_and_jac      5773.6 calls/s
+eigh+expm 16x16     17997.4 calls/s
+L-BFGS-B fit          547.6 fits/s
+```
+
+What to expect. Every matrix here is 16x16, so this is a single-core-clock and
+interpreter-overhead workload, not a threading or memory-bandwidth one. A modern
+desktop x86 core is roughly comparable to an M2 performance core — expect
+1.0-1.5x on the single-core numbers, and possibly less on a laptop chip. **Core
+count is where a bigger box wins**, because the sweeps are embarrassingly
+parallel: a 16-core machine running `-j 0` finishes a 17-case scoreboard in
+roughly the time one case takes.
+
+## 7. Building a submission
 
 Done through the notebook's Part 4 cells, which call `build_submission` and
 `validate_solution` from `qduel_sdk.submission`. The packager takes an explicit
@@ -166,7 +306,7 @@ The archive contains `main.py`, `attacks.json`, `qduel.json` and
 executed. It is not a claim about recovery quality — a valid program can score
 zero.
 
-## 7. Troubleshooting
+## 8. Troubleshooting
 
 Real failures hit while working in this repo:
 
@@ -181,7 +321,7 @@ Real failures hit while working in this repo:
 | A `pgrep -f "foo.py"` wait loop never finishes | The waiting shell's own command line contains `foo.py`, so `pgrep` matches itself. Match on the interpreter, or use a marker file. |
 | Different SDK already imported | Restart the kernel and re-run the Setup cell. Do not mix release directories. |
 
-## 8. Repo state
+## 9. Repo state
 
 Only `pennylane/challenge.ipynb` is tracked by git. **All of `ionq/` is
 untracked** — including `findings.md`, `main.py`, `attacks.json` and every
