@@ -1,41 +1,12 @@
-"""Quantum Duel defender.
-
-Design rationale (see ionq/findings.md for the measurements behind each choice):
-
-* Measurement design is NOT the lever. The 180-setting random product panel is
-  within ~2x of the A-optimal design, and optimal allocation is worth <=2 points
-  on the encounter average. Closed-loop analysis circuits are measurably WORSE.
-  So the measurement layer is deliberately the stock one, unchanged.
-
-* The lever is architecture search under the 18-gate / 6-entangler patch cap.
-  A fixed universal ansatz cannot invert a generic legal attack (eps 0.13-0.43
-  even given the exact unitary), so the opponent's structure must be recovered.
-
-* Three separate attempts to build a "better" single searcher all lost to stock
-  somewhere, because stock's strength is its heterogeneous candidate pool under
-  BIC selection, not any one search path. This defender therefore STRICTLY
-  EXTENDS that pool and never replaces it:
-      - the persistent (warm) ensemble, as stock runs it
-      - a fresh ensemble refitted from scratch each checkpoint
-      - the previous checkpoint's winning patch
-      - local-search variants (delete / swap / axis-change), moves that stock's
-        insert-only pursuit structurally cannot make
-  and selects across the whole pool by BIC on the accumulated counts. That
-  construction cannot score below stock except through selection noise.
-
-Runtime target is ~75 s against a documented 180 s local default; every stage is
-time-guarded and the defender always leaves a legal patch submitted.
-"""
 from __future__ import annotations
 
 import time
 
 import numpy as np
 
-# Total wall-clock budget. The published local smoke default is 180 s and the
-# server limit is undisclosed, so leave a wide margin.
+# time budget
 TIME_BUDGET = 55.0
-# Reserve enough to always finish submitting and closing the remaining stages.
+# reserve enough time to finish
 STAGE_RESERVE = 6.0
 
 
@@ -69,8 +40,8 @@ def _run_four_qubit(client, rules):
 
     warm = Ensemble(block=True, max_gates=rules.patch_max_gates,
                     max_entanglers=rules.patch_max_entanglers)
-    best_patch = ()          # best legal patch found so far, as G records
-    best_model = None        # its attack model, as [{'pauli','angle'}, ...]
+    best_patch = ()
+    best_model = None
 
     for checkpoint in range(rules.checkpoints):
         base, extra = divmod(rules.block, size)
@@ -98,7 +69,7 @@ def _run_four_qubit(client, rules):
 
 
 def _legal_patch(as_gates, validate, rules, model):
-    """Convert a fitted attack model into a validated patch, or None."""
+    """convert attack model into a valid patch or None"""
     from duelkit.recovery4.quantum import inverse
     try:
         patch = as_gates(inverse(model))
@@ -109,7 +80,7 @@ def _legal_patch(as_gates, validate, rules, model):
 
 
 def _best_model(like, warm, previous, rules, budget):
-    """Collect every candidate we can afford, score them all by BIC, return the best."""
+    """collect every candidate we can afford, score them all by BIC, return the best"""
     from duelkit.recovery4.quantum import inverse, unitary
     from duelkit.recovery4.recovery import Ensemble, deviance
 
@@ -132,7 +103,7 @@ def _best_model(like, warm, previous, rules, budget):
     if previous is not None:
         consider(previous)
 
-    # 1. the persistent ensemble, exactly as the stock defender runs it
+    # 1. persistent ensemble
     try:
         fitted = warm.fit(like)
         for candidate in fitted["candidates"].values():
@@ -140,8 +111,7 @@ def _best_model(like, warm, previous, rules, budget):
     except (ValueError, np.linalg.LinAlgError):
         pass
 
-    # 2. the same ensemble refitted from scratch; warm-starting is bidirectional,
-    #    so keeping both and selecting takes the better of the two for free
+    # 2. refitted from scratch, warm start is bidirectional -> keep both and select best
     if time.time() - started < budget * 0.55:
         try:
             fresh = Ensemble(block=True, max_gates=rules.patch_max_gates,
@@ -152,10 +122,7 @@ def _best_model(like, warm, previous, rules, budget):
             pass
 
     # 3. diversified restarts. DenseMLE.fit seeds np.random.default_rng(83177),
-    #    a FIXED seed, so a plain second Ensemble reproduces the first exactly.
-    #    Perturbing dense.x by hand is what actually buys an independent basin.
-    #    Stop after several restarts without improvement: easy attacks are solved
-    #    in the first second and burning the whole budget is pure timeout risk.
+    #    change dense.x by hand, stop after several restarts without improvement
     rng = np.random.default_rng(17)
     stale = 0
     while time.time() - started < budget * 0.70 and stale < 10:
@@ -189,7 +156,7 @@ def _best_model(like, warm, previous, rules, budget):
 
 
 def _local_search(like, model, budget):
-    """Try removing, reordering and re-axising each gate; keep strict improvements."""
+    """try removing, reordering and re-axising each gate; keep strict improvements."""
     from scipy.optimize import minimize
     from duelkit.recovery4.quantum import circuit_and_jac
 
