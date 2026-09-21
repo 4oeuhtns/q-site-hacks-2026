@@ -1,2 +1,32 @@
+# Editor / agent config
 .claude/
 .vscode/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Numba ahead-of-time cache (written next to duelkit/recovery8)
+*.nbc
+*.nbi
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build artifacts: regenerate with `python3 ionq/dev/build.py`
+*.zip
+**/local_validation_report.json
+**/smoke_evidence.json
+**/own_attack_results.json
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# NOTE: ionq/_quantum_duel_sdk_0_7_2/ is deliberately TRACKED even though the
+# notebook generates it. Keeping it in the repo means a fresh clone can run
+# dev/harness.py and dev/build.py without opening Jupyter first.

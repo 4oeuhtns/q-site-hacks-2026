@@ -495,8 +495,29 @@ stock candidate pool, per §5.3:
 - select across the whole pool by BIC on the accumulated counts, then refine the
   winner on counts
 
-Budget roughly 35 s per checkpoint (~105 s total) against a 180 s local timeout
-and a 2.6–4.0 s stock baseline. Confirm the server limit before relying on this.
+**Measured result** (`main.py`, 13 public cases at seeds 41/73 plus both own
+templates, `TIME_BUDGET = 55 s`, stop after 10 restarts without improvement):
+
+| | stock | pooled defender |
+|---|---|---|
+| mean (public bank) | 85.9 | **92.1** |
+| worst (public bank) | 0.0 | **56.5** |
+| failures | 0 | 0 |
+| regressions | — | 1 of 17 (−0.7, selection noise) |
+| max runtime | 4.0 s | 55.0 s (37.4 s on the public bank) |
+
+Biggest single gain: `4q_ladder@41` 0.0 → 56.5. The zero-point case is
+eliminated. Max runtime is 31% of the documented 180 s local default, so the
+defender survives grading hardware roughly 3x slower than an Apple M2. Hard
+attacks reach the 55 s cap; easy ones finish in 5-8 s via the staleness exit.
+The server limit is not published, so this margin is an assumption, not a fact.
+
+Two bugs found while building this, both worth remembering: `min(pool)` over
+`(deviance, model)` tuples raises `TypeError` on ties because it falls through to
+comparing lists of dicts, and it crashed on exactly the *easy* attacks where
+candidates converge to identical fits; and `DenseMLE.fit` seeds a **fixed** RNG
+(`default_rng(83177)`), so a second `Ensemble` reproduces the first exactly —
+diversified restarts require perturbing `dense.x` by hand.
 
 **Robustness layer — cheap and mandatory.** Submit a legal patch at *every*
 checkpoint, never leave it empty; validate before submitting (a rejected patch
@@ -512,18 +533,27 @@ a legal inverse for every accepted draw), and entropy is counterproductive (§3)
 
 **Both slots quarter-turn frames, structurally different from each other:**
 
-- **Slot 1** — plain quarter-turn frame: 12 gates / 4 entanglers, eight slots with
-  ranges straddling ±π/2 (width is irrelevant, §4.1), four off-Clifford locals in
-  [0.8, 1.3].
-- **Slot 2** — quarter-turn frame with **merged insertions**: two same-axis
-  off-Clifford locals on one qubit separated by a pair rotation on that axis,
-  summing to ≈ a quarter turn. Each declared insertion stays off-Clifford; only
-  the effective residual is near-Clifford. This is the published countermeasure to
-  a frame-aware learner (`profiles.merged_frame_example`).
+Both slots are **ranged** near-quarter-turn frames — every angle straddles ±π/2
+but is never exactly at it. §5.6 is why: exact quarter turns fall to the ported
+frame learner in 0.2 s, ranged ones defeat it entirely.
 
-Concentrating both slots on one mechanism is worth more than hedging (~100 attack
-points versus ~91.5 pairing with `ladder` at 17.1), at the cost that **one
-defensive idea could neutralise both**. Slot 2's merged insertions are the hedge.
+- **Slot 1** — *cycle* topology: entanglers on (0,1), (2,3), (1,2), (0,3).
+- **Slot 2** — *crossed* topology: entanglers on (0,2), (1,3), (0,1), (2,3),
+  different local axes.
+
+Each is 12 gates / 4 entanglers: eight slots ranged in [1.45, 1.69] or
+[−1.69, −1.45], four off-Clifford locals in [0.8, 1.3]. Both pass `qualify`
+(readiness 64/64, VALIDATED).
+
+**Measured**, four seeds each:
+
+| template | vs stock | vs ported frame learner | vs pooled defender |
+|---|---|---|---|
+| cycle | **0.0** | **0.0** | 34.7 |
+| crossed | **0.0** | **0.0** | 11.0 |
+
+`crossed` is the stronger of the two. The residual exposure is a pooled defender,
+which is strictly stronger than either individual learner.
 
 Both templates must pass `qualify`: distinct fingerprints, distinct
 `semantic_template_key`, ≥32/64 readiness draws, and not equivalent on the eight
