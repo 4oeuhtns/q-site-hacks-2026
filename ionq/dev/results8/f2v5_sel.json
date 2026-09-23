@@ -1,0 +1,116 @@
+[
+ {
+  "case": "ours_1@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 100.0,
+  "checkpoint_points": [
+   100.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   1.7572435989321455e-05,
+   2.0164752539297837e-05,
+   2.4653659030371422e-05
+  ],
+  "final_infidelity": 2.4653659030371422e-05,
+  "spent_shots": 96000,
+  "settings": 715
+ },
+ {
+  "case": "ours_1@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 66.66666666666667,
+  "checkpoint_points": [
+   0.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   0.17739074170478386,
+   4.4301159090043285e-06,
+   6.460855070944405e-07
+  ],
+  "final_infidelity": 6.460855070944405e-07,
+  "spent_shots": 96000,
+  "settings": 715
+ },
+ {
+  "case": "ours_2@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 100.0,
+  "checkpoint_points": [
+   100.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   3.454012783921101e-05,
+   1.1924741762148194e-05,
+   2.936540784315156e-06
+  ],
+  "final_infidelity": 2.936540784315156e-06,
+  "spent_shots": 96000,
+  "settings": 717
+ },
+ {
+  "case": "ours_2@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 66.66666666666667,
+  "checkpoint_points": [
+   0.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   0.11438719622243254,
+   4.987897105235284e-06,
+   7.405873021393283e-06
+  ],
+  "final_infidelity": 7.405873021393283e-06,
+  "spent_shots": 96000,
+  "settings": 717
+ },
+ {
+  "case": "ours_3@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 66.66666666666667,
+  "checkpoint_points": [
+   0.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   0.23851354971911198,
+   3.919083096270981e-06,
+   6.775075070741821e-06
+  ],
+  "final_infidelity": 6.775075070741821e-06,
+  "spent_shots": 96000,
+  "settings": 715
+ },
+ {
+  "case": "ours_3@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 66.66666666666667,
+  "checkpoint_points": [
+   0.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   0.2574097081031633,
+   2.3331489618527712e-05,
+   1.9914503368578806e-05
+  ],
+  "final_infidelity": 1.9914503368578806e-05,
+  "spent_shots": 96000,
+  "settings": 715
+ }
+]

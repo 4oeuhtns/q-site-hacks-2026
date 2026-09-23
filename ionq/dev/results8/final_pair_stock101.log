@@ -1,0 +1,11 @@
+  running 2 cases across 2 processes ...
+  [1/2] ours_2@101 PASSED    0.00 pts
+  [2/2] ours_0@101 PASSED    0.00 pts
+
+attack                status     points   infidelity   shots  settings
+----------------------------------------------------------------------
+ours_0@101            PASSED       0.00    1.000e+00   96000       718
+ours_2@101            PASSED       0.00    1.000e+00   96000       717
+----------------------------------------------------------------------
+mean                               0.00
+worst                              0.00

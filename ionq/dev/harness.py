@@ -243,8 +243,12 @@ def load_defender(main_py):
         return module.run
     finally:
         sys.path.remove(str(path.parent))
+        # Purge only the defender's own modules. SDK modules must stay: numba
+        # resolves a jitted function's globals through sys.modules at compile time.
         for name in set(sys.modules) - before:
-            del sys.modules[name]
+            origin = getattr(sys.modules[name], "__file__", None) or ""
+            if origin.startswith(str(path.parent)):
+                del sys.modules[name]
 
 
 def baseline_defender(client, rules):

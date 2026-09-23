@@ -1,0 +1,40 @@
+[
+ {
+  "case": "ours_0@101",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 0.0,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.9999976372848844,
+   0.9999976372848844,
+   0.9999976372848844
+  ],
+  "final_infidelity": 0.9999976372848844,
+  "spent_shots": 96000,
+  "settings": 718
+ },
+ {
+  "case": "ours_2@101",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 0.0,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.9999780053235855,
+   0.9999780053235855,
+   0.9999780053235855
+  ],
+  "final_infidelity": 0.9999780053235855,
+  "spent_shots": 96000,
+  "settings": 717
+ }
+]

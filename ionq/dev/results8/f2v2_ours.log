@@ -1,0 +1,23 @@
+  running 8 cases across 8 processes ...
+  [1/8] ours_3@73 PASSED   66.67 pts
+  [2/8] ours_1@41 PASSED   66.67 pts
+  [3/8] ours_1@73 PASSED   66.67 pts
+  [4/8] ours_3@41 PASSED   33.33 pts
+  [5/8] ours_0@41 PASSED   33.33 pts
+  [6/8] ours_2@41 PASSED    0.00 pts
+  [7/8] ours_0@73 PASSED    0.00 pts
+  [8/8] ours_2@73 PASSED    0.00 pts
+
+attack                status     points   infidelity   shots  settings
+----------------------------------------------------------------------
+ours_0@41             PASSED      33.33    1.827e-05   96000       718
+ours_0@73             PASSED       0.00    1.258e-01   96000       718
+ours_1@41             PASSED      66.67    2.465e-05   96000       715
+ours_1@73             PASSED      66.67    6.461e-07   96000       715
+ours_2@41             PASSED       0.00    1.141e-01   96000       717
+ours_2@73             PASSED       0.00    1.144e-01   96000       717
+ours_3@41             PASSED      33.33    6.769e-06   96000       715
+ours_3@73             PASSED      66.67    1.991e-05   96000       715
+----------------------------------------------------------------------
+mean                              33.33
+worst                              0.00

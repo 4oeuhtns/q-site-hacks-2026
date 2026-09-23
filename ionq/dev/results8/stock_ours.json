@@ -1,0 +1,154 @@
+[
+ {
+  "case": "ours_0@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 0.0,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.9999969643740722,
+   0.9999969643740722,
+   0.9999969643740722
+  ],
+  "final_infidelity": 0.9999969643740722,
+  "spent_shots": 96000,
+  "settings": 718
+ },
+ {
+  "case": "ours_0@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 0.0,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.9999974916825298,
+   0.9999974916825298,
+   0.9999974916825298
+  ],
+  "final_infidelity": 0.9999974916825298,
+  "spent_shots": 96000,
+  "settings": 718
+ },
+ {
+  "case": "ours_1@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 0.0,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.9999764555551041,
+   0.9999764555551041,
+   0.9999764555551041
+  ],
+  "final_infidelity": 0.9999764555551041,
+  "spent_shots": 96000,
+  "settings": 715
+ },
+ {
+  "case": "ours_1@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 100.0,
+  "checkpoint_points": [
+   100.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   1.273701813564454e-05,
+   4.430133595745289e-06,
+   6.38644052530779e-07
+  ],
+  "final_infidelity": 6.38644052530779e-07,
+  "spent_shots": 96000,
+  "settings": 715
+ },
+ {
+  "case": "ours_2@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 0.0,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.9999778728777893,
+   0.9999778728777893,
+   0.9999778728777893
+  ],
+  "final_infidelity": 0.9999778728777893,
+  "spent_shots": 96000,
+  "settings": 717
+ },
+ {
+  "case": "ours_2@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 0.0,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.9999779859948885,
+   0.9999779859948885,
+   0.9999779859948885
+  ],
+  "final_infidelity": 0.9999779859948885,
+  "spent_shots": 96000,
+  "settings": 717
+ },
+ {
+  "case": "ours_3@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 100.0,
+  "checkpoint_points": [
+   100.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   1.3164221556394295e-05,
+   3.918566192306905e-06,
+   6.768684229663258e-06
+  ],
+  "final_infidelity": 6.768684229663258e-06,
+  "spent_shots": 96000,
+  "settings": 715
+ },
+ {
+  "case": "ours_3@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 33.333333333333336,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   0.23272712832672582,
+   0.23272712832672582,
+   1.9912218970574713e-05
+  ],
+  "final_infidelity": 1.9912218970574713e-05,
+  "spent_shots": 96000,
+  "settings": 715
+ }
+]

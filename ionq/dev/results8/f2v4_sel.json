@@ -1,0 +1,116 @@
+[
+ {
+  "case": "ours_1@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 0.0,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.15213946464081174,
+   0.24549049509746113,
+   0.11609723669660399
+  ],
+  "final_infidelity": 0.11609723669660399,
+  "spent_shots": 96000,
+  "settings": 715
+ },
+ {
+  "case": "ours_1@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 33.333333333333336,
+  "checkpoint_points": [
+   0.0,
+   100.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.1111625498899993,
+   4.430115905007526e-06,
+   0.22298642171156235
+  ],
+  "final_infidelity": 0.22298642171156235,
+  "spent_shots": 96000,
+  "settings": 715
+ },
+ {
+  "case": "ours_2@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 0.0,
+  "checkpoint_points": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   0.24419392127447326,
+   0.11407722643129214,
+   0.2441939212744717
+  ],
+  "final_infidelity": 0.2441939212744717,
+  "spent_shots": 96000,
+  "settings": 717
+ },
+ {
+  "case": "ours_2@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 33.333333333333336,
+  "checkpoint_points": [
+   100.0,
+   0.0,
+   0.0
+  ],
+  "checkpoint_errors": [
+   7.146149636483301e-07,
+   0.23901302537102398,
+   0.11438736458206411
+  ],
+  "final_infidelity": 0.11438736458206411,
+  "spent_shots": 96000,
+  "settings": 717
+ },
+ {
+  "case": "ours_3@41",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 66.66666666666667,
+  "checkpoint_points": [
+   0.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   0.23851354971911276,
+   3.9190827976209874e-06,
+   6.768708423199321e-06
+  ],
+  "final_infidelity": 6.768708423199321e-06,
+  "spent_shots": 96000,
+  "settings": 715
+ },
+ {
+  "case": "ours_3@73",
+  "status": "PASSED",
+  "error": "",
+  "recovery_points": 100.0,
+  "checkpoint_points": [
+   100.0,
+   100.0,
+   100.0
+  ],
+  "checkpoint_errors": [
+   6.04855582754249e-05,
+   2.333149052013983e-05,
+   1.9914503367912673e-05
+  ],
+  "final_infidelity": 1.9914503367912673e-05,
+  "spent_shots": 96000,
+  "settings": 715
+ }
+]

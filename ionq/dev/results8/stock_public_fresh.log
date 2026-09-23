@@ -1,0 +1,37 @@
+  running 15 cases across 2 processes ...
+  [1/15] public_frame@202 PASSED  100.00 pts
+  [2/15] public_frame@101 PASSED  100.00 pts
+  [3/15] public_frame@303 PASSED  100.00 pts
+  [4/15] public_local@101 PASSED  100.00 pts
+  [5/15] public_local@202 PASSED  100.00 pts
+  [6/15] public_local@303 PASSED  100.00 pts
+  [7/15] public_merged@101 PASSED   91.78 pts
+  [8/15] public_merged@202 PASSED   66.73 pts
+  [9/15] public_merged@303 PASSED   62.72 pts
+  [10/15] public_mixed@101 PASSED   66.67 pts
+  [11/15] public_mixed@202 PASSED  100.00 pts
+  [12/15] public_mixed@303 PASSED  100.00 pts
+  [13/15] public_zz@101 PASSED  100.00 pts
+  [14/15] public_zz@202 PASSED  100.00 pts
+  [15/15] public_zz@303 PASSED  100.00 pts
+
+attack                status     points   infidelity   shots  settings
+----------------------------------------------------------------------
+public_frame@101      PASSED     100.00    3.720e-05   96000       718
+public_frame@202      PASSED     100.00    5.271e-05   96000       714
+public_frame@303      PASSED     100.00    5.750e-06   96000       712
+public_local@101      PASSED     100.00    1.554e-05   96000       717
+public_local@202      PASSED     100.00    2.678e-05   96000       717
+public_local@303      PASSED     100.00    2.569e-05   96000       717
+public_merged@101     PASSED      91.78    1.460e-03   96000       176
+public_merged@202     PASSED      66.73    4.628e-03   96000       168
+public_merged@303     PASSED      62.72    5.566e-03   96000       359
+public_mixed@101      PASSED      66.67    2.513e-07   96000       712
+public_mixed@202      PASSED     100.00    9.952e-06   96000       716
+public_mixed@303      PASSED     100.00    6.795e-06   96000       718
+public_zz@101         PASSED     100.00    1.529e-05   96000       713
+public_zz@202         PASSED     100.00    4.897e-06   96000       719
+public_zz@303         PASSED     100.00    4.793e-06   96000       715
+----------------------------------------------------------------------
+mean                              92.53
+worst                             62.72
