@@ -60,7 +60,7 @@ The clean phase portrait reproduced the expected large-scale organization of the
 
 ![Clean phase diagram](phase_diagram_p0.00.png)
 
-At $p=0.01$, the categorical argmax map was unchanged at the resolution of the scan. At $p=0.05$, it changed at only one grid cell near $\kappa=1$: the antiphase-to-paramagnetic boundary moved downward by approximately one $h$-grid step, from $h\approx0.93$ to $h\approx0.86$. The continuous observables nevertheless weakened throughout the diagram, showing that a nearly unchanged categorical map can hide substantial degradation.
+At $p=0.01$, the categorical argmax map was unchanged at the resolution of the scan. At $p=0.05$, only one grid cell near $\kappa=1$ changed classification. The corresponding plotted antiphase-to-paramagnetic boundary moved from approximately $h=0.93$ to $h=0.86$. The continuous observables nevertheless weakened throughout the diagram, showing that a nearly unchanged categorical map can hide substantial degradation.
 
 ![Phase diagram at five-percent depolarizing noise](phase_diagram_p0.05.png)
 
@@ -110,7 +110,7 @@ uv sync --locked
 uv run jupyter nbconvert --to notebook --execute starter.ipynb --output starter_reproduced.ipynb
 ```
 
-**Team contributions (complete before submission):** eogito — [role]; yyh — [role]; aoeuhtns — [role]; crackohead — [role].
+**Team contributions:** eogito — computational implementation; yyh — manuscript review and scientific editing; aoeuhtns — project coordination; crackohead — model development.
 
 ## References
 
