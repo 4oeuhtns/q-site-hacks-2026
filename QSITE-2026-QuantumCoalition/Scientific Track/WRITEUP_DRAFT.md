@@ -1,12 +1,12 @@
 # Mapping the ANNNI Phase Diagram Under Depolarizing Noise
 
-**Team:** [Add team members]
+**Team aoeuhtns:** eogito, yyh, aoeuhtns, crackohead
 
 **QSITE Hacks 2026 — Scientific Track**
 
 ## Abstract
 
-We map the finite-size phase diagram of the one-dimensional axial next-nearest-neighbor Ising (ANNNI) model and study how depolarizing noise changes observable signatures of its phases. Using PennyLane, we exactly diagonalize an eight-qubit periodic ANNNI Hamiltonian on a $15\times15$ grid spanning $0\leq\kappa\leq1$ and $0\leq h\leq2$. We identify ferromagnetic, antiphase, and paramagnetic regimes from nearest-neighbor correlation $\langle Z_iZ_{i+1}\rangle$, next-nearest-neighbor correlation $\langle Z_iZ_{i+2}\rangle$, and transverse magnetization $\langle X_i\rangle$, respectively, and compare their numerical crossovers with analytical Ising, Berezinskii–Kosterlitz–Thouless (BKT), and Kosterlitz–Thouless (KT) reference curves. To model imperfect state preparation, we apply one layer of single-qubit depolarizing channels to the exact ground state at noise strengths $p=0.01$ and $p=0.05$. At $p=0.05$, the estimated ferromagnetic-to-paramagnetic boundary at $\kappa\approx0.29$ shifts from $h=0.692$ to $h=0.608$, shrinking the ordered region. However, the post-hoc noise model suppresses every two-qubit Pauli correlator by the same state-independent factor, so it cannot establish that ferromagnetic or antiphase order is intrinsically more fragile. Our results quantify how noise biases threshold-based phase detection and identify the need for noisy circuit-level state preparation and nonlocal observables to resolve genuine phase-dependent robustness and the narrow floating phase.
+We investigate how depolarizing noise changes the observed finite-size phase diagram of the one-dimensional axial next-nearest-neighbor Ising (ANNNI) model, because noise can bias phase identification on quantum devices. Using PennyLane, we exactly diagonalize an eight-qubit periodic ANNNI Hamiltonian on a $15\times15$ grid spanning $0\leq\kappa\leq1$ and $0\leq h\leq2$, then apply one layer of single-qubit depolarizing channels after ideal state preparation. We compare $p=0.01$ and $p=0.05$ with the clean $p=0$ baseline and analytical reference curves. Our primary metric is the shift in the field $h$ where spin correlations or transverse magnetization cross a fixed threshold. At $\kappa\approx0.29$, the ferromagnetic-to-paramagnetic proxy shifts from $h=0.692$ to $h=0.608$ at $p=0.05$. These deterministic simulator results have no shot-sampling uncertainty, but finite size, grid spacing, threshold choice, and post-preparation noise limit claims about noisy-circuit robustness and the floating phase.
 
 ## 1. Model and scientific objective
 
@@ -24,7 +24,7 @@ Our main question is: **how does depolarizing noise change the observable phase 
 
 ### Exact ground states and observables
 
-We constructed the Hamiltonian with PennyLane 0.44.1 and used exact diagonalization to obtain its lowest-energy eigenstate at every grid point. The main scan used $N=8$ qubits and a $15\times15$ uniform grid. Exact diagonalization avoids variational optimization error and gives a controlled finite-size reference, although it is a classical method and scales exponentially with $N$.
+We encoded each spin as a qubit, constructed the Hamiltonian with PennyLane 0.44.1, and used classical exact diagonalization to obtain its lowest-energy eigenstate at every grid point. The main scan used $N=8$ qubits and a $15\times15$ uniform grid. We loaded each exact state with `qml.StatePrep` for noisy measurements; the main scan has no variational circuit. Exact diagonalization avoids optimization error and gives a controlled finite-size reference, although it scales exponentially with $N$.
 
 Raw longitudinal magnetization $\langle Z_i\rangle$ is unreliable in a small symmetric system because the exact ground state can preserve the global $\mathbb Z_2$ symmetry. We therefore used correlation-based observables:
 
@@ -50,6 +50,10 @@ Consequently, a $k$-qubit Pauli string is suppressed by $\left(1-4p/3\right)^k$,
 
 We estimated boundaries by linearly interpolating the first crossing of a fixed absolute threshold of $0.5$: falling $C_1$ for the Ising boundary, falling $-C_2$ for the BKT boundary, and rising $M_x$ for the KT boundary. An absolute threshold is required here because a threshold normalized to the $h=0$ value would be invariant under the multiplicative noise channel and would report no noise-induced shift. The estimates should be interpreted as finite-grid crossovers rather than precise thermodynamic critical points.
 
+### Experimental design
+
+We hypothesized that the fixed-threshold estimates would shift as noise attenuated the observables, while the two-qubit $C_1$ and $C_2$ correlators would have the same fractional decay under this proxy. The clean $p=0$ calculation is the numerical baseline; analytical phase-boundary curves provide qualitative reference lines. We compared boundary locations in $h$ and the attenuation of $C_1$, $C_2$, and $M_x$ across the three noise levels. Noisy measurements used the `default.mixed` simulator; no quantum hardware was used. Exact expectation values and deterministic diagonalization required neither measurement shots nor random seeds.
+
 ## 3. Results
 
 The clean phase portrait reproduced the expected large-scale organization of the ANNNI model. Ferromagnetic order dominated at low $h$ and $\kappa<0.5$, antiphase order appeared at low $h$ and $\kappa>0.5$, and transverse magnetization dominated at high field. The numerical crossover regions tracked the analytical curves qualitatively, with visible finite-size and discretization offsets.
@@ -61,6 +65,8 @@ At $p=0.01$, the categorical argmax map was unchanged at the resolution of the s
 ![Phase diagram at five-percent depolarizing noise](phase_diagram_p0.05.png)
 
 The fixed-threshold analysis revealed systematic shifts that were finer than the categorical grid labels. Representative estimates are shown below.
+
+These are deterministic interpolated estimates, so shot-based error bars do not apply. Their systematic sensitivity to $N=8$, the $h$-grid spacing of about $0.143$, and the chosen threshold was not quantified by additional sweeps.
 
 | Boundary | $\kappa$ | $h$ at $p=0$ | $h$ at $p=0.01$ | $h$ at $p=0.05$ | Shift at $p=0.05$ |
 |---|---:|---:|---:|---:|---:|
@@ -97,12 +103,19 @@ The most important interpretive result is that our current model cannot rank fer
 
 ## Reproducibility
 
-The implementation and saved figures are contained in `starter.ipynb`. It uses Python 3.14, PennyLane 0.44.1, NumPy, Matplotlib, and the local `starter_kit`. The primary scan parameters are `GRID_N = 8`, `GRID_RES = 15`, `NOISE_LAYERS = 1`, and `noise_ps = [0.0, 0.01, 0.05]`. Running the notebook from top to bottom regenerates the phase diagrams and boundary tables.
+The implementation is in `starter.ipynb`; it saves the figures alongside the notebook. It uses Python 3.14, PennyLane 0.44.1, NumPy, Matplotlib, and the local `starter_kit`. The primary scan parameters are `GRID_N = 8`, `GRID_RES = 15`, `NOISE_LAYERS = 1`, and `noise_ps = [0.0, 0.01, 0.05]`. From the `Scientific Track` directory, reproduce the notebook outputs with:
+
+```sh
+uv sync --locked
+uv run jupyter nbconvert --to notebook --execute starter.ipynb --output starter_reproduced.ipynb
+```
+
+**Team contributions (complete before submission):** eogito — [role]; yyh — [role]; aoeuhtns — [role]; crackohead — [role].
 
 ## References
 
 1. PennyLane, [ANNNI Phase Detection](https://pennylane.ai/qml/demos/tutorial_annni).
 2. PennyLane, [A Noisy Heisenberg Model](https://pennylane.ai/challenges/heisenberg_model).
 3. PennyLane, [Seeing Quantum Phase Transitions](https://pennylane.ai/qml/demos/tutorial_quantum_phase_transitions).
-4. D. Monaco *et al.*, “Quantum phase detection generalization from marginal quantum neural network models,” *Physical Review B* **107**, L081105 (2023).
+4. S. Monaco *et al.*, “Quantum phase detection generalization from marginal quantum neural network models,” *Physical Review B* **107**, L081105 (2023).
 5. M. Cea *et al.*, “Exploring the Phase Diagram of the quantum one-dimensional ANNNI model,” arXiv:2402.11022 (2024).
