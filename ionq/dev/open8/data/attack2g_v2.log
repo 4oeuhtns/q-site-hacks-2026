@@ -1,0 +1,32 @@
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=481s  gen g72 e24 band all /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=482s  gen g72 e24 band random /22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=483s  gen g72 e24 band random /22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=485s  gen g72 e24 band brick /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=497s  gen g72 e24 band all /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=509s  gen g72 e24 band random /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=526s  gen g72 e24 band brick /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=539s  gen g72 e24 band random /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=501s  gen g72 e24 band brick /22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=508s  gen g72 e24 band all /22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=506s  gen g72 e24 band all /22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=524s  gen g72 e24 band brick /22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=518s  gen g72 e24 band brick /23 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=543s  gen g72 e24 band random /23 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=522s  gen g72 e24 band brick /23 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=562s  gen g72 e24 band random /23 @1 
+PASSED            96.5 cp=[90.4, 99.2, 100.0] cpu=385s  gen g24 e8 band random /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=332s  gen g24 e8 band random /22 @2 
+PASSED            66.7 cp=[0.0, 100.0, 100.0] cpu=397s  gen g24 e8 band random /22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=483s  gen g72 e24 band all /23 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=500s  gen g24 e8 band random /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=528s  gen g72 e24 band all /23 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=513s  gen g36 e12 band random /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=538s  gen g36 e12 band random /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=493s  gen g36 e12 band random /22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=449s  gen g48 e16 band random /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=541s  gen g36 e12 band random /22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=495s  gen g48 e16 band random /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=462s  gen g48 e16 band random /22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=469s  gen g48 e16 band random /22 @2 
+
+n=30 mean=5.4 zeros=28 fails=0

@@ -1,0 +1,5 @@
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=140s  gen g24 e8 band random /22 @2 
+PASSED            80.0 cp=[80.0, 80.0, 80.0] cpu=207s  gen g24 e8 band random /21 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=209s  gen g24 e8 band random /22 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=243s  gen g24 e8 band random /22 @3 
+PASSED            96.8 cp=[96.8, 96.8, 96.8] cpu=280s  gen g24 e8 band random /21 @1 

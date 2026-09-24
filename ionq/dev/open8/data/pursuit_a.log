@@ -1,0 +1,3 @@
+{"family": "sparse", "seed": 11, "gates": 12, "ents": 4} true_gates=12 found=17 nll=18456.5 eps=1.59e-04 pts=100.0 cpu=48
+{"family": "file", "path": "dev/open8/specs/open_demo.json"} true_gates=5 found=5 nll=14973.4 eps=1.33e-04 pts=100.0 cpu=9
+{"family": "sparse", "seed": 12, "gates": 18, "ents": 6} true_gates=18 found=17 nll=22325.9 eps=3.22e-04 pts=100.0 cpu=46

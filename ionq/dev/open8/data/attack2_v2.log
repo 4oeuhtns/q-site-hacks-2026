@@ -1,0 +1,104 @@
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 21 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 21 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 brick / 21 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 brick / 21 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 all / 21 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 all / 21 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 22 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 brick / 22 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 22 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 brick / 22 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 all / 22 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 all / 22 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 23 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 23 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 brick / 23 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 all / 23 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 brick / 23 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g72 e24 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 all / 23 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g24 e8 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 21 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g24 e8 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 21 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g24 e8 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 22 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g24 e8 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 22 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g36 e12 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 21 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g36 e12 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 21 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g36 e12 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 22 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g36 e12 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 22 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g48 e16 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 21 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g48 e16 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 21 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g48 e16 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 22 @1 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+ADMISSION_FAIL    None cp=[] cpu=0s  generic g48 e16 [0.5,2.0] b[[0.6, 1.2], [1.9, 2.5]] w0.15 random / 22 @2 ValidationError: 1 validation error for Template
+name
+  String should have at mo
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=421s  frame k48 w0.0 pw0.0 pins24 / 21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=424s  frame k48 w0.0 pw0.0 pins24 / 21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=447s  frame k2 w0.3 pw0.0 pins0 / 22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=474s  frame k2 w0.3 pw0.0 pins0 / 22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=511s  frame k2 w0.3 pw0.0 pins0 / 21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=528s  frame k24 w0.0 pw0.0 pins0 / 21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=539s  frame k2 w0.3 pw0.0 pins0 / 21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=561s  frame k24 w0.0 pw0.0 pins0 / 21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=346s  frame k48 w0.0 pw0.0 pins24 / 22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=392s  frame k24 w0.0 pw0.0 pins0 / 22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=344s  frame k48 w0.0 pw0.0 pins24 / 22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=407s  frame k24 w0.0 pw0.0 pins0 / 22 @1 
+
+n=42 mean=0.0 zeros=12 fails=30

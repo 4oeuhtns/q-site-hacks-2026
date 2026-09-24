@@ -1,0 +1,2014 @@
+{
+  "team_id": "6b8cbba1c13f499ca840a50ef6949e0d",
+  "round_id": "b2e4c9f794934a7eb1de27b8cebe4848",
+  "status": "COMPETED",
+  "message": "Official results and your replays are ready.",
+  "entry": {
+    "entry_id": "33b52c13eceb408e86404de293d8f059",
+    "team_id": "6b8cbba1c13f499ca840a50ef6949e0d",
+    "artifact_id": "af0a6ba738f946a9899ea05cde55f5c4",
+    "fingerprint": "4a79014197183a5a78ba3956f3b9fd432052124bf1cf43fa4d905207719536a5",
+    "artifact_sha256": "3e71d1fd6f31aa51422b39f6c275251f019c69340889b0267c44eba06db3686e",
+    "team_name": "aoeuhtns"
+  },
+  "summary": {
+    "team_id": "6b8cbba1c13f499ca840a50ef6949e0d",
+    "team": "aoeuhtns",
+    "defense_points": 100,
+    "attack_points": 91.66666666666667,
+    "automated_score": 95.83333333333334,
+    "encounters_defended": 48,
+    "human_score": null,
+    "overall_score": 95.83333333333334,
+    "eligibility": "AUTOMATED_RULESET_NO_HUMAN_REQUIREMENT"
+  },
+  "defenses": [
+    {
+      "encounter_id": "90d0678b73cf4f53ad03235f18421315",
+      "opponent_id": "817afff54dc041c49b65d29677b7d721",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00001190984278498508,
+          "recovery_points": 100,
+          "patch_hash": "58a44a3d68304a6b50b9f14ad3dd503d4c46a4b91daea71ab884bd043d96984a"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000009550837389515898,
+          "recovery_points": 100,
+          "patch_hash": "df94deb2f79b6fa50240cdbfa69178de95fc841a9803d01bcda7f6d39fc53803"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000010398175483317118,
+          "recovery_points": 100,
+          "patch_hash": "42b60d3962804b832b4932bf2475f5125f74df762b0ea566cf67533d09f49cf2"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/90d0678b73cf4f53ad03235f18421315/replay"
+    },
+    {
+      "encounter_id": "9bd66bb53da94f0eaaa8188232297730",
+      "opponent_id": "ab67fa31fd5f46a9953aacd3e60a0adb",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00003938206898657093,
+          "recovery_points": 100,
+          "patch_hash": "14f90862c4b19d94aaec00975e264e2ac329d19637986a00b21cc017ab4873c6"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.0000226261636334657,
+          "recovery_points": 100,
+          "patch_hash": "3ba644bacb796ee84e216c553ebe0c718843436995e4c05206876506263d6b4b"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000016862746940349282,
+          "recovery_points": 100,
+          "patch_hash": "47506ea0d89883b4e3740dce5cbfe7846b8a86a3058e48f0e8dcbce925ec1e55"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/9bd66bb53da94f0eaaa8188232297730/replay"
+    },
+    {
+      "encounter_id": "0350b784de28409aa4211081b951decc",
+      "opponent_id": "0fdc92638a5e47d8ac7158daf53aa721",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00001307836565478393,
+          "recovery_points": 100,
+          "patch_hash": "b4728d7b794fa6abb865174d16e9ce49b7a97cba35ec4b4b497a274814f6fddd"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000010469949117575261,
+          "recovery_points": 100,
+          "patch_hash": "467301f7cd307a999fbff8df815b0c9d0ca9e49a2a6eb26e660a16114f587116"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000011719714754443444,
+          "recovery_points": 100,
+          "patch_hash": "b46636dfdb46ff692452a85b36a08731e4dcf297656bc388bdf9e3b0aa192580"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/0350b784de28409aa4211081b951decc/replay"
+    },
+    {
+      "encounter_id": "eb1e78b3f0a8498e929cfac65775fe2d",
+      "opponent_id": "ab67fa31fd5f46a9953aacd3e60a0adb",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 1.0434275665716086e-9,
+          "recovery_points": 100,
+          "patch_hash": "c23c7c53284cba4646aa73395bc813e621fb0b90de6378b88b84843c7601fcb2"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000010853388600406966,
+          "recovery_points": 100,
+          "patch_hash": "de2a4cd2cd8301d8335bebe45c54808dd5be5be6dcb165de7c17252021cbe9ca"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000023713869664709897,
+          "recovery_points": 100,
+          "patch_hash": "b3b0389fdb1a2ef42594e576dca2e2c5cf778696cd9ac75e4c53eed94ad189fd"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/eb1e78b3f0a8498e929cfac65775fe2d/replay"
+    },
+    {
+      "encounter_id": "4d737ef7cbda48ac99c00178da3ace42",
+      "opponent_id": "85e4896d01904c71a0fe57cd7169c895",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.0000033763977499434716,
+          "recovery_points": 100,
+          "patch_hash": "3fe59e233a911adcec9458a48f7bb6536b3fc8f74a01fdacee7a20c40eb53805"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000019396019532047504,
+          "recovery_points": 100,
+          "patch_hash": "4996e10c905a747e6ec608146f4401c3fdccf20b99193f848367aaa272446fe9"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000018833249779581784,
+          "recovery_points": 100,
+          "patch_hash": "c3a89892ab756319aeaa901ac9fe7fd260bf188d73d262f28cb774e8f609526a"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/4d737ef7cbda48ac99c00178da3ace42/replay"
+    },
+    {
+      "encounter_id": "3452373fd5e84486bbb8b40b14282862",
+      "opponent_id": "7f52de32265049c38a3542115608e50f",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00003824646845018709,
+          "recovery_points": 100,
+          "patch_hash": "a2c828872160833c4838c6a99ffd41632ab7682d3d98eaddc2f56d3a404e834b"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.0000291243597263513,
+          "recovery_points": 100,
+          "patch_hash": "5d4beb400d17af3ec469b95a054cf46084e773e413fba69f7cf83652a3bde8df"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000011155495358461387,
+          "recovery_points": 100,
+          "patch_hash": "c0b6f5d73463e69fcfa551ab67f2a7499d0283a65590b96b66a7d4fb72521d4d"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/3452373fd5e84486bbb8b40b14282862/replay"
+    },
+    {
+      "encounter_id": "104f6b7edf564ceeb88c8f1b5e4642b3",
+      "opponent_id": "fcbd7bd6d11344168d3baa16012d6d46",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.0000023061502836263514,
+          "recovery_points": 100,
+          "patch_hash": "4a87c75a1cf9276e4bdefb5fbcbf5c5da1a3d59d73985e0996ad15139cc9b6e8"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000004904459596000166,
+          "recovery_points": 100,
+          "patch_hash": "55cf125286bdf5a77c980e13ff28e762bc41291948d610fb88498a1520f46afc"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000010035717026291024,
+          "recovery_points": 100,
+          "patch_hash": "d055a48c1fa3b0794ed72fde8e584b8013105adb61184202866ad36ad8d8f638"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/104f6b7edf564ceeb88c8f1b5e4642b3/replay"
+    },
+    {
+      "encounter_id": "40678cbfd4a645c6b137502e7ee185e2",
+      "opponent_id": "de5bc555cb5f4066ad897d73047c1143",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00008809406354459703,
+          "recovery_points": 100,
+          "patch_hash": "2ce89c4370a38a201c3917d2d9abbb17773d56f79815a940425f22b34949a1b8"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000018070081566623486,
+          "recovery_points": 100,
+          "patch_hash": "25ffbe5997730c70e8521256506cd1713bd6d0834371a9e1e8e1911b641f25e6"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000011631230587560992,
+          "recovery_points": 100,
+          "patch_hash": "fef2fa99ce377e58d99d52a0a5d2e2fd9ad01900edf127267f165cd780f016b5"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/40678cbfd4a645c6b137502e7ee185e2/replay"
+    },
+    {
+      "encounter_id": "9bd7a2be37504c4dae853de2a88d1163",
+      "opponent_id": "de5bc555cb5f4066ad897d73047c1143",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00007754920556790612,
+          "recovery_points": 100,
+          "patch_hash": "3d51c95806881810a4b813c1541f8a15737dece08f2383d6b7644f9cb1c0e7d4"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000012530828917611814,
+          "recovery_points": 100,
+          "patch_hash": "7e0b6685764e38f98ce4dd818cd8a27ba7fc7fc409044e313e60f65e060c636b"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000008852926216773582,
+          "recovery_points": 100,
+          "patch_hash": "db9c36d412a7a575647b9bc4af59567c1b4eeac4e76aa836961ad4f61b995e47"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/9bd7a2be37504c4dae853de2a88d1163/replay"
+    },
+    {
+      "encounter_id": "dabc79a31027448ab7477ca2300d6965",
+      "opponent_id": "816e99a647fe4876822330c96233927b",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 7.654340593576947e-7,
+          "recovery_points": 100,
+          "patch_hash": "139736f89c85db80b9caf0758b217f215b053198054009c15ab7f05ecaf0825f"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000011216261363689028,
+          "recovery_points": 100,
+          "patch_hash": "6e35635a2edf0e0980d90b23ded5da1bf48d3fb1b9f84609ea54bc36b67cb5d5"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000012955101357459142,
+          "recovery_points": 100,
+          "patch_hash": "dee089b9315320f766585f5dab5f6724f4b87f80ad0e876f9dad185786f9f2eb"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/dabc79a31027448ab7477ca2300d6965/replay"
+    },
+    {
+      "encounter_id": "2de5df3ee2634e4ba0f90700521e61cf",
+      "opponent_id": "fcbd7bd6d11344168d3baa16012d6d46",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.0000010614138025166753,
+          "recovery_points": 100,
+          "patch_hash": "66f38e4428854cb20eff6c1c125d7e6513f5833c28589b307b5cdfa301a2e60f"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.0000017217861805196577,
+          "recovery_points": 100,
+          "patch_hash": "bd1cc82c7d12473b34644f1d1fc9b37e2bec519cf39aa15e5e90c78913b5ff68"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000019830289613720353,
+          "recovery_points": 100,
+          "patch_hash": "b8e4eb67e85cd8986b0802a59f4f0f8ae9fec07cc6c950797efc9f8cffaac8e6"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/2de5df3ee2634e4ba0f90700521e61cf/replay"
+    },
+    {
+      "encounter_id": "5c4d6aa0f26a435f876d54a847dcadb7",
+      "opponent_id": "caf33b47bbcb460e87ef527270ad2e9b",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00008468166382236131,
+          "recovery_points": 100,
+          "patch_hash": "d7c8dfd1114e62ac3177f433205f61c8a6fb5468ee577343d20c605207022f53"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.00003717449166229514,
+          "recovery_points": 100,
+          "patch_hash": "1b36cd3be341a2145a1b30cc620d4d36d3fdf3d481f9c8e66a9909c668596fbe"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000360805338747161,
+          "recovery_points": 100,
+          "patch_hash": "16c864faf99273237a2a7537c40fa7d6a879698bff9af5e27299b8f66ba87012"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/5c4d6aa0f26a435f876d54a847dcadb7/replay"
+    },
+    {
+      "encounter_id": "f92371151156417b922fd773e3fc77a6",
+      "opponent_id": "fcbd7bd6d11344168d3baa16012d6d46",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.0000017325336850726458,
+          "recovery_points": 100,
+          "patch_hash": "1023570116da85016e5dee0f0decab09db7e4364ce0d076f0a3f80b5069a581b"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 7.958713699185438e-7,
+          "recovery_points": 100,
+          "patch_hash": "e2e132dd11fb64944356d95c9d11b1f2af6936a52a81363e411fd5987ca2c492"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 6.581539245820167e-7,
+          "recovery_points": 100,
+          "patch_hash": "5cec50e3aeba7a2baea1faa11b9051c360643abcd31c78b5209bc190ad3665ea"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/f92371151156417b922fd773e3fc77a6/replay"
+    },
+    {
+      "encounter_id": "09ee6fe4f225496990c2fa9346d0ea10",
+      "opponent_id": "7f52de32265049c38a3542115608e50f",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000027977516704469352,
+          "recovery_points": 100,
+          "patch_hash": "843accde72af3048be5b118a4808a26ea1e8e9eadd3be7a3ed533c8658b4d925"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 9.429851914877219e-7,
+          "recovery_points": 100,
+          "patch_hash": "a24252af79643e7fcba40d0b49c204320d05ed3051a8246f0ca744403b272e02"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000002687556488800702,
+          "recovery_points": 100,
+          "patch_hash": "69385539bc8edd21b696202f7c4de2372e1ebe7b55e2556a5ee9661dfec96c3b"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/09ee6fe4f225496990c2fa9346d0ea10/replay"
+    },
+    {
+      "encounter_id": "f2501e6e9ae14e65b6b581fd00fab588",
+      "opponent_id": "0fdc92638a5e47d8ac7158daf53aa721",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000029538932947215102,
+          "recovery_points": 100,
+          "patch_hash": "7e575ebb2798de6f3fa3d0721d01060d2bcee57ef8ce75bbdf597278fad0a8ed"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000008603878678625776,
+          "recovery_points": 100,
+          "patch_hash": "3f2177778773a133e40aa0f034569c127bb80b0dde5d3db969e5ecf6c6dd24d5"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000005613228739709264,
+          "recovery_points": 100,
+          "patch_hash": "0eb8547d7bdb52ab3b7f806f0ff486c3f6a93396dc81fefab9326511be831000"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/f2501e6e9ae14e65b6b581fd00fab588/replay"
+    },
+    {
+      "encounter_id": "4b719f56bb1f4bfd89d7a1a86ebaf75a",
+      "opponent_id": "817afff54dc041c49b65d29677b7d721",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.0000035800068656222095,
+          "recovery_points": 100,
+          "patch_hash": "3ef5c965afbafc2f12d479e22bd890a95f8a5d22aaaa91c514696849eaa3db27"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.0000013997615249117246,
+          "recovery_points": 100,
+          "patch_hash": "458dcfa358ac54cd334f8a7802150473ad01ddb128235089c7017df6ae08c19d"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000004741925218931797,
+          "recovery_points": 100,
+          "patch_hash": "d91e1836b3e4c3ea429b22d3d320287fc003ffca22914216544c6ac214f8d2dc"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/4b719f56bb1f4bfd89d7a1a86ebaf75a/replay"
+    },
+    {
+      "encounter_id": "893ce933447c471595656c30092e216e",
+      "opponent_id": "749cf82912744dd4bb8162aed7523472",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00006276580085728956,
+          "recovery_points": 100,
+          "patch_hash": "dc32b5d6777c91bcd5cd20c4f0d2e0f0e93746d4f6808a787d53f504268bb671"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000002061092494232142,
+          "recovery_points": 100,
+          "patch_hash": "3ce676425a9947248195e71442888c61ace135160de1f5885e1649a4913f5e22"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000003369668405639459,
+          "recovery_points": 100,
+          "patch_hash": "1168c35a57e1d62c02d5bd5e062f7d15b721d65a2879f6313752776cb11f63b1"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/893ce933447c471595656c30092e216e/replay"
+    },
+    {
+      "encounter_id": "a23d67181e2b4da49240261efb060366",
+      "opponent_id": "85e4896d01904c71a0fe57cd7169c895",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00001132217037669303,
+          "recovery_points": 100,
+          "patch_hash": "86de4fa7e9c6176266e6b02f0533d461a788fb4932594c7644fdd2bdd85263dc"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000011042540035366422,
+          "recovery_points": 100,
+          "patch_hash": "071b04bd0404212f9732905f6644c67e1eaa43bbbe9a0128127edab7817e95b4"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.00002573198162902912,
+          "recovery_points": 100,
+          "patch_hash": "b16a336fa5bc629066f87849c9b28d2fcbfacd8d09dfaebbe31e9b99c2eab649"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/a23d67181e2b4da49240261efb060366/replay"
+    },
+    {
+      "encounter_id": "5cbb431b38ec4aed98299c558828e25a",
+      "opponent_id": "749cf82912744dd4bb8162aed7523472",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00001361905282415421,
+          "recovery_points": 100,
+          "patch_hash": "564f251495670f84af8afc79ac7cd5272ced54596b26e106256a01e9300a7fc1"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000045264362538488534,
+          "recovery_points": 100,
+          "patch_hash": "ac0f3275d1bdeb159ebb1f1a441a65eecb4440f1f33cebf3b40c1e3c8e6dddff"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000006932153946204167,
+          "recovery_points": 100,
+          "patch_hash": "fcc99b0c77888f7672318a2fe9d6d5c868fa9afe2baf399010f2a5229cac5dd8"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/5cbb431b38ec4aed98299c558828e25a/replay"
+    },
+    {
+      "encounter_id": "e331f9ba66934456a611a026fa64a1a0",
+      "opponent_id": "de5bc555cb5f4066ad897d73047c1143",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.0000073119516286190844,
+          "recovery_points": 100,
+          "patch_hash": "69992a01d132df98e609794a072deb968c90fde55a5178216a772e9493d24c94"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 8.170161566178891e-7,
+          "recovery_points": 100,
+          "patch_hash": "d8a4a64b398f3578b30b2a48a4d35a849147e63b82436eb27ed3580aef844a70"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 6.782185235643112e-7,
+          "recovery_points": 100,
+          "patch_hash": "b66632f611f4eec304310789f707730b3b4e0fb59d57980f1d5f01016114f0f7"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/e331f9ba66934456a611a026fa64a1a0/replay"
+    },
+    {
+      "encounter_id": "6a1a134539f148a0a1c7efae36cbd4e6",
+      "opponent_id": "816e99a647fe4876822330c96233927b",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 9.876935069819126e-8,
+          "recovery_points": 100,
+          "patch_hash": "16fccbf624093e2711e250d6ee98c3bcb91f2ec291f7b544862e63063a7712c0"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000002217352907618597,
+          "recovery_points": 100,
+          "patch_hash": "4b2c45b6bc7bac8184025b5eb343d9c685dfed5a8835436fc457d2ca43e8a3a8"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 5.085070486909871e-7,
+          "recovery_points": 100,
+          "patch_hash": "b86e15068e2be974465fd428d2bc4d029d0e7263859025f2e624165e17806a30"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/6a1a134539f148a0a1c7efae36cbd4e6/replay"
+    },
+    {
+      "encounter_id": "f8932c898b434f5b85206edc4f90e6b4",
+      "opponent_id": "749cf82912744dd4bb8162aed7523472",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 6.71053799194965e-7,
+          "recovery_points": 100,
+          "patch_hash": "b15b2ea40b24b502d63b0a64a6c08fb7e5fac2d82c0610398aac6955ffb70f28"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000015906446602098612,
+          "recovery_points": 100,
+          "patch_hash": "9968385046fbaa4a012643ae2dc4a5477e7efb2a35cfb18025c7e5837427b597"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 8.450781332491886e-7,
+          "recovery_points": 100,
+          "patch_hash": "651584a6c7f82ea5d20b3c2a865793a8994f66fefd4c246c482314ad1856bff1"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/f8932c898b434f5b85206edc4f90e6b4/replay"
+    },
+    {
+      "encounter_id": "3201ab5c4a04424eaa55ac72c8ec7228",
+      "opponent_id": "7f52de32265049c38a3542115608e50f",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00000797921711548355,
+          "recovery_points": 100,
+          "patch_hash": "fb7933eb5048d4387f992fbd6a148958313ec91ee1f6d34fe331331bb05edd01"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 7.555324880170744e-7,
+          "recovery_points": 100,
+          "patch_hash": "3707b1828f110c7104f2d9a5c76367c1b6b2263234b1bc85b8e1f40e53436c63"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000015215655476685797,
+          "recovery_points": 100,
+          "patch_hash": "65fa6545d5feff48dd8b99aee8ab0c61923c2b6e9fc1b2c75420fba9637430f0"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/3201ab5c4a04424eaa55ac72c8ec7228/replay"
+    },
+    {
+      "encounter_id": "d864281cef0e4ea08cb9684b7729a0d4",
+      "opponent_id": "ab67fa31fd5f46a9953aacd3e60a0adb",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000005734117803912753,
+          "recovery_points": 100,
+          "patch_hash": "35af69a201b571458737a8adbe4904858fb4ed9fa516a9739ff531608075b4ee"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000034468435324508384,
+          "recovery_points": 100,
+          "patch_hash": "9107174fca0b47e58bde1ceac3b80c1f1025aca4d02bcf1a11097a70c0068b17"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000010300606065993811,
+          "recovery_points": 100,
+          "patch_hash": "bf2c1009457c1cd66d27acac316072b4b00e335d9001386a8e0fd91881b73986"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/d864281cef0e4ea08cb9684b7729a0d4/replay"
+    },
+    {
+      "encounter_id": "983b468d80d544879bcaeb114f5cbca4",
+      "opponent_id": "9d05dae6c6ae43458de3f622917ce9af",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000015559788468455515,
+          "recovery_points": 100,
+          "patch_hash": "9d8cdfac8de9227929b30caf5551de2cde1d12b1e13a874fc3281b0b9df28706"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000021956279599333328,
+          "recovery_points": 100,
+          "patch_hash": "cd7865ede6a6de1e31c3fccaeeef9caf750caf25295070b64af6c2a3b8257c4e"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.00002102463904729568,
+          "recovery_points": 100,
+          "patch_hash": "e70b62837cb8a14c5df611f33da9303e4175fcf81fc1916d46eab5041b996446"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/983b468d80d544879bcaeb114f5cbca4/replay"
+    },
+    {
+      "encounter_id": "c2297ea4f1d64dbd8a994380d2a37c64",
+      "opponent_id": "85e4896d01904c71a0fe57cd7169c895",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000021498017662935354,
+          "recovery_points": 100,
+          "patch_hash": "ecaa865e305b3558385706107fe6ae5ff9c9447fcf20678325d6e572b668396d"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.00000902877998198992,
+          "recovery_points": 100,
+          "patch_hash": "eb271aa7aecc44faf4f9032919b90747e192bfd5c160d875077a5f911021f27d"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000029485262197370687,
+          "recovery_points": 100,
+          "patch_hash": "ac0328e5e59f5e45010d9babbcd87a3b25b85b935171d43cf49f0e0dab6aa534"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/c2297ea4f1d64dbd8a994380d2a37c64/replay"
+    },
+    {
+      "encounter_id": "214980abdb5445a1929c924198584000",
+      "opponent_id": "098a6288cf8d4e39bfdea6872a9d9b48",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000007573513289949041,
+          "recovery_points": 100,
+          "patch_hash": "283061ce628f6ad3907bbf23695bc2adaa00212cc894f0d38a2f9a6b22c89899"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000009183319489403097,
+          "recovery_points": 100,
+          "patch_hash": "217e6934235ac3130f3d2fe60c62c7b073dde73e4d911d848c9faa3f5708b49d"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000004185235122577957,
+          "recovery_points": 100,
+          "patch_hash": "0d2944ffa75f27bf24d3b393733786da0ad74ff7aeb6729b03affd4ecdf4fa99"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/214980abdb5445a1929c924198584000/replay"
+    },
+    {
+      "encounter_id": "c209104359b24b538737320749638f74",
+      "opponent_id": "9d05dae6c6ae43458de3f622917ce9af",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000009140805027119114,
+          "recovery_points": 100,
+          "patch_hash": "7f6aa8c8b1ed73fc2b6646d42f1be296fe4346433cd835e63ef9e12451521eab"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000002262898573746064,
+          "recovery_points": 100,
+          "patch_hash": "cab6c38b021bba7ec00d114a17af1758b1ef3d3a2bab0c11ae5f19e28a763517"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 9.803538383312826e-7,
+          "recovery_points": 100,
+          "patch_hash": "36781e618c6cd17ada8aa663ee63654b1ec7d7482c6d274dfdbdb9f971cfce96"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/c209104359b24b538737320749638f74/replay"
+    },
+    {
+      "encounter_id": "b9dd2927bc9d4ba39c2f7b2c7272c7e3",
+      "opponent_id": "816e99a647fe4876822330c96233927b",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 6.19873572582641e-7,
+          "recovery_points": 100,
+          "patch_hash": "bbb226a53eee534fea25cd4aaf77012a8b2a21b81bca29a9543a6b8805f18deb"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000008752282609103545,
+          "recovery_points": 100,
+          "patch_hash": "8b6e727c759ba159063e39c7450b4b72f8ce80f316ffbd447f43b7694a0c07ba"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000007365019737415324,
+          "recovery_points": 100,
+          "patch_hash": "db6bdcc7e7a59ca931a24aff7ae322657c9e8f2e0ca4e0081fed47640b9e81b2"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/b9dd2927bc9d4ba39c2f7b2c7272c7e3/replay"
+    },
+    {
+      "encounter_id": "f166941335674c6e88f8fd1383dbd03d",
+      "opponent_id": "caf33b47bbcb460e87ef527270ad2e9b",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00005066743454928968,
+          "recovery_points": 100,
+          "patch_hash": "7c8d0fd93bd8b5609bf9089442503369e639bb3880de4d8c451d015f60e3867f"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000002684901147520513,
+          "recovery_points": 100,
+          "patch_hash": "46ff0449187d2c044ee6ecf41bc759c0e55033f521ae5ea9a7641af4628b4d88"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000008790622686105642,
+          "recovery_points": 100,
+          "patch_hash": "16051cef37f0117f86d55420a822c6d18559718464905eab051054e9edc57b89"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/f166941335674c6e88f8fd1383dbd03d/replay"
+    },
+    {
+      "encounter_id": "f2c3000abdff423c98f4a1e0cbc70e25",
+      "opponent_id": "ab67fa31fd5f46a9953aacd3e60a0adb",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00003148435128519367,
+          "recovery_points": 100,
+          "patch_hash": "e164020d75b829b278ca05cbd02f089d03de1eaf2be434eeb515564ed242ff26"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000028089238521933346,
+          "recovery_points": 100,
+          "patch_hash": "55ec17d2eece7d4aa2c180178f96be07db029f7f91bd6a620953c60eaf26b892"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000012904314484862844,
+          "recovery_points": 100,
+          "patch_hash": "c71835e49abc47caab5822b81f487d5cc016664283722d5ebd4db7045b9514d7"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/f2c3000abdff423c98f4a1e0cbc70e25/replay"
+    },
+    {
+      "encounter_id": "4cf3a61291bf481193b775dbc8061263",
+      "opponent_id": "816e99a647fe4876822330c96233927b",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 6.107604955118973e-7,
+          "recovery_points": 100,
+          "patch_hash": "77978b3e307375187b323c09b47ccdf8c76f0e6eb44ce3fa2ac7739da4a35ab0"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000007050043726364308,
+          "recovery_points": 100,
+          "patch_hash": "1eafa35e4e4b68e85910fbd940afc13711911acdde190ae87679f0cdfb2b2c5f"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000017862665827594881,
+          "recovery_points": 100,
+          "patch_hash": "9a6ec7f7279e7ab2003a00201ae3a02a53babb4dc1ec2ed4864833a5c16a8625"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/4cf3a61291bf481193b775dbc8061263/replay"
+    },
+    {
+      "encounter_id": "4268354d97ec4608b1dda4d2bf85b6ba",
+      "opponent_id": "caf33b47bbcb460e87ef527270ad2e9b",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 5.030938088346204e-7,
+          "recovery_points": 100,
+          "patch_hash": "682c31a7adcb26519cc344a64a2dcaf59a26d0ab426ce1194a309cd374e47cb7"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 2.993165515441376e-8,
+          "recovery_points": 100,
+          "patch_hash": "42d459db7cd1303019dbe0a4e23cd159c9e48803d27f6142d5c975976aebcb3e"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 4.980978501878397e-7,
+          "recovery_points": 100,
+          "patch_hash": "3d5c59fa9e9c9024b2e0c5c88e61df8ddfcde31923b7e081a8a1f3fec0ab6b49"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/4268354d97ec4608b1dda4d2bf85b6ba/replay"
+    },
+    {
+      "encounter_id": "7b8f8de7c6a44a08873c03d6f3f3ecfa",
+      "opponent_id": "098a6288cf8d4e39bfdea6872a9d9b48",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000026245968547500276,
+          "recovery_points": 100,
+          "patch_hash": "573a3510732e8a9d3d80ad52726f519f96e6a7b4ca69ff667e2f17fb565a24d5"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.00003946543035426853,
+          "recovery_points": 100,
+          "patch_hash": "bb0e213e8ddd7a310c9b9a6ce3bad96c33840b9a4e2fa599bfe153e3fa66aa86"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000013798601247727582,
+          "recovery_points": 100,
+          "patch_hash": "62b4b0665479cd8c50ccd3c6569fd8e2766416ceb6474c9febd6938bd0641976"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/7b8f8de7c6a44a08873c03d6f3f3ecfa/replay"
+    },
+    {
+      "encounter_id": "94e40c0b6cfb44f48bbef7ffe7680cb5",
+      "opponent_id": "0fdc92638a5e47d8ac7158daf53aa721",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000013960630631415505,
+          "recovery_points": 100,
+          "patch_hash": "e09cb719f30027f9b5d8fe2663693ea4b662978c689661604f4770c17b94fa4a"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000002443444335309408,
+          "recovery_points": 100,
+          "patch_hash": "b9c4c8fb1f8ba16a2b74496598ed4c7ed5d83beccbb0c53ca7a5a6f77006c865"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000002951209871815408,
+          "recovery_points": 100,
+          "patch_hash": "6622c7374bdb63ac170b2d81c15f492fb3e1fd4f50809a501568428dd4735874"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/94e40c0b6cfb44f48bbef7ffe7680cb5/replay"
+    },
+    {
+      "encounter_id": "907557344a1943c6ba32a322238aac5a",
+      "opponent_id": "098a6288cf8d4e39bfdea6872a9d9b48",
+      "draw": 1,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000004775990066985258,
+          "recovery_points": 100,
+          "patch_hash": "4d8d0b8b6395eca49a12bc5d64899ebbb5f1e1f7a8d9d8b1f54926613ee34f26"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 6.77746925248357e-9,
+          "recovery_points": 100,
+          "patch_hash": "07f0c8a69628a2d5a2d6fec0bc5149c97313cdb0f94708a6c639de02f57e7355"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000016485094708196257,
+          "recovery_points": 100,
+          "patch_hash": "ca7112057610b23482c587a54a79586a4ace498a226870e31fd525476901c064"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/907557344a1943c6ba32a322238aac5a/replay"
+    },
+    {
+      "encounter_id": "185c97edb8ec4ad59109c3e503a588dc",
+      "opponent_id": "817afff54dc041c49b65d29677b7d721",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000017854992954147164,
+          "recovery_points": 100,
+          "patch_hash": "f241df6d7d61de5fe93c0945f53b57bbb0b94c8fa91477da6839749e8a212d71"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 5.272809435741266e-7,
+          "recovery_points": 100,
+          "patch_hash": "55dcafc6f2344c1ca020a031f263ba83c621dc135f7f7372e776913efb1cc1bf"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 2.223159619729742e-7,
+          "recovery_points": 100,
+          "patch_hash": "2d8fbae73f89440456ff7f1875305322cd0f6099e5913ced82e44447732e70c9"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/185c97edb8ec4ad59109c3e503a588dc/replay"
+    },
+    {
+      "encounter_id": "f63b44dde8ef4243b52b4071a69a6ee9",
+      "opponent_id": "9d05dae6c6ae43458de3f622917ce9af",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00001529040258352321,
+          "recovery_points": 100,
+          "patch_hash": "9b1389e1661e32bfa2f8b140c9bca276c0a3b418959e69bd167e746fd8fe64bd"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000004249541874612461,
+          "recovery_points": 100,
+          "patch_hash": "c4cc9bb2044e971bd2abd318f539121a650ec15f8eba25b6209fe0e230e608ea"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000006113725839251849,
+          "recovery_points": 100,
+          "patch_hash": "977c745c14b536350949baa6716468bd11159ca29710e99629bfe4c8ddc05aec"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/f63b44dde8ef4243b52b4071a69a6ee9/replay"
+    },
+    {
+      "encounter_id": "56dea03c790342f99895265be4533a17",
+      "opponent_id": "749cf82912744dd4bb8162aed7523472",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00007789694474868991,
+          "recovery_points": 100,
+          "patch_hash": "c63c9c4eaafc0fa3163632f57ad4a41cd32e25b3e667d8000022b991132d9271"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.0000424291904639329,
+          "recovery_points": 100,
+          "patch_hash": "1e634b7470e69ad0bccdabf59259f55a2376c802e41a4f70f00c8bed4b78f63c"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.00001002382872350438,
+          "recovery_points": 100,
+          "patch_hash": "44b244c8bcd6291fde5d3c940d62992a8e0913af1e76ed18d19c36a839641f42"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/56dea03c790342f99895265be4533a17/replay"
+    },
+    {
+      "encounter_id": "75b5bed060084ac0a260b20b7116129d",
+      "opponent_id": "0fdc92638a5e47d8ac7158daf53aa721",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000010689278521658352,
+          "recovery_points": 100,
+          "patch_hash": "98188095eff8b0bce394e76791a680bf858b3bafe9e00028f42f65ee1cf60a5b"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000010881131599749239,
+          "recovery_points": 100,
+          "patch_hash": "07d96a83a3e9df357ae58d571fec58101b685cf6ecefb646baec8836124a04cc"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.00001047840771195574,
+          "recovery_points": 100,
+          "patch_hash": "4f508a50da37a0af3ab0fc179d0cd1795cac3ffe8c52b76f98d68be0135d6f9c"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/75b5bed060084ac0a260b20b7116129d/replay"
+    },
+    {
+      "encounter_id": "a040fb6bc2de45b18cddab119df7388a",
+      "opponent_id": "098a6288cf8d4e39bfdea6872a9d9b48",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.0000024828472614535357,
+          "recovery_points": 100,
+          "patch_hash": "246ef856768ab248ce58da1292901406be87e08d7cd1c38b495eaa54ad1b2247"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000029904345360542983,
+          "recovery_points": 100,
+          "patch_hash": "3d0fc08f012204d523168f15edabda43f662006d5059f7c8d6aa8257a6572b8a"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.00001426683559113684,
+          "recovery_points": 100,
+          "patch_hash": "e0704341beb7fd39ce8d8a3306f0c5fcc6d21c2aaa04246aa55e950e0af3704f"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/a040fb6bc2de45b18cddab119df7388a/replay"
+    },
+    {
+      "encounter_id": "ada66241e2c34200b967b2d0ce571a4a",
+      "opponent_id": "85e4896d01904c71a0fe57cd7169c895",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 5.879391538066159e-7,
+          "recovery_points": 100,
+          "patch_hash": "6d94c16884a2b675d8b5daf62545ca02e0a9b99761584600c8a9c283a0314183"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 1.1781071063143855e-7,
+          "recovery_points": 100,
+          "patch_hash": "56ddb43c7472e182456630beec8d61bff5026e041430a35030db9076eea7ecc0"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 2.6048123868971373e-7,
+          "recovery_points": 100,
+          "patch_hash": "618c6a48d0c49c64cea57d54417c057deb9094dbaa850dec51f160ed7b18ccf8"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/ada66241e2c34200b967b2d0ce571a4a/replay"
+    },
+    {
+      "encounter_id": "1178a2669e0e4c6991e2f2cffe6fb5cc",
+      "opponent_id": "817afff54dc041c49b65d29677b7d721",
+      "draw": 1,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 7.855641614984421e-7,
+          "recovery_points": 100,
+          "patch_hash": "5fb27be20d703b22cb12505ef375cdcc19b2a4fb69886870b53cc8d561258c97"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 5.806703097244181e-7,
+          "recovery_points": 100,
+          "patch_hash": "086c21930b971d03c4e488c485459b996f50c948eeccfee1b23b55a127669faa"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000021897273453364008,
+          "recovery_points": 100,
+          "patch_hash": "13dd56989b9ae2cc53ca4451a55e698bee50d2ff2b9ac7a5650c4df31e54e148"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/1178a2669e0e4c6991e2f2cffe6fb5cc/replay"
+    },
+    {
+      "encounter_id": "e960cfe945d94d1e88b5c71ce801d50f",
+      "opponent_id": "9d05dae6c6ae43458de3f622917ce9af",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00011718038990382595,
+          "recovery_points": 100,
+          "patch_hash": "52862e348ee4eed988889847467b6486599ce160d041fb08897dc4d74f874c81"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000037276573129241264,
+          "recovery_points": 100,
+          "patch_hash": "e17917ed4a1316583fe3d0d286ae5cfc43fe64f12c97b9f3151745e64b0a4051"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000005338784838659905,
+          "recovery_points": 100,
+          "patch_hash": "f25dde6fa30f35081ea9873221bbe04d33a2972ae21e41c2217cd0dfff9eaf58"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/e960cfe945d94d1e88b5c71ce801d50f/replay"
+    },
+    {
+      "encounter_id": "f53a30c07c4347a9980918d51bc0bf02",
+      "opponent_id": "fcbd7bd6d11344168d3baa16012d6d46",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000015620350932166183,
+          "recovery_points": 100,
+          "patch_hash": "dad6f9d5b5f3c6033696d74f96ba580b2e4aba33a5dd8b1de46853380283213e"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.000001789677318342342,
+          "recovery_points": 100,
+          "patch_hash": "22dac90344e6041256a97fffb6434d530399cf875ece7add75fa3930f3224b64"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.0000014669643586540104,
+          "recovery_points": 100,
+          "patch_hash": "0699027207154a2cf270abd914bed95f37e44bffdccfdb37892f9d3640fd2155"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/f53a30c07c4347a9980918d51bc0bf02/replay"
+    },
+    {
+      "encounter_id": "ce333512f40e43fda11bb96db44b74bf",
+      "opponent_id": "caf33b47bbcb460e87ef527270ad2e9b",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.000047638171586372735,
+          "recovery_points": 100,
+          "patch_hash": "70bf7c9ef5c06d9c76209f14d9ff60a1ef8ba70f1d09aee7d3a600a179221d1b"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.00001777772253563903,
+          "recovery_points": 100,
+          "patch_hash": "0f40a15462f2842f1f10ba34555c849ece0a581a62a4c10d6528df8e4459afce"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.00001378194470613714,
+          "recovery_points": 100,
+          "patch_hash": "0b2340872c343f7f83ad36a4f7848bf377433caef2c8b10e6ac75fb79cf44aac"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/ce333512f40e43fda11bb96db44b74bf/replay"
+    },
+    {
+      "encounter_id": "5ddb33fbcc8443d89675923ca6737a01",
+      "opponent_id": "7f52de32265049c38a3542115608e50f",
+      "draw": 0,
+      "slot": 1,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.0000033484917014714455,
+          "recovery_points": 100,
+          "patch_hash": "8026d721455ebb58bf2f03a0feee6c6e93468d3e994ecaa1a0b418c1db9d9a9e"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 1.4654168745131813e-7,
+          "recovery_points": 100,
+          "patch_hash": "e3f356b787edc0ad41efead9dc61656767a3a1300f69dc2e7476e750aed46eeb"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000022412338693711398,
+          "recovery_points": 100,
+          "patch_hash": "659b17b12e21f1e8e0e8f16a855c13f41643c5e56ab95b37544229473aba9b07"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/5ddb33fbcc8443d89675923ca6737a01/replay"
+    },
+    {
+      "encounter_id": "b6fc0c30fcd84c5ea0b18ceafbb35a7a",
+      "opponent_id": "de5bc555cb5f4066ad897d73047c1143",
+      "draw": 0,
+      "slot": 0,
+      "repeat": 0,
+      "failure": "",
+      "recovery_points": 100,
+      "checkpoints": [
+        {
+          "stage": 1,
+          "spent_shots": 32000,
+          "process_infidelity": 0.00013085395507983488,
+          "recovery_points": 100,
+          "patch_hash": "f308e85d5cc7b8db0bacd7f0e4998290c06b8db10af1152be03f8a4eb11ad50f"
+        },
+        {
+          "stage": 2,
+          "spent_shots": 64000,
+          "process_infidelity": 0.00002898686641783499,
+          "recovery_points": 100,
+          "patch_hash": "b6a760e3054271330afc7f8e5ce6eb9c0d6afeffabea9a47ec43ca2c13d2d07e"
+        },
+        {
+          "stage": 3,
+          "spent_shots": 96000,
+          "process_infidelity": 0.000026324622282247745,
+          "recovery_points": 100,
+          "patch_hash": "8939a4de81074cbcb9efba2eacbeb19c79eed4d89f2f1e663a6860ed9bd97cc8"
+        }
+      ],
+      "shots_used": 96000,
+      "shots_forfeited": 0,
+      "replay_url": "/api/v1/encounters/b6fc0c30fcd84c5ea0b18ceafbb35a7a/replay"
+    }
+  ],
+  "attacks": [
+    {
+      "slot": 0,
+      "encounters": 24,
+      "attack_points": 91.66666666666667,
+      "opponents": [
+        {
+          "team_id": "7f52de32265049c38a3542115608e50f",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "816e99a647fe4876822330c96233927b",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "749cf82912744dd4bb8162aed7523472",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "de5bc555cb5f4066ad897d73047c1143",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "749cf82912744dd4bb8162aed7523472",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "817afff54dc041c49b65d29677b7d721",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "fcbd7bd6d11344168d3baa16012d6d46",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "098a6288cf8d4e39bfdea6872a9d9b48",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "0fdc92638a5e47d8ac7158daf53aa721",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "ab67fa31fd5f46a9953aacd3e60a0adb",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "7f52de32265049c38a3542115608e50f",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "ab67fa31fd5f46a9953aacd3e60a0adb",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "caf33b47bbcb460e87ef527270ad2e9b",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "de5bc555cb5f4066ad897d73047c1143",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "098a6288cf8d4e39bfdea6872a9d9b48",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "816e99a647fe4876822330c96233927b",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "9d05dae6c6ae43458de3f622917ce9af",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 100
+        },
+        {
+          "team_id": "0fdc92638a5e47d8ac7158daf53aa721",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "9d05dae6c6ae43458de3f622917ce9af",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 100
+        },
+        {
+          "team_id": "caf33b47bbcb460e87ef527270ad2e9b",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "85e4896d01904c71a0fe57cd7169c895",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "817afff54dc041c49b65d29677b7d721",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "85e4896d01904c71a0fe57cd7169c895",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "fcbd7bd6d11344168d3baa16012d6d46",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        }
+      ]
+    },
+    {
+      "slot": 1,
+      "encounters": 24,
+      "attack_points": 91.66666666666667,
+      "opponents": [
+        {
+          "team_id": "fcbd7bd6d11344168d3baa16012d6d46",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "0fdc92638a5e47d8ac7158daf53aa721",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "7f52de32265049c38a3542115608e50f",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "816e99a647fe4876822330c96233927b",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "ab67fa31fd5f46a9953aacd3e60a0adb",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "749cf82912744dd4bb8162aed7523472",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "fcbd7bd6d11344168d3baa16012d6d46",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "9d05dae6c6ae43458de3f622917ce9af",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 100
+        },
+        {
+          "team_id": "817afff54dc041c49b65d29677b7d721",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "ab67fa31fd5f46a9953aacd3e60a0adb",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "caf33b47bbcb460e87ef527270ad2e9b",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "de5bc555cb5f4066ad897d73047c1143",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "098a6288cf8d4e39bfdea6872a9d9b48",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "816e99a647fe4876822330c96233927b",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "85e4896d01904c71a0fe57cd7169c895",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "9d05dae6c6ae43458de3f622917ce9af",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 100
+        },
+        {
+          "team_id": "749cf82912744dd4bb8162aed7523472",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "7f52de32265049c38a3542115608e50f",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "098a6288cf8d4e39bfdea6872a9d9b48",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "de5bc555cb5f4066ad897d73047c1143",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "0fdc92638a5e47d8ac7158daf53aa721",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "817afff54dc041c49b65d29677b7d721",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "85e4896d01904c71a0fe57cd7169c895",
+          "draw": 0,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        },
+        {
+          "team_id": "caf33b47bbcb460e87ef527270ad2e9b",
+          "draw": 1,
+          "repeat": 0,
+          "opponent_recovery_points": 0
+        }
+      ]
+    }
+  ],
+  "participant_failures": 0,
+  "scope": "Own defenses and aggregate attack outcomes; no opponent source, seeds, or private transcripts.",
+  "release_hash": "255ef6a86dd893ea6ecf36eece25a0343813db5ac99583b41c93c1cbc490e0da"
+}

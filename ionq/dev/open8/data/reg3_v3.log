@@ -1,0 +1,44 @@
+PASSED            66.7 cp=[0.0, 100.0, 100.0] cpu=414s  gen g24 e8 band random /21 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=508s  gen g24 e8 band random /22 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=535s  gen g24 e8 band random /22 @1 
+PASSED            17.8 cp=[0.0, 0.0, 53.5] cpu=544s  gen g24 e8 band random /21 @2 
+PASSED            19.0 cp=[0.0, 28.5, 28.5] cpu=566s  gen g24 e8 band random /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=577s  gen g24 e8 band random /22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=667s  gen g36 e12 band random /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=705s  gen g36 e12 band random /21 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=168s  Public open circuit / 31 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=164s  Public open circuit / 31 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=166s  Public open circuit / 31 @3 
+PASSED            97.9 cp=[93.7, 100.0, 100.0] cpu=223s  Public continuous multilayer / 37 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=217s  Public continuous multilayer / 37 @3 
+PASSED            98.1 cp=[94.4, 100.0, 100.0] cpu=251s  Public continuous multilayer / 37 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=224s  Public open circuit / 23 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=702s  gen g36 e12 band random /21 @3 
+PASSED            98.4 cp=[95.3, 100.0, 100.0] cpu=194s  Public open circuit / 23 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=223s  Public open circuit / 23 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=677s  gen g36 e12 band random /22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=681s  gen g36 e12 band random /22 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=257s  frame k2 w0.0 pw0.0 pins0 / 11 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=719s  gen g36 e12 band random /22 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=244s  frame k2 w0.0 pw0.0 pins0 / 11 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=239s  frame k2 w0.0 pw0.0 pins0 / 11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=337s  Compile-hard frame A @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=403s  Compile-hard frame A @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=396s  Compile-hard frame A @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=635s  frame k4 w0.0 pw0.0 pins0 / 11 @1 
+PASSED            22.6 cp=[0.0, 0.0, 67.7] cpu=487s  gen g12 e4 0.4-2.6 random /11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=654s  frame k4 w0.0 pw0.0 pins0 / 11 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=666s  frame k4 w0.0 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=497s  gen g12 e4 0.4-2.6 random /11 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=427s  gen g12 e4 0.4-2.6 random /11 @3 
+PASSED            68.6 cp=[5.9, 100.0, 100.0] cpu=364s  gen g18 e6 0.4-2.6 random /12 @2 
+PASSED             2.1 cp=[2.0, 2.2, 2.2] cpu=557s  gen g18 e6 0.4-2.6 random /12 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=623s  gen g18 e6 0.4-2.6 random /12 @3 
+PASSED            99.7 cp=[99.2, 100.0, 100.0] cpu=566s  Public frame 4 / 41 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=831s  Repeated-pair open example @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=600s  Public frame 4 / 41 @3 
+PASSED            99.4 cp=[98.2, 100.0, 100.0] cpu=623s  Public frame 4 / 41 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=825s  Repeated-pair open example @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=825s  Repeated-pair open example @3 
+
+n=42 mean=61.7 zeros=12 fails=0

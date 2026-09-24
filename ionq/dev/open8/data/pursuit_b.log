@@ -1,0 +1,3 @@
+{"family": "pub", "name": "mixed"} true_gates=18 found=21 nll=22417.9 eps=7.11e-04 pts=100.0 cpu=66
+{"family": "generic", "seed": 11, "gates": 24, "ents": 8} true_gates=24 found=29 nll=22681.8 eps=4.57e-04 pts=100.0 cpu=114
+{"family": "pub", "name": "multilayer", "pg": 80} true_gates=72 found=54 nll=64499.2 eps=1.00e+00 pts=0.0 cpu=274

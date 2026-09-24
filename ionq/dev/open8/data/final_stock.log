@@ -1,0 +1,6 @@
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=7s  Deep continuous brick @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=7s  Deep continuous brick @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=6s  Deep continuous all-pairs @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=6s  Deep continuous all-pairs @2 
+
+n=4 mean=0.0 zeros=4 fails=0

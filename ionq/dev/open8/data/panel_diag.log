@@ -1,0 +1,8 @@
+{"mode": "f2def", "seed": 22, "draw": 3, "found": 23, "eps": 0.00031, "pts": 100.0, "cpu": 78, "settings": 494, "shots": 32000, "max_shots": 65, "median": 65.0}
+{"mode": "f2def", "seed": 22, "draw": 1, "found": 29, "eps": 0.00036, "pts": 100.0, "cpu": 119, "settings": 493, "shots": 32000, "max_shots": 65, "median": 65.0}
+{"mode": "f2def", "seed": 22, "draw": 2, "found": 30, "eps": 0.00811, "pts": 54.5, "cpu": 150, "settings": 498, "shots": 32000, "max_shots": 65, "median": 64.0}
+{"mode": "f2def", "seed": 21, "draw": 1, "found": 34, "eps": 0.01993, "pts": 35.0, "cpu": 151, "settings": 492, "shots": 32000, "max_shots": 66, "median": 65.0}
+{"mode": "r360", "seed": 22, "draw": 1, "found": 28, "eps": 0.00056, "pts": 100.0, "cpu": 81}
+{"mode": "r360", "seed": 21, "draw": 1, "found": 23, "eps": 0.00123, "pts": 95.5, "cpu": 59}
+{"mode": "r360", "seed": 22, "draw": 3, "found": 27, "eps": 0.0008, "pts": 100.0, "cpu": 80}
+{"mode": "r360", "seed": 22, "draw": 2, "found": 36, "eps": 0.00076, "pts": 100.0, "cpu": 123}

@@ -1,0 +1,4 @@
+{"attack": "Deep continuous all-pairs", "draw": 1, "budget": 1200.0, "found": 62, "eps": 0.9999826453574512, "pts": 0.0, "cpu": 1201}
+{"attack": "Deep continuous all-pairs", "draw": 2, "budget": 1200.0, "found": 62, "eps": 0.9999987338985027, "pts": 0.0, "cpu": 1205}
+{"attack": "Deep continuous brick", "draw": 2, "budget": 1200.0, "found": 61, "eps": 0.9999988349099438, "pts": 0.0, "cpu": 1206}
+{"attack": "Deep continuous brick", "draw": 1, "budget": 1200.0, "found": 64, "eps": 0.9999881126405789, "pts": 0.0, "cpu": 1206}
