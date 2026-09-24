@@ -12,9 +12,9 @@ We investigate how depolarizing noise changes the observed finite-size phase dia
 
 The ANNNI model is a simple setting in which ferromagnetism, frustration, and a transverse field compete. In the convention used by our starter kit, the Hamiltonian is
 
-\[
+$$
 H=-\sum_i Z_iZ_{i+1}+\kappa\sum_i Z_iZ_{i+2}-h\sum_i X_i,
-\]
+$$
 
 with periodic boundary conditions and nearest-neighbor coupling $J_1=1$. The first term favors ferromagnetic alignment, the positive next-nearest-neighbor term frustrates that order, and the transverse field rotates spins away from the $Z$ basis. At low field, the expected ordered phase is ferromagnetic for $\kappa<0.5$ and an up-up-down-down antiphase for $\kappa>0.5$. At sufficiently large $h$, the transverse field produces a paramagnetic phase. In the thermodynamic limit, a narrow incommensurate floating phase lies between the antiphase and paramagnetic regimes for $\kappa>0.5$.
 
@@ -40,9 +40,9 @@ The challenge specifies a depolarizing channel on the target qubit after every C
 
 This is a useful measurement-level stress test, but it is not equivalent to optimizing or executing a noisy VQE circuit. In the Heisenberg picture, PennyLane's single-qubit depolarizing channel rescales a Pauli operator by
 
-\[
+$$
 P\longrightarrow\left(1-\frac{4p}{3}\right)P.
-\]
+$$
 
 Consequently, a $k$-qubit Pauli string is suppressed by $\left(1-4p/3\right)^k$, independent of the underlying phase. This property is central to interpreting the results.
 
@@ -78,9 +78,9 @@ The Ising and BKT threshold crossings move toward $h=0$, indicating that less fi
 
 At $p=0.05$, the predicted suppression of a two-qubit correlator is
 
-\[
+$$
 \left(1-\frac{4(0.05)}{3}\right)^2=0.8711,
-\]
+$$
 
 corresponding to a $12.9\%$ reduction. The notebook verifies this ratio numerically for both the ferromagnetic $C_1$ and antiphase $C_2$ correlators. The one-qubit observable $M_x$ is suppressed only by $1-4p/3=0.9333$, or $6.7\%$. This explains why antiphase order decreases about twice as much as transverse magnetization in the heatmaps. It does **not** imply that antiphase order is less robust than ferromagnetic order: both are two-qubit Pauli correlators and decay by exactly the same factor in this model.
 
