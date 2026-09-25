@@ -1,0 +1,22 @@
+ADMISSION_FAIL    None cp=[] cpu=0s  Public continuous mu insert4 @1 ValidationError: 1 validation error for Template
+gates
+  List should have at mos
+ADMISSION_FAIL    None cp=[] cpu=0s  Public continuous mu insert4 @2 ValidationError: 1 validation error for Template
+gates
+  List should have at mos
+PASSED            98.2 cp=[94.7, 100.0, 100.0] cpu=21s  Public continuous mu delete4 @2 
+PASSED            99.6 cp=[98.7, 100.0, 100.0] cpu=21s  Public continuous mu delete4 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  Public open circuit  delete4 @1 
+PASSED            80.7 cp=[42.1, 100.0, 100.0] cpu=11s  Public open circuit  delete4 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=95s  Public open circuit  axis3 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=78s  Public open circuit  insert4 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=92s  Public open circuit  insert4 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=98s  Public open circuit  retarget2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=102s  Public open circuit  retarget2 @2 
+PASSED            33.3 cp=[0.0, 0.0, 100.0] cpu=235s  Public open circuit  axis3 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=568s  Public continuous mu retarget2 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  Public continuous mu retarget2 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  Public continuous mu axis3 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=573s  Public continuous mu axis3 @1 
+
+n=16 mean=65.1 zeros=4 fails=2

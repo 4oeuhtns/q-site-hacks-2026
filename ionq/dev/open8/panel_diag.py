@@ -29,17 +29,18 @@ def f2def_records(circ, draw):
     L.checkpoint(b)
     return b.records
 
-mode, seed, draw = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
-spec = dict(family="generic", seed=seed, gates=24, ents=8, bands=[[0.6,1.2],[1.9,2.5]])
-circ = get_circ(spec, draw)
-if mode == 'f2def':
-    recs = f2def_records(circ, draw)
-    d = sim8.records_to_fast(recs, 8)
-    per = d.counts.sum(1)
-    info = dict(settings=len(per), shots=int(per.sum()), max_shots=int(per.max()), median=float(np.median(per)))
-else:
-    d = simulate(circ, shots=32000, S=int(mode[1:]), seed=draw); info = {}
-P = pursuit.Pursuit(8, max_gates=60)
-t = time.process_time(); arch, ang, v = P.run(d, time.process_time() + 150)
-e = eps_model(arch, ang, circ)
-print(json.dumps(dict(mode=mode, seed=seed, draw=draw, found=len(arch), eps=round(e,5), pts=round(points(e),1), cpu=round(time.process_time()-t), **info)), flush=True)
+if __name__ == "__main__":
+    mode, seed, draw = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
+    spec = dict(family="generic", seed=seed, gates=24, ents=8, bands=[[0.6,1.2],[1.9,2.5]])
+    circ = get_circ(spec, draw)
+    if mode == 'f2def':
+        recs = f2def_records(circ, draw)
+        d = sim8.records_to_fast(recs, 8)
+        per = d.counts.sum(1)
+        info = dict(settings=len(per), shots=int(per.sum()), max_shots=int(per.max()), median=float(np.median(per)))
+    else:
+        d = simulate(circ, shots=32000, S=int(mode[1:]), seed=draw); info = {}
+    P = pursuit.Pursuit(8, max_gates=60)
+    t = time.process_time(); arch, ang, v = P.run(d, time.process_time() + 150)
+    e = eps_model(arch, ang, circ)
+    print(json.dumps(dict(mode=mode, seed=seed, draw=draw, found=len(arch), eps=round(e,5), pts=round(points(e),1), cpu=round(time.process_time()-t), **info)), flush=True)

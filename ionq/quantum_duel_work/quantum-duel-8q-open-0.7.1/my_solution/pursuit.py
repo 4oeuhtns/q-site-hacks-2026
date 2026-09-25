@@ -52,6 +52,18 @@ class Pursuit:
         self.max_ents = max_ents
         self.top = top
         self.penalty = penalty
+        self._full = (self.dict, self.rows_all, self.ph_all)
+
+    def restrict(self, qubits):
+        """Limit the dictionary to gates inside `qubits` (None restores all)."""
+        d, rows, ph = self._full
+        if qubits is None:
+            self.dict, self.rows_all, self.ph_all = d, rows, ph
+            return
+        keep = [i for i, (_, t) in enumerate(d) if set(t) <= set(qubits)]
+        self.dict = [d[i] for i in keep]
+        self.rows_all = np.ascontiguousarray(rows[keep])
+        self.ph_all = np.ascontiguousarray(ph[keep])
 
     def position_grads(self, arch, angles, data):
         """grads[k, c]: derivative for inserting dict[c] after the first k gates."""
@@ -261,3 +273,15 @@ class Pursuit2(Pursuit):
         if arch:
             angles, cur = self._refit(arch, angles, data, 200)
         return arch, angles, cur
+
+
+class Pursuit3(Pursuit2):
+    """p1's search (top-10, thorough refit, insert-only) with p2's closed-form scoring.
+
+    p1 wins at 96k shots but spends most of each step on explicit line searches;
+    the closed-form insertion curve gives the same choice for a fraction of it.
+    """
+
+    def __init__(self, n, max_gates=60, max_ents=24, pairs=None, top=10, penalty=None):
+        super().__init__(n, max_gates, max_ents, pairs, top=top, penalty=penalty,
+                         refit_iter=150, prune=False)

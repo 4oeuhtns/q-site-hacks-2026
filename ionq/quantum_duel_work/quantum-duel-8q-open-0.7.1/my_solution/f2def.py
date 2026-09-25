@@ -50,6 +50,9 @@ TAIL_TRIALS = (4, 8, 32)
 BIC_MARGIN = 50.0
 # Fresh random starts for the residual-algebra fit at every checkpoint.
 FRESH_STARTS = 40
+# Fresh starts run in chunks of this size until FIT_BUDGET CPU seconds pass.
+FIT_CHUNK = 4
+FIT_BUDGET = 45.0
 
 
 def entanglers(gs):
@@ -267,9 +270,18 @@ class Frame2Recovery(Recovery):
         counts = np.stack(list(data.values()))
         # Warm start alone can pin a wrong basin across checkpoints; always race it
         # against a fresh multi-start fit and keep the lower count likelihood.
-        fits = [m.fit(settings, counts, seed=self.seed + 101 * client.stage, starts=FRESH_STARTS)]
+        # Warm start first (cheap), then fresh starts in chunks until the fit
+        # deadline: the full 40 starts cost up to ~240 CPU s per checkpoint on
+        # continuous-angle attacks, which other pool sources solve in seconds.
+        fits = []
         if self.oldx is not None:
             fits.append(m.fit(settings, counts, seed=self.seed + client.stage, starts=5, xold=self.oldx))
+        fit_deadline = time.process_time() + FIT_BUDGET
+        for chunk in range(0, FRESH_STARTS, FIT_CHUNK):
+            fits.append(m.fit(settings, counts, seed=self.seed + 101 * client.stage + chunk,
+                              starts=min(FIT_CHUNK, FRESH_STARTS - chunk)))
+            if time.process_time() > fit_deadline:
+                break
         V, fit = min(fits, key=lambda vf: vf[1]['loss'])
         self.oldx = np.array(fit['x'])
         T = m.features(settings)

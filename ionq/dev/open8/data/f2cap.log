@@ -1,0 +1,15 @@
+{"attack": "frame k2 w0.0 pw0.0 pins0 / 11", "cap_settings": 90, "cap_shots": 8000, "used_settings": 89, "used_shots": 8000, "rank": 9, "status": "RESIDUAL_ALGEBRA_TOO_LARGE", "eps": "1.0e+00", "pts": 0.0, "cpu": 0}
+{"attack": "frame k4 w0.0 pw0.0 pins0 / 11", "cap_settings": 90, "cap_shots": 8000, "used_settings": 89, "used_shots": 8000, "rank": 8, "status": "RESIDUAL_ALGEBRA_TOO_LARGE", "eps": "1.0e+00", "pts": 0.0, "cpu": 0}
+{"attack": "frame k4 w0.0 pw0.0 pins0 / 11", "cap_settings": 180, "cap_shots": 16000, "used_settings": 178, "used_shots": 16000, "rank": 11, "status": "RESIDUAL_ALGEBRA_TOO_LARGE", "eps": "1.0e+00", "pts": 0.0, "cpu": 1}
+{"attack": "Public frame 4 / 41", "cap_settings": 90, "cap_shots": 8000, "used_settings": 84, "used_shots": 8000, "rank": 5, "status": "RESIDUAL_ALGEBRA_TOO_LARGE", "eps": "1.0e+00", "pts": 0.0, "cpu": 1}
+{"attack": "Public frame 4 / 41", "cap_settings": 180, "cap_shots": 16000, "used_settings": 172, "used_shots": 16000, "rank": 10, "status": "RESIDUAL_ALGEBRA_TOO_LARGE", "eps": "1.0e+00", "pts": 0.0, "cpu": 1}
+{"attack": "frame k2 w0.0 pw0.0 pins0 / 11", "cap_settings": 180, "cap_shots": 16000, "used_settings": 172, "used_shots": 16000, "rank": 13, "status": "LEGAL_COMPILED", "eps": "1.3e-05", "pts": 100.0, "cpu": 9}
+{"attack": "Compile-hard frame A", "cap_settings": 90, "cap_shots": 8000, "used_settings": 82, "used_shots": 8000, "rank": 8, "status": "RESIDUAL_ALGEBRA_TOO_LARGE", "eps": "1.0e+00", "pts": 0.0, "cpu": 1}
+{"attack": "frame k2 w0.0 pw0.0 pins0 / 11", "cap_settings": 270, "cap_shots": 24000, "used_settings": 262, "used_shots": 24000, "rank": 13, "status": "LEGAL_COMPILED", "eps": "4.5e-05", "pts": 100.0, "cpu": 16}
+{"attack": "frame k4 w0.0 pw0.0 pins0 / 11", "cap_settings": 270, "cap_shots": 24000, "used_settings": 263, "used_shots": 24000, "rank": 12, "status": "LEGAL_COMPILED", "eps": "8.9e-05", "pts": 100.0, "cpu": 52}
+{"attack": "Merged same-qubit insertions n", "cap_settings": 90, "cap_shots": 8000, "used_settings": 84, "used_shots": 8000, "rank": 9, "status": "RESIDUAL_ALGEBRA_TOO_LARGE", "eps": "1.0e+00", "pts": 0.0, "cpu": 0}
+{"attack": "Public frame 4 / 41", "cap_settings": 270, "cap_shots": 24000, "used_settings": 270, "used_shots": 24000, "rank": 12, "status": "LEGAL_COMPILED", "eps": "4.9e-05", "pts": 100.0, "cpu": 50}
+{"attack": "Compile-hard frame A", "cap_settings": 180, "cap_shots": 16000, "used_settings": 174, "used_shots": 16000, "rank": 13, "status": "LEGAL_COMPILED", "eps": "7.4e-05", "pts": 100.0, "cpu": 48}
+{"attack": "Merged same-qubit insertions n", "cap_settings": 180, "cap_shots": 16000, "used_settings": 160, "used_shots": 16000, "rank": 16, "status": "LEGAL_COMPILED", "eps": "6.3e-07", "pts": 100.0, "cpu": 3}
+{"attack": "Compile-hard frame A", "cap_settings": 270, "cap_shots": 24000, "used_settings": 262, "used_shots": 24000, "rank": 14, "status": "LEGAL_COMPILED", "eps": "3.5e-05", "pts": 100.0, "cpu": 44}
+{"attack": "Merged same-qubit insertions n", "cap_settings": 270, "cap_shots": 24000, "used_settings": 160, "used_shots": 24000, "rank": 16, "status": "LEGAL_COMPILED", "eps": "2.4e-07", "pts": 100.0, "cpu": 3}

@@ -1,0 +1,6 @@
+{"g": 36, "seed": 21, "draw": 1, "mode": "f2def+random", "found": 43, "eps": 0.11556, "pts": 0.0, "cpu": 383, "settings": 720, "max_shots": 360, "median": 65.0}
+{"g": 36, "seed": 22, "draw": 1, "mode": "f2def", "found": 44, "eps": 0.04315, "pts": 18.3, "cpu": 383, "settings": 712, "max_shots": 137, "median": 135.0}
+{"g": 36, "seed": 21, "draw": 1, "mode": "f2def", "found": 39, "eps": 0.84485, "pts": 0.0, "cpu": 387, "settings": 712, "max_shots": 137, "median": 135.0}
+{"g": 36, "seed": 21, "draw": 1, "mode": "random", "found": 38, "eps": 0.00037, "pts": 100.0, "cpu": 303}
+{"g": 36, "seed": 22, "draw": 1, "mode": "f2def+random", "found": 43, "eps": 0.04594, "pts": 16.9, "cpu": 383, "settings": 720, "max_shots": 360, "median": 65.0}
+{"g": 36, "seed": 22, "draw": 1, "mode": "random", "found": 43, "eps": 0.00091, "pts": 100.0, "cpu": 380}

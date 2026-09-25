@@ -24,6 +24,7 @@ if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 
 import sim8  # noqa: E402
+import subsys  # noqa: E402
 from duelkit.quantum import G, validate  # noqa: E402
 
 # Template screening uses this many settings (the most-shot ones).
@@ -31,7 +32,28 @@ SCREEN_SETTINGS = 96
 # Template angles may leave their published range by at most this much.
 TEMPLATE_SLACK = 0.02
 # A candidate with |gof z| below this explains the counts; skip costly sources.
-GOOD_Z = 6.0
+GOOD_Z = 3.0
+# The best models' angles are refitted on all data at every checkpoint: at 32k
+# shots a z < 3 fit can still be at eps ~ 0.01-0.02, and the data keep growing.
+REFIT_TOP = 2
+REFIT_ITER = 60
+# Screening separation: fit a template/generator candidate only when its screen
+# NLL is below SEP_RATIO x the next *different* architecture's. Measured: true
+# matches 0.23-0.56, non-matches 0.95-0.99. Wrong-architecture fits were the
+# largest CPU leak in v6 (up to ~300 s per encounter).
+SEP_RATIO = 0.8
+# Measurement sharing at checkpoint 1: f2def's bounded share (log §15.4).
+F2_STAGE1_SETTINGS = 180
+F2_STAGE1_SHOTS = 16000
+RANDOM_MIN_SHOTS = 40
+# Parity rank on the support at which an incomplete f2def probe counts as a frame
+# (measured at 180 settings: frames 10-16, non-frames <= 4).
+FRAME_RANK = 8
+# Winners whose structure is exact by construction (may skip further search).
+EXACT_SOURCES = ('f2def:LEGAL_COMPILED', 'template:', 'generator:', 'subsys:', 'refit:template', 'refit:generator', 'refit:subsys')
+# Attacks touching <= 3 qubits: overparameterized fit on the support (subsys.py).
+SUBSYS_MAX = 3
+SUBSYS_BUDGET = 40.0
 # Template / generator models enter the pool only below this gof z.
 TEMPLATE_Z = 10.0
 # Seed brute force of the public generators (checkpoint 1 only).
@@ -42,11 +64,28 @@ FIT_TOP = 4
 # CPU seconds for the template stage per checkpoint.
 TEMPLATE_BUDGET = 45.0
 # CPU seconds for unknown-architecture gate pursuit per checkpoint.
-PURSUIT_BUDGET = {1: 150.0, 2: 130.0, 3: 110.0}
+PURSUIT_BUDGET = {1: 110.0, 2: 90.0, 3: 90.0}
+# Adaptive back-loading (measured, log §14): if checkpoint 1 leaves the data
+# unexplained, checkpoint 2 only continues warm and checkpoint 3 runs a fresh p1
+# pursuit on all 96k shots with the rest of the encounter budget. 36-gate
+# attacks: 3/3 solved at 96k/400 s vs 2/3 at 32k/300 s and ~0 with split budgets.
+HARD_WARM_BUDGET = 30.0
+# Warm continuation for a pursuit-built winner that already looks explained.
+WARM_CHECK_BUDGET = 60.0
+REFIT_RESERVE = 40.0
+# Template-seeded repair (log §16): an edited public template screens as a near
+# match (separation 0.82-0.96, with a *named* public example ranked first; for
+# unrelated attacks a generator instance ranks first at 0.91-1.00). Fitting that
+# template and letting p2 insert/delete from it, with the patch-sized gate caps,
+# recovered 3-axis and 2-retarget edits of the 72-gate multilayer (v10: 0).
+NEAR_NAMED = ('bank:', 'notebook:', 'frame2:', 'frame4:', 'merged:')
+NEAR_SEP = 0.9
+SEED_MIN_GATES = 12
+SEED_BUDGET = 90.0
 # Settings used by pursuit's inner loop (most-shot first); final refit uses all.
 PURSUIT_SETTINGS = 160
 # Whole-encounter CPU cap: optional sources are skipped beyond this.
-ENCOUNTER_CAP = 480.0
+ENCOUNTER_CAP = 600.0
 LOG = []
 
 
@@ -86,10 +125,36 @@ class Model:
         return tuple(G(n, ts, float(-a)) for (n, ts), a in zip(reversed(self.arch), reversed(self.angles)))
 
 
+def free_mask(angles):
+    """True where an angle is not a multiple of pi/2.
+
+    f2def's frame gates are exact Cliffords; only its insertion angles are
+    estimated. Counting (and refitting) the Clifford ones too let a free refit
+    fit shot noise into all ~82 angles and still win on BIC: eps rose from
+    ~1e-5 at checkpoint 1 to 3-8e-4 at checkpoints 2-3 on every frame (log §16).
+    """
+    q = np.asarray(angles, float) / (math.pi / 2)
+    return np.abs(q - np.round(q)) > 1e-7
+
+
 def model_from_patch(source, patch):
     arch = [(g.name, g.targets) for g in reversed(patch)]
     ang = [-float(g.angle) for g in reversed(patch)]
-    return Model(source, arch, ang)
+    m = Model(source, arch, ang)
+    m.k = int(free_mask(m.angles).sum())
+    return m
+
+
+def separation(scored):
+    """scored: sorted [(nll, key, gates)] -> best / next-different-architecture ratio."""
+    if len(scored) < 2:
+        return 0.0 if scored else math.inf
+    sig = lambda gates: tuple((g[0], tuple(g[1])) for g in gates)
+    best = sig(scored[0][2])
+    for v, _, gates in scored[1:]:
+        if sig(gates) != best:
+            return scored[0][0] / max(v, 1e-9)
+    return 0.0
 
 
 class TemplateSource:
@@ -101,6 +166,7 @@ class TemplateSource:
             self.lib = {}
         self.fitted = {}     # key -> angles
         self.shortlist = None
+        self.near = None     # best-screened template when it is a near match
 
     def run(self, data, n, deadline):
         if not self.lib:
@@ -124,7 +190,16 @@ class TemplateSource:
             scored.append((v, key, x))
         scored.sort(key=lambda t: t[0])
         if self.shortlist is None:
-            self.shortlist = [k for _, k, _ in scored[:FIT_TOP]]
+            sep = separation([(v, k, self.lib[k]) for v, k, _ in scored])
+            self.shortlist = [scored[0][1]] if scored and sep < SEP_RATIO else []
+            if scored and not self.shortlist:
+                key = scored[0][1]
+                if (len(self.lib[key]) >= SEED_MIN_GATES
+                        and (key.startswith(NEAR_NAMED) or sep < NEAR_SEP)):
+                    self.near = key
+            log(f'template screen: best {scored[0][1] if scored else None} separation {sep:.2f} -> '
+                f'{"fit" if self.shortlist else "near match" if self.near else "no match"}')
+            scored = [t for t in scored if t[1] in self.shortlist]
         models = []
         for v, key, x in scored[:FIT_TOP]:
             if time.process_time() > deadline:
@@ -139,13 +214,14 @@ class TemplateSource:
             try:
                 x1, _ = sim8.fast_fit(ops, x, sub, bounds=bounds, maxiter=200)
                 x2, f = sim8.fast_fit(ops, x1, data, bounds=bounds, maxiter=200)
+                # Always let the angles go free as well: a team may keep the
+                # architecture but edit the ranges (measured: bounded fit z = 1.7
+                # at 5 points, free fit 100 points, 1,852 NLL units apart). The
+                # absolute z test cannot see this; the likelihood comparison can.
+                x3, f3 = sim8.fast_fit(ops, x2, data, maxiter=200)
+                if f3 < f:
+                    x2, f = x3, f3
                 z = sim8.fast_gof(ops, x2, data)
-                if z > TEMPLATE_Z and time.process_time() < deadline:
-                    # Right architecture with edited ranges: let the angles go free.
-                    x3, f3 = sim8.fast_fit(ops, x2, data, maxiter=200)
-                    z3 = sim8.fast_gof(ops, x3, data)
-                    if z3 < z:
-                        x2, f, z = x3, f3, z3
             except Exception as exc:
                 log('fit failed', key, exc)
                 continue
@@ -153,11 +229,24 @@ class TemplateSource:
             log(f'template {key}: screen {v:.1f} fitted {f:.1f} z={z:.1f}')
             # Only a template that explains the counts may compete: a wrong
             # architecture can still beat a failed pursuit on BIC.
+            if z >= TEMPLATE_Z and self.shortlist is not None and key in self.shortlist:
+                self.shortlist.remove(key)   # rejected: never refit it
             if z < TEMPLATE_Z:
                 m = Model('template:' + key, arch, x2)
                 m.nll = f
                 models.append(m)
         return models
+
+    def fit_near(self, data, n):
+        """Bounded, then free, angle fit of the near-match template (a repair seed)."""
+        gates = self.lib[self.near]
+        arch = [(g[0], tuple(g[1])) for g in gates]
+        ops = sim8.fast_ops(arch, n)
+        bounds = [(g[2] - TEMPLATE_SLACK, g[3] + TEMPLATE_SLACK) for g in gates]
+        x = np.array([(g[2] + g[3]) / 2 for g in gates])
+        x1, f1 = sim8.fast_fit(ops, x, data, bounds=bounds, maxiter=200)
+        x2, f2 = sim8.fast_fit(ops, x1, data, maxiter=200)
+        return (arch, x2) if f2 < f1 else (arch, x1)
 
 
 class GeneratorSource:
@@ -215,9 +304,10 @@ class GeneratorSource:
                 count += 1
                 top.append((v, key, arch, x))
                 top.sort(key=lambda t: t[0])
-                del top[3:]
-            log(f'generator screened {count} seeds; top {[(round(v), k) for v, k, _, _ in top]}')
-            cands = top
+                del top[8:]
+            sep = separation([(v, k, [(a, t) for a, t in arch]) for v, k, arch, _ in top])
+            log(f'generator screened {count} seeds; top {[(round(v), k) for v, k, _, _ in top[:3]]} separation {sep:.2f}')
+            cands = top[:1] if sep < SEP_RATIO else []
         elif self.best is not None:
             cands = [(0.0,) + self.best]
         else:
@@ -247,30 +337,47 @@ class PursuitSource:
         kw = dict(max_gates=min(72, rules.patch_max_gates), max_ents=min(24, rules.patch_max_entanglers))
         # Two engines that win on different attacks (frontier benchmark):
         # p2 = closed-form insertion + deletion (fast), p1 = gradient-ranked line search.
-        self.engines = {'p2': pursuit.Pursuit2(n, **kw), 'p1': pursuit.Pursuit(n, **kw)}
-        self.schedule = {1: 'p2', 2: 'p1', 3: 'p2'}
+        self.engines = {'p2': pursuit.Pursuit2(n, **kw), 'p1': pursuit.Pursuit(n, **kw),
+                        # A repaired 72-gate template needs room to insert before
+                        # it deletes: use the patch limits, not the attack's.
+                        'seed': pursuit.Pursuit2(n, max_gates=rules.patch_max_gates,
+                                                 max_ents=rules.patch_max_entanglers)}
         self.arch, self.angles = [], np.zeros(0)
-        self.stage = 0
+        self.seeded = False
 
-    def run(self, data, deadline):
-        self.stage += 1
+    def restrict(self, qubits):
+        for e in self.engines.values():
+            e.restrict(qubits)
+
+    def seed(self, data, deadline, arch, angles):
+        """Insert/delete repair starting from a fitted near-match template."""
+        a2, x2, f2 = self.engines['seed'].run(data, deadline, arch, angles)
+        m = Model('pursuit:seeded', a2, x2); m.nll = f2
+        log(f'pursuit seeded gates={len(a2)} nll={f2:.1f}')
+        self.arch, self.angles, self.seeded = a2, x2, True
+        return [m]
+
+    def run(self, data, deadline, fresh=None, warm=True):
+        """fresh: engine name for a from-scratch fit ('p1'/'p2') or None."""
         out = []
         now = time.process_time()
         # A fresh fit on more data can escape an early wrong structure; the warm
         # continuation keeps what was already right. Both enter the pool.
-        fresh_deadline = now + 0.65 * (deadline - now) if self.arch else deadline
-        name = self.schedule.get(self.stage, 'p2')
-        arch, ang, f = self.engines[name].run(data, fresh_deadline)
-        if arch:
-            m = Model(f'pursuit:{name}:fresh', arch, ang); m.nll = f; out.append(m)
-            log(f'pursuit {name} fresh gates={len(arch)} nll={f:.1f}')
-        if self.arch and time.process_time() < deadline:
-            a2, x2, f2 = self.engines['p2'].run(data, deadline, self.arch, self.angles)
-            m = Model('pursuit:p2:warm', a2, x2); m.nll = f2; out.append(m)
+        fresh_deadline = now + 0.8 * (deadline - now) if (self.arch and warm) else deadline
+        if fresh is not None:
+            arch, ang, f = self.engines[fresh].run(data, fresh_deadline)
+            if arch:
+                m = Model(f'pursuit:{fresh}:fresh', arch, ang); m.nll = f; out.append(m)
+                log(f'pursuit {fresh} fresh gates={len(arch)} nll={f:.1f}')
+        if warm and self.arch and time.process_time() < deadline:
+            eng, name = ('seed', 'pursuit:seeded:warm') if self.seeded else ('p2', 'pursuit:p2:warm')
+            a2, x2, f2 = self.engines[eng].run(data, deadline, self.arch, self.angles)
+            m = Model(name, a2, x2); m.nll = f2; out.append(m)
             log(f'pursuit warm gates={len(a2)} nll={f2:.1f}')
         if out:
             best = min(out, key=lambda m: m.nll)
             self.arch, self.angles = best.arch, best.angles
+            self.seeded = best.source.startswith('pursuit:seeded')
         return out
 
 
@@ -289,6 +396,11 @@ def run_defender(client, rules):
         def __init__(self):
             self.records = []; self.stage = 0; self.ceiling = 0; self.remaining = 0
             self.settings_remaining = 0; self.counter = 0; self.seen = set()
+            self.settings_cap = rules.max_settings
+
+        def cap(self, settings_cap):
+            self.settings_cap = min(rules.max_settings, settings_cap)
+            self.settings_remaining = self.settings_cap - len(self.seen)
 
         def query(self, prep, basis, shots):
             from duelkit.quantum import experiment_index, bitstrings
@@ -298,13 +410,44 @@ def run_defender(client, rules):
             r = client.query(idx, int(shots), f'open-{self.stage}-{self.counter}')
             self.remaining -= int(shots)
             self.seen.add(idx)
-            self.settings_remaining = rules.max_settings - len(self.seen)
+            self.settings_remaining = self.settings_cap - len(self.seen)
             c = [r['counts'][b] for b in bitstrings(rules.qubits)]
             self.records.append(dict(prep=list(prep), basis=list(basis), counts=c, shots=int(shots), stage=self.stage))
             return np.array(c, dtype=np.int64)
 
     n = rules.qubits
     bridge = Bridge()
+    panel_rng = np.random.default_rng(20260925)
+    labels = ['0', '1', '+', '-', '+i', '-i']
+
+    def spend_random(stage):
+        """Spend what is left of this block on new uniformly random product settings."""
+        st = client.status()
+        rem = int(st['available_now'])
+        if rem <= 0:
+            return
+        left = rules.max_settings - int(st['distinct_settings'])
+        stages_left = rules.checkpoints - stage + 1
+        k = max(0, min(left // stages_left, rem // RANDOM_MIN_SHOTS))
+        if k == 0:
+            # no settings budget: spread over existing settings instead
+            keys = {}
+            for r in bridge.records:
+                keys[(tuple(r['prep']), ''.join(r['basis']))] = r
+            olds = list(keys.values())
+            per = rem // max(1, len(olds))
+            for i, r in enumerate(olds):
+                sh = per + (1 if i < rem % len(olds) else 0)
+                if sh:
+                    bridge.query(r['prep'], r['basis'], sh)
+            return
+        bridge.cap(rules.max_settings)
+        per = rem // k
+        for i in range(k):
+            prep = [labels[j] for j in panel_rng.integers(6, size=n)]
+            basis = ''.join(panel_rng.choice(list('XYZ'), n))
+            bridge.query(prep, basis, per + (1 if i < rem % k else 0))
+        log(f'stage {stage} random panel: {k} new settings x ~{per} shots')
     learner = f2def.Frame2Recovery(n, rules.patch_max_gates, rules.patch_max_entanglers, seed=917)
     templates = TemplateSource()
     try:
@@ -313,6 +456,9 @@ def run_defender(client, rules):
         log('generator unavailable', exc)
         generator = None
     t_start = time.process_time()
+    hard = False
+    last_source = ''
+    f2_useful = True
     try:
         chaser = PursuitSource(n, rules)
     except Exception as exc:
@@ -323,11 +469,37 @@ def run_defender(client, rules):
         state = client.status()
         bridge.stage = stage
         bridge.ceiling = stage * rules.block
-        bridge.remaining = state['available_now']
-        bridge.settings_remaining = rules.max_settings - state['distinct_settings']
+        avail = int(state['available_now'])
         pool = []
+        run_f2 = f2_useful
+        if stage == 1:
+            # f2def's parity learning measures in low-diversity families (one basis,
+            # single sign flips). Give it a bounded share; the rest goes to a
+            # diverse random panel, which likelihood search needs (log §15.4).
+            bridge.remaining = min(avail, F2_STAGE1_SHOTS)
+            bridge.cap(F2_STAGE1_SETTINGS)
+        else:
+            bridge.remaining = avail
+            bridge.cap(rules.max_settings)
         try:
+            if not run_f2:
+                raise StopIteration
             proposed, meta = learner.checkpoint(bridge)
+            if stage == 1:
+                # Probe classification (log §15.4): each idle qubit contributes 2 trivial
+                # parities, so judge frame structure by the rank on the support.
+                sup1, _ = subsys.support(bridge.records, n)
+                rank_sup = int(meta.get('rank', 0)) - 2 * (n - len(sup1))
+                incomplete_frame = meta.get('status') == 'RESIDUAL_ALGEBRA_TOO_LARGE' and rank_sup >= FRAME_RANK
+                f2_useful = meta.get('status') != 'RESIDUAL_ALGEBRA_TOO_LARGE' or incomplete_frame
+                log(f'stage 1 probe: f2def {meta.get("status")} rank {meta.get("rank")} support {len(sup1)} '
+                    f'rank_on_support {rank_sup} -> frame-like {f2_useful}')
+                if incomplete_frame:
+                    # k = 4 frames need ~270 settings: give f2def the rest of the block.
+                    bridge.remaining = int(client.status()['available_now'])
+                    bridge.cap(rules.max_settings)
+                    proposed, meta = learner.checkpoint(bridge)
+                    log(f'stage 1 f2def extended: {meta.get("status")} rank {meta.get("rank")}')
             conv = []
             for g in proposed:
                 active = [i for i, a in enumerate(g['pauli']) if a != 'I']
@@ -336,30 +508,41 @@ def run_defender(client, rules):
                     raise ValueError('illegal rotation')
                 conv.append(G('r' + ''.join(axes), tuple(active), float(g['angle'])))
             pool.append(model_from_patch('f2def:' + str(meta.get('status')), tuple(conv)))
+        except StopIteration:
+            pass
         except Exception as exc:
             log('f2def failed', type(exc).__name__, str(exc)[:200])
-        # Spend anything the learner left (it normally spends the whole block).
+        # Spend the rest of the block on a diverse random panel.
         try:
-            st = client.status()
-            if st['available_now'] > 0 and bridge.records:
-                keys = {}
-                for r in bridge.records:
-                    keys[(tuple(r['prep']), ''.join(r['basis']))] = r
-                vals = list(keys.values())
-                rem = int(st['available_now'])
-                per = rem // len(vals)
-                for i, r in enumerate(vals):
-                    s = per + (1 if i < rem % len(vals) else 0)
-                    if s:
-                        bridge.query(r['prep'], r['basis'], s)
+            spend_random(stage)
         except Exception as exc:
-            log('top-up failed', exc)
+            log('random panel failed', type(exc).__name__, str(exc)[:200])
         try:
             data = sim8.records_to_fast(bridge.records, n)
             if last:
                 pool.append(model_from_patch('previous', last))
             pool.append(Model('identity', [], []))
-            early = [m.gof(data) for m in pool if m.arch and math.isfinite(m.score(data))]
+            try:
+                sup, _ = subsys.support(bridge.records, n)
+                log(f'stage {stage} support {sup}')
+                if chaser is not None:
+                    chaser.restrict(sup if 0 < len(sup) < n else None)
+                if 0 < len(sup) <= SUBSYS_MAX:
+                    arch, x, _ = subsys.fit(bridge.records, sup, n, time.process_time() + SUBSYS_BUDGET,
+                                            seed=stage)
+                    ms = Model(f'subsys:{len(sup)}q', arch, x)
+                    ms.score(data)
+                    pool.append(ms)
+                    log(f'subsys {sup}: nll {ms.nll:.1f} z={ms.gof(data):.1f}')
+            except Exception as exc:
+                log('subsys failed', type(exc).__name__, str(exc)[:200])
+            # Skipping is only safe for exact-structure models: the absolute z test
+            # cannot detect an eps ~ 0.005-0.08 misfit (log §15.3), so a pursuit-built
+            # winner keeps getting a warm continuation instead.
+            exact = [m for m in pool if m.arch and m.source.startswith(EXACT_SOURCES)]
+            if last_source.startswith(EXACT_SOURCES):
+                exact += [m for m in pool if m.source == 'previous']
+            early = [m.gof(data) for m in exact if math.isfinite(m.score(data))]
             explained = bool(early) and min(early) < GOOD_Z
             if explained:
                 log(f'stage {stage} already explained (z={min(early):.1f}); optional sources skipped')
@@ -378,12 +561,40 @@ def run_defender(client, rules):
                 except Exception as exc:
                     log('generator failed', type(exc).__name__, str(exc)[:200])
             best_z = min((z for z, _ in fits), default=math.inf)
+            if (stage == 1 and chaser is not None and templates.near and best_z > GOOD_Z
+                    and time.process_time() - t_start < ENCOUNTER_CAP):
+                try:
+                    arch, x = templates.fit_near(data, n)
+                    log(f'near template {templates.near}: seeding pursuit')
+                    got = chaser.seed(data, time.process_time() + SEED_BUDGET, arch, x)
+                    pool.extend(got)
+                    fits += [(m.gof(data), m) for m in got]
+                except Exception as exc:
+                    log('seeded pursuit failed', type(exc).__name__, str(exc)[:200])
+            best_z = min((z for z, _ in fits), default=math.inf)
             log(f'stage {stage} best gof z before pursuit: {best_z:.1f}')
             used = time.process_time() - t_start
-            if chaser is not None and used < ENCOUNTER_CAP and best_z > GOOD_Z:
-                budget = min(PURSUIT_BUDGET.get(stage, 90.0), ENCOUNTER_CAP - used)
+            warm_only = (not explained and best_z <= GOOD_Z and stage > 1
+                         and last_source.startswith('pursuit'))
+            if chaser is not None and used < ENCOUNTER_CAP and (best_z > GOOD_Z or warm_only):
+                if warm_only:
+                    plan = (None, True, WARM_CHECK_BUDGET)
+                elif stage == 1:
+                    plan = ('p2', False, PURSUIT_BUDGET[1])
+                elif hard and stage < rules.checkpoints:
+                    plan = (None, True, HARD_WARM_BUDGET)
+                elif hard and last_source.startswith('pursuit:seeded'):
+                    # A fresh search cannot reach a 72-gate template; keep repairing.
+                    plan = (None, True, ENCOUNTER_CAP - used - REFIT_RESERVE)
+                elif hard:
+                    plan = ('p1', False, ENCOUNTER_CAP - used - REFIT_RESERVE)
+                else:
+                    plan = ('p1', True, PURSUIT_BUDGET.get(stage, 90.0))
+                fresh, warm, want = plan
+                budget = max(0.0, min(want, ENCOUNTER_CAP - used - REFIT_RESERVE))
+                log(f'stage {stage} pursuit plan fresh={fresh} warm={warm} budget={budget:.0f}s hard={hard}')
                 try:
-                    pool.extend(chaser.run(data, time.process_time() + budget))
+                    pool.extend(chaser.run(data, time.process_time() + budget, fresh=fresh, warm=warm))
                 except Exception as exc:
                     log('pursuit failed', type(exc).__name__, str(exc)[:200])
             for m in pool:
@@ -391,13 +602,37 @@ def run_defender(client, rules):
                     m.score(data)
             pool = [m for m in pool if math.isfinite(m.nll) and legal(m.patch(), rules)]
             pool.sort(key=lambda m: m.bic(data))
+            if time.process_time() - t_start < ENCOUNTER_CAP + 60:
+                stale = [m for m in pool if m.arch and m.source.startswith(('previous', 'refit:previous'))]
+                for m in stale[:REFIT_TOP]:
+                    try:
+                        free = free_mask(m.angles)
+                        bounds = None if free.all() else [(None, None) if fr else (a, a)
+                                                          for fr, a in zip(free, m.angles)]
+                        x, f = sim8.fast_fit(sim8.fast_ops(m.arch, n), m.angles, data,
+                                             bounds=bounds, maxiter=REFIT_ITER)
+                        r = Model('refit:' + m.source.replace('refit:', ''), m.arch, x, k=int(free.sum()))
+                        r.score(data)
+                        if r.nll < m.nll and legal(r.patch(), rules):
+                            pool.append(r)
+                    except Exception as exc:
+                        log('refit failed', m.source, type(exc).__name__, str(exc)[:120])
+                pool.sort(key=lambda m: m.bic(data))
             for m in pool[:5]:
                 log(f'stage {stage} {m.source:<40} nll={m.nll:.1f} bic={m.bic(data):.1f} k={m.k}')
             if pool:
                 last = pool[0].patch()
+                if pool[0].source not in ('previous', 'refit:previous'):
+                    last_source = pool[0].source   # a carried-over patch keeps its lineage
+                log(f'stage {stage} winner {pool[0].source} (lineage {last_source})')
+                if stage == 1:
+                    z1 = pool[0].gof(data) if pool[0].arch else math.inf
+                    hard = z1 > GOOD_Z
+                    log(f'stage 1 winner z={z1:.1f} -> hard mode {hard}')
         except Exception as exc:
             log('pool failed', type(exc).__name__, str(exc)[:200])
             if pool and legal(pool[0].patch(), rules):
                 last = pool[0].patch()
+        log(f'stage {stage} done: encounter CPU {time.process_time() - t_start:.0f}s')
         client.submit_patch(last, note='opendef')
         client.close_checkpoint()

@@ -1,0 +1,32 @@
+PASSED            96.4 cp=[89.2, 100.0, 100.0] cpu=40s  gen g72 e24 band random q3 /42 @1 
+PASSED            95.6 cp=[86.9, 100.0, 100.0] cpu=40s  gen g72 e24 band random q3 /42 @2 
+PASSED            94.3 cp=[84.4, 98.4, 100.0] cpu=41s  gen g72 e24 band random q3 /41 @2 
+PASSED            95.1 cp=[85.2, 100.0, 100.0] cpu=42s  gen g72 e24 band random q3 /41 @1 
+PASSED            25.3 cp=[15.9, 17.7, 42.3] cpu=549s  gen g72 e24 0.1-0.4 random /42 @1 
+PASSED             8.8 cp=[0.0, 0.0, 26.3] cpu=565s  gen g72 e24 0.1-0.4 random /41 @1 
+PASSED            34.5 cp=[25.4, 34.6, 43.4] cpu=566s  gen g72 e24 0.1-0.4 random /42 @2 
+PASSED             5.1 cp=[0.0, 6.3, 9.0] cpu=566s  gen g72 e24 0.1-0.4 random /41 @2 
+PASSED            97.0 cp=[91.0, 100.0, 100.0] cpu=48s  gen g72 e24 band random q3 /43 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=567s  gen g72 e24 band random q4 /41 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=570s  gen g72 e24 band random q4 /41 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  gen g72 e24 band random q4 /42 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  gen g72 e24 band random q4 /42 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=14s  Public open circuit / 31 @1 
+PASSED            96.4 cp=[89.3, 100.0, 100.0] cpu=50s  gen g72 e24 band random q3 /43 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=14s  Public open circuit / 31 @2 
+PASSED            97.9 cp=[93.7, 100.0, 100.0] cpu=25s  Public continuous multilayer / 37 @1 
+PASSED            98.1 cp=[94.4, 100.0, 100.0] cpu=28s  Public continuous multilayer / 37 @2 
+PASSED            88.9 cp=[66.6, 100.0, 100.0] cpu=56s  gen g12 e4 0.4-2.6 random /11 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=66s  gen g12 e4 0.4-2.6 random /11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=49s  frame k2 w0.0 pw0.0 pins0 / 11 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=57s  frame k2 w0.0 pw0.0 pins0 / 11 @1 
+PASSED            81.6 cp=[80.0, 81.1, 83.6] cpu=140s  gen g24 e8 band random /21 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=219s  Repeated-pair open example @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=232s  Repeated-pair open example @1 
+PASSED            67.6 cp=[2.7, 100.0, 100.0] cpu=172s  gen g36 e12 band random /22 @2 
+PASSED            58.4 cp=[37.3, 37.9, 100.0] cpu=224s  gen g24 e8 band random /21 @1 
+PASSED             3.0 cp=[0.0, 0.0, 8.9] cpu=482s  gen g36 e12 band random q5 /44 @2 
+PASSED             8.7 cp=[0.0, 0.0, 26.1] cpu=556s  gen g36 e12 band random q5 /44 @1 
+PASSED            33.3 cp=[0.0, 0.0, 100.0] cpu=447s  gen g36 e12 band random /22 @1 
+
+n=30 mean=62.9 zeros=4 fails=0

@@ -1,0 +1,19 @@
+Championship profile: quantum-duel-8q-open-0.7.1
+Rules SHA-256: 7dddfa84ca1304c1fc83318ee13f8e514ae82dcca675d0c3474dd34de82483f6
+Static package check: STATIC_VALIDATED | sha256: 0a1cda0d1af1ec28c5356f94f5267f7b764047e2797e1a634ca2e526aaccbeec
+Explicit local execution: 1 cases, up to 96,000 simulated shots per case.
+The local timeout is 900s PER CASE, not the official runtime budget.
+Evidence: /Users/aoeuhtns/Documents/q-site-hacks-2026/ionq/dev/open8/data/champ_checks/smoke_evidence_20260925T030421Z_ef27b8fe.json
+LOCAL READINESS REVIEW — SELECTED ZIP / SELECTED FINAL PROFILE
+Execution, circuit legality and recovery are separate checks.
+ZIP: MATCH | Rules: MATCH
+Case             Execution  Recorded recovery               Shots            Settings   Actions      Recorded details
+mixed (seed 41)  Completed  Full credit on this local case  96,000 / 96,000  720 / 720  902 / 3,000                  
+Case             Checkpoint  Shots used  Gates / limit  Entanglers / limit  Circuit check  Recorded process infidelity  Points, not fidelity %
+mixed (seed 41)  1           32000       18 / 108       6 / 36              Legal          0.000343402                  100.00                
+mixed (seed 41)  2           64000       18 / 108       6 / 36              Legal          0.000167439                  100.00                
+mixed (seed 41)  3           96000       18 / 108       6 / 36              Legal          0.00011222                   100.00                
+Note: Matching hashes refer to packaged bytes, not unsaved edits in main.py. Rebuild the ZIP after changing source.
+Note: Read-only view of recorded local evidence: no new execution, shots, score access, or upload. This is neither an official result nor independent verification of process fidelity.
+Note: The public local and zz cases are simple teaching checks. Mixed, multilayer and frame are broader public examples, not exhaustive coverage or a prediction of championship performance.
+Note: Runtime duration and the solver's internal stage are not present in these reports. This panel does not estimate them or change timeout handling.

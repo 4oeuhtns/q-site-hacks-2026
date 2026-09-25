@@ -1,0 +1,61 @@
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  frame k0 w0.0 pw0.0 pins0 / 11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  frame k0 w0.0 pw0.0 pins0 / 12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=23s  frame k1 w0.0 pw0.0 pins0 / 11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=25s  frame k1 w0.0 pw0.0 pins0 / 12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=37s  frame k2 w0.0 pw0.0 pins0 / 12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=61s  frame k2 w0.0 pw0.0 pins0 / 11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=193s  frame k4 w0.0 pw0.0 pins0 / 12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=199s  frame k4 w0.0 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=576s  frame k6 w0.0 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=577s  frame k6 w0.0 pw0.0 pins0 / 12 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=575s  frame k8 w0.0 pw0.0 pins0 / 12 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=572s  frame k12 w0.0 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=597s  frame k8 w0.0 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=577s  frame k12 w0.0 pw0.0 pins0 / 12 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=575s  frame k16 w0.0 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=575s  frame k16 w0.0 pw0.0 pins0 / 12 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  frame k24 w0.0 pw0.0 pins0 / 12 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=581s  frame k24 w0.0 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=568s  frame k2 w0.05 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=574s  frame k2 w0.05 pw0.0 pins0 / 12 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=568s  frame k2 w0.12 pw0.0 pins0 / 11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=38s  frame k0 w0.0 pw0.0 pins2 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=570s  frame k2 w0.12 pw0.0 pins0 / 12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=34s  frame k2 w0.0 pw0.0 pins0 / 11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=79s  frame k2 w0.0 pw0.0 pins0 / 11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=61s  gen g2 e1 0.4-2.6 random /11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=81s  gen g2 e1 0.4-2.6 random /12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=138s  frame k2 w0.0 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=572s  frame k2 w0.3 pw0.0 pins0 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=571s  frame k2 w0.3 pw0.0 pins0 / 12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=39s  gen g6 e2 0.4-2.6 random /12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=50s  gen g8 e2 0.4-2.6 random /11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=43s  gen g8 e2 0.4-2.6 random /12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=93s  gen g6 e2 0.4-2.6 random /11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=10s  gen g18 e6 0.4-2.6 random /11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=11s  gen g18 e6 0.4-2.6 random /12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=22s  gen g12 e4 0.4-2.6 random /12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=12s  gen g36 e12 0.5-2.0 random /11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=24s  gen g24 e8 0.4-2.6 random /11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=163s  gen g4 e1 0.4-2.6 random /12 @3 
+PASSED            99.8 cp=[99.4, 100.0, 100.0] cpu=19s  gen g72 e24 0.5-2.0 random /11 @3 
+PASSED            80.0 cp=[39.9, 100.0, 100.0] cpu=89s  gen g12 e4 0.4-2.6 random /11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=198s  gen g4 e1 0.4-2.6 random /11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=108s  gen g24 e8 0.4-2.6 random /12 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=12s  Public open circuit / 23 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=12s  Public open circuit / 31 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=13s  Public open circuit / 37 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=20s  Public open circuit / 23 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=43s  Public frame 2 / 23 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=51s  Public frame 2 / 37 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=19s  Merged same-qubit insertions near a quarter turn / 127 @3 
+PASSED            63.8 cp=[38.6, 52.8, 100.0] cpu=284s  gen g72 e4 0.5-2.0 random /11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  frame k0 w0.0 pw0.0 pins12 / 11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=573s  frame k0 w0.0 pw0.0 pins6 / 11 @3 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=245s  Compile-hard frame B @3 
+PASSED            30.2 cp=[20.7, 27.6, 42.1] cpu=472s  gen g72 e24 0.1-0.4 random /11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=565s  gen g72 e12 0.5-2.0 random /11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=540s  gen g72 e24 2.5-3.0 random /11 @3 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=566s  gen g72 e24 0.5-2.0 brick /11 @3 
+
+n=59 mean=62.3 zeros=21 fails=0

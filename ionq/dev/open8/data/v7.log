@@ -1,0 +1,28 @@
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=78s  gen g24 e8 band random /22 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=93s  gen g24 e8 band random /22 @1 
+PASSED            81.6 cp=[80.0, 81.1, 83.6] cpu=128s  gen g24 e8 band random /21 @2 
+PASSED            98.9 cp=[96.8, 100.0, 100.0] cpu=135s  gen g24 e8 band random /21 @1 
+PASSED            85.8 cp=[83.5, 86.4, 87.6] cpu=138s  gen g36 e12 band random /22 @2 
+PASSED            58.1 cp=[57.9, 58.4, 58.1] cpu=132s  gen g36 e12 band random /23 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=565s  gen g36 e12 band random /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=567s  gen g36 e12 band random /21 @1 
+PASSED             6.1 cp=[0.0, 0.0, 18.3] cpu=570s  gen g36 e12 band random /22 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=15s  Public open circuit / 31 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=15s  Public open circuit / 31 @2 
+PASSED            97.9 cp=[93.7, 100.0, 100.0] cpu=25s  Public continuous multilayer / 37 @1 
+PASSED            98.1 cp=[94.4, 100.0, 100.0] cpu=28s  Public continuous multilayer / 37 @2 
+PASSED            32.6 cp=[0.0, 19.2, 78.7] cpu=517s  gen g36 e12 band random /23 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=40s  Public open circuit / 537 @1 
+PASSED            98.0 cp=[94.0, 100.0, 100.0] cpu=41s  Public open circuit / 537 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=62s  gen g12 e4 0.4-2.6 random /11 @1 
+PASSED            88.9 cp=[66.6, 100.0, 100.0] cpu=54s  gen g12 e4 0.4-2.6 random /11 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  gen g48 e16 band random /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=571s  gen g48 e16 band random /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=574s  gen g48 e16 band random /22 @1 
+PASSED            73.0 cp=[19.1, 100.0, 100.0] cpu=107s  Edited-range mixed @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=565s  gen g48 e16 band random /22 @2 
+PASSED            48.4 cp=[5.3, 69.3, 70.7] cpu=178s  Edited-range mixed @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=191s  Repeated-pair open example @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=201s  Repeated-pair open example @2 
+
+n=26 mean=64.1 zeros=6 fails=0

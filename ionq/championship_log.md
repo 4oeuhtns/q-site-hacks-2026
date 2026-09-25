@@ -209,15 +209,15 @@ the likely field; "frontier value" means the largest unknown circuit decoded (wr
 | # | Item | Mechanism (§12) | Rank value | Frontier value | Cost | Status |
 |---|---|---|---|---|---|---|
 | P0 | **Make in-defender pursuit match offline pursuit.** ✅ root cause found (§13.1): illegal angles >π silently dropped. v3 still scores 17.3 mean on 24-gate generic (offline: 100). Suspect: f2def's adaptive, shot-concentrated settings. Test offline on f2def's actual panel; if confirmed, switch to a uniform random panel once f2def reports a non-frame | D (measurement) | **high**: short hand-written attacks are the likeliest recoverable opponents | prerequisite for everything below | low | done (v4) |
-| P1 | **Seed brute force of public generators** at runtime (`open_example`, `open_multilayer_example`, thousands of seeds, common sizes), screened on a few settings | E | **high**: decodes 72-gate attacks made by generators | none | low | built (v4), in regression |
-| P2 | **Subspace/beam pursuit with rearrangement moves** (delete, move, swap, re-axis), several candidates per step, prune back | A | medium | **high**: target 36g/12e, then 48g/16e | medium | Pursuit2 built; mixed vs p1 (§13.2); both run in v4 |
+| P1 | **Seed brute force of public generators** at runtime (`open_example`, `open_multilayer_example`, thousands of seeds, common sizes), screened on a few settings | E | **high**: decodes 72-gate attacks made by generators | none | low | **done**: any open_example seed decoded (e.g. 537 → 97–99) |
+| P2 | **Subspace/beam pursuit with rearrangement moves** (delete, move, swap, re-axis), several candidates per step, prune back | A | medium | **high**: target 36g/12e, then 48g/16e | medium | done: p1 + p2 in pool; adaptive back-loading + random panel → 36g often, one 48g decoded at CP3 |
 | P3 | **Dictionary pruning by measured coupling graph** (restrict pair gates to pairs with evidence of coupling) | C1 | medium | medium: shrinks each step's search ~3× | low | deprioritized (§13.3) |
 | P4 | **Residual pursuit:** at checkpoints 2–3 measure with the current best inverse as the analysis circuit, run pursuit on the shallower residual | D | low–medium | potentially high | medium–high (uses settings) | experiment only |
 | P5 | **Relax-then-project:** overparameterized layered ansatz + L1, prune to legal gates | B | low | unknown | high | only if time |
 | P6 | Clifford-doped extension of f2def past 4 insertions | F | low | low | high | deferred |
 | P7 | Multithreaded kernels | G | depends on runner | medium | low | blocked: runner limits unknown |
-| R1 | **Timeout safety:** f2def alone up to 514 CPU s; v3 generic cases reach ~690 s | Inversion | **critical** | — | low | open |
-| R2 | Final attacks: verify vs v3, stock, and an overpowered adversary; build and validate the OPEN8 ZIP | — | **critical** | — | low | attacks verified; ZIP statically valid; final smoke pending |
+| R1 | **Timeout safety:** f2def alone up to 514 CPU s; v3 generic cases reach ~690 s | Inversion | **critical** | — | low | mitigated: f2def fit time-boxed, 600 s encounter cap; broad max 597 s (limit unpublished) |
+| R2 | Final attacks: verify vs v3, stock, and an overpowered adversary; build and validate the OPEN8 ZIP | — | **critical** | — | low | **done**: v10 VALIDATED_LOCALLY, attacks 0 vs every defender |
 
 Rule for every item: develop offline first, then add as a *new pool source* (never
 replace), then pass the regression set (`specs_reg3.json`) without losses before it
@@ -474,3 +474,335 @@ With p2 the per-step cost is no longer dominated by candidate scoring. For deep 
 
 ### 13.7 Submission candidate
 `dev/build.py --profile quantum-duel-8q-open-0.7.1 --files main.py opendef.py sim8.py pursuit.py f2def.py tlib.json --no-smoke` gives **STATIC_VALIDATED, valid_for_upload: True**, 222 KB zipped / 821 KB expanded (limits 2 MB / 4 MB; `tlib.json` 725 KB < 1 MB per file after rounding angles to 1e-4). Numba kernels use `cache=False` so a read-only runner directory cannot break them.
+
+### 13.8 v4 regression (`reg4_v4`, 57 encounters, 0 crashes, mean 75.0)
+| Family | v3 | v4 | CPU s |
+|---|---|---|---|
+| generic 24g/8e | 17.3 | **90.6** | 248 |
+| sparse 18g/6e | 23.6 | **100** | 124 |
+| sparse 12g/4e | 7.5 | 59.3 | 140 |
+| **open_example seed 537, 72g/24e** (in no list; generator source) | — | **97.1** | 102 |
+| open_example 23 and seed 2026 | 99.5 | 99.2 | 84 |
+| `mixed` with edited ranges (±0.3 wider) | — | 59.2 | 226 |
+| generic 36g / 48g | 0 / — | 16.7 / 0 | 544 / 565 |
+| frames k=2 / k=4 / public frame / Cup 2 frame A | 100 | 100 | 40 / 478 / 400 / 135 |
+| `mixed` / `multilayer` | 100 / 98.7 | 100 / 96.0 | 81 / 89 |
+| `open_demo` (5 g) | 100 | 100 | **853** |
+
+**P1 confirmed:** the generator source decoded a 72-gate attack built from a seed that appears in no list.
+
+### 13.9 Diagnoses from v4 logs → v5
+1. **"Explained" too loose, and never refit.** At 32k shots the goodness-of-fit test cannot tell ε ≈ 0.01–0.02 from ε ≈ 0 (expected z ≈ N·ε·c / √(2·nnz) ≈ 3–7). A generator fit started from wrong angle centres passed z < 6 at checkpoint 1 with ε ≈ 0.02. Every later checkpoint then skipped all sources, and the angles were never refitted on the extra 64k shots (flat 36.3 / 36.3 / 36.3). **Fix:** skip threshold z < 3, and at every checkpoint refit the two best models' angles on all data (60 L-BFGS iterations).
+2. **f2def's own CPU.** Profiling `open_demo`: 238 of 252 CPU s at checkpoint 1 is `Algebra.fit` with 40 fresh starts (our Cup 2 hardening), repeated every checkpoint. **Fix:** warm start first, then fresh starts in chunks of 4 (distinct seeds) until a 45 CPU s fit deadline.
+3. **36-gate generic in-defender (16.7) vs offline (100, 100, 0 at 300 s):** budget-limited. This motivates the back-loading measurement (§14).
+
+---
+
+## 14. Back-loading: sacrificing early checkpoints for the last one
+
+**Question:** is there a strategy that gives up 100 on every checkpoint but secures points on the last?
+
+**What can and cannot move.**
+- **Shots cannot move.** Blocks are use-or-lose (`available_now = (stage+1)·block − spent − forfeited`), and checkpoint 3 sees the same 96k shots whatever patches were submitted earlier. Patches never affect the data.
+- **CPU (per-encounter limit) and measurement design can move.**
+- **Nothing guarantees points on a deep private attack:** our 72-gate attacks scored 0 even against an adversary with 96k shots and 1,200 s.
+
+**Points arithmetic.** Solving at checkpoint 1 = 100, at checkpoint 2 = 66.7, only at checkpoint 3 = 33.3. Back-loading can gain at most +33.3 per encounter, and only on attacks that fail with a split budget but succeed with a concentrated one. It loses on everything front-loading solves early.
+
+**Measurement** (offline, generic banded attacks, `dev/open8/data/backload.log` vs `frontier.log`):
+
+| Generic attack | p1 @ 32k / 300 s | p1 @ 96k / 400 s | p2 @ 32k / 300 s | p2 @ 96k / 400 s |
+|---|---|---|---|---|
+| 24g / 8e | 95.5, 84, 100 | — | 100, 93.7, 69.1 | — |
+| 36g / 12e | 100, 100, 0 | **100, 100, 100** (260–358 s) | 62, 100, 20.3 | 31.8, 35.9, 3.6 |
+| 48g / 16e | 41.2, 0, 0 | 3.7, 0, 33.2 | 0, 99.1, 12.1 | 0, 36.1, 0 |
+| 60g / 20e | — | 0, 0, 0 | — | 0, 0, 0 |
+
+**Conclusions.**
+- The concentrated budget makes **36-gate attacks reliably solvable** at checkpoint 3 (3/3 with p1).
+- 48 gates stays out of reach even with the full budget, and 60 is hopeless. The practical frontier is ~36–48 gates.
+- p2's closed-form speed does not carry over to 720 settings; p1 is the right engine for checkpoint 3.
+- **Pure back-loading is wrong:** 24-gate attacks are solved at checkpoint 1 in 45–100 s, and waiting would give up two-thirds of their points.
+
+**Adopted: adaptive back-loading (v6).**
+- Checkpoint 1 runs the cheap sources plus a p2 pursuit (110 s).
+- If the stage-1 winner does not explain the data (z > 3), the encounter enters **hard mode**: checkpoint 2 gets only a 30 s warm continuation, and checkpoint 3 gets a fresh p1 pursuit on all 96k shots with the rest of the encounter budget (cap raised 480 → 600 CPU s, 40 s reserved for the final refit).
+- Risk is low: in hard mode checkpoints 1–2 have usually scored ≈ 0, so spending late puts little at stake.
+
+### 14.1 v5 regression (`reg5_v5`, 26 encounters, 0 crashes, mean 98.3, max CPU 279 s)
+| Family | v4 | v5 | CPU s v4 → v5 |
+|---|---|---|---|
+| `open_demo` | 100 | 100 | 853 → **272** |
+| `mixed`, edited ranges | 59.2 | **100** | 226 → 78 |
+| sparse 12g/4e | 59.3 | **94.4** | 140 → 139 |
+| generic 24g/8e | 90.6 | 95.1 | 248 → 141 |
+| frame k=2 / k=4 / public frame | 100 / 100 / 100 | 98.1 / 99.0 / 99.1 | k=4: 478 → **261** |
+| Cup 2 frame A / merged / `mixed` / `multilayer` / open_example 537 | ≥ 96 | 99.9 / 99.7 / 100 / 98.0 / 99.0 | 23–222 |
+
+The refit fixed the flat partial scores, and the time-boxed f2def fit removed the ~850 s worst case. Cost: slightly lower checkpoint-1 scores on some frames (e.g. 88.7 → 100 → 100) from fewer fresh starts.
+
+### 14.2 v6 hard-set result and the real CPU leak
+| Generic | v4 | v6 (adaptive back-loading) | CPU s |
+|---|---|---|---|
+| 24g | 90.6 | 95.1 | 192 |
+| 36g | 16.7 | 26.2 | 471 |
+| 48g | 0 | 0 | 564 |
+
+- Hard mode triggered correctly, but checkpoint 3's p1 pursuit got only **64–110 s** (intended ~300), because checkpoints 1–2 had already used ~450 s.
+- **Cause:** screening is time-boxed but the fits after it were not. The generator fitted its top 3 seeds and the template source its top 4, each a 72-parameter fit of up to 200 iterations on all data, and templates repeated this every checkpoint. On a non-template attack every one of those fits is wasted (z ≈ 160).
+- **Screening separation** (best NLL ÷ next *different* architecture's), measured from logged screens:
+
+| Case | Ratio |
+|---|---|
+| true template or generator match (`mixed`, `multilayer`, open_example, edited `mixed`, sparse 18/6 via generator) | **0.23–0.56** |
+| no match (generic 24/36/48 unknown architecture) | **0.95–0.99** |
+
+**v7 fix:** fit a template or generator candidate only if separation < 0.8, fit only the best, and never refit a rejected candidate. Per-checkpoint CPU is now logged.
+
+---
+
+## 15. New attack designs probed, and the few-qubit decoder
+
+### 15.1 Probes (v6, `probe7_v6`)
+| Deep 72g/24e attack | v6 recovery (4 encounters) |
+|---|---|
+| small angles 0.1–0.4 rad, all 8 qubits | 0, 7.2, 35.3, 27.0 (pursuit finds approximate compact models) |
+| confined to **3 qubits** | 9.0, 20.1, 0, 4.5 |
+| confined to 4 qubits | 0 ×4 |
+
+### 15.2 Few-qubit decoder (`subsys.py`, v8)
+- **Idea.** An attack confined to k ≤ 3 qubits is a k-qubit unitary (63 parameters at k = 3) *whatever its depth*. A fixed circuit with more parameters than that fits inside the patch caps (3 qubits: 16 blocks = 89 gates, 16 entanglers). By overparametrization theory (Larocca et al. 2023) its landscape has no spurious minima, so no structure search is needed.
+- **Expressivity check** (noise-free fit to exact 72-gate 3-qubit targets, `dev/open8/t_ansatz3.py`): 14 blocks (79 gates) and 19 blocks (104 gates) both reach **ε ≈ 1e-8 from every random start** (12/12).
+- **Support detection is exact.** The oracle has no noise beyond shot noise, so an untouched qubit prepared and read in the same basis never disagrees; ≥ 2 disagreements mark a qubit as touched. Correct on 4/4 test attacks (3-, 4- and 8-qubit supports).
+- **Fit on the support's marginal counts** (k-qubit data, 32× cheaper than 8-qubit simulation), 4 random restarts.
+- **Offline, f2def's checkpoint-1 records (32k shots):** deep 3-qubit attacks **85.2 and 86.9 points in 2–3 CPU s** (v6: 0–20). The residual ε ≈ 2e-3 is shot noise on 89 parameters, so it should reach 100 at 64k–96k shots.
+- **Also:** pursuit's dictionary is now restricted to the detected support whenever the attack leaves qubits idle. This is a sound form of P3: exact, unlike the coupling statistic.
+- **4-qubit support stays open:** SU(16) has 255 parameters, beyond the 108-gate patch cap, so this trick does not extend.
+
+### 15.3 v7 results, and why the absolute goodness-of-fit test was the wrong tool
+**v7** (`v7`, 26 encounters): the CPU leak is gone. Checkpoint 1 takes ~125–134 s, checkpoint 2 ~170 s cumulative, and hard mode's checkpoint-3 pursuit gets **~380 s** as intended. Copied templates are now cheap (`mixed` 81 → 15 s, `multilayer` 93 → 26 s, open_example/537 97 → 40 s). Remaining problems:
+
+| Case | v7 | Issue |
+|---|---|---|
+| 36g hard mode (4 enc.) | 0, 0, 18.3, 78.7 | p1 with 380 s builds 39 wrong gates, although 3/3 offline at the same budget → measurement-panel test (§15.4) |
+| 36g seeds 22/23 (not hard) | 83.5 → 87.6; 57.9 → 58.1 | model "explained" at z < 3 but ε ≈ 0.003–0.005; later checkpoints skipped search with ~470 s CPU unused |
+| edited-range `mixed` | 60.7 (v5: 100) | see below |
+
+**Diagnosis** (f2def's checkpoint-1 panel, offline):
+
+| Edited `mixed` fit | NLL | z | ε | Points |
+|---|---|---|---|---|
+| bounded to published ranges | 21,874 | **1.7** | 7.8e-2 | **5.3** |
+| free refit | 20,022 | −0.2 | 2.7e-4 | 100 |
+| fit started from the true angles | 20,022 | −0.2 | 2.7e-4 | 100 |
+
+Nine of the 18 true angles lie outside the published ranges. A 1,852-unit likelihood gap, which is overwhelming evidence, moves z only from −0.2 to 1.7, because z divides by the noise of ~15,000 count bins and dilutes a concentrated misfit. **Comparing likelihoods between models is sharp; the absolute z test is not.** It remains useful only to *reject* wildly wrong models (z ≫ 10).
+
+**v9 changes.**
+1. Template fits always add the free refit; the pool's likelihood comparison decides.
+2. "Explained, skip further search" applies only to exact-structure winners (f2def lossless compile, template, generator, subsystem), where skipping saves real CPU on frames.
+3. A pursuit-built winner always gets a 60 s warm continuation at later checkpoints. The warm pursuit stops on BIC within seconds when the model is already right.
+
+### 15.4 v8 results (`v8`, 30 encounters)
+| Attack | v6 | v8 | CPU s |
+|---|---|---|---|
+| **72-gate deep, confined to 3 qubits** (6 enc., incl. support {2,5,7}) | 0–20 | **94.3–97.0** (CP1 84–91, then 100) | 40–50 |
+| 72-gate deep, 4 qubits | 0 | 0 | ~569 |
+| 36-gate on 5 qubits | — | 3.0, 8.7 | ~520 |
+| 72-gate small angles | 0–35 | 5.1–34.5 | ~560 |
+| generic 36g | 26–30 | 67.6 [3,100,100]; 33.3 [0,0,**100**] | 172, 447 |
+| generic 24g, seed 21 | 88–98 | 81.6, 58.4 | 140, 224 |
+| `mixed` / `multilayer` / `open_demo` / frame k=2 / sparse 12 | ~94–100 | 100 / 98.0 / 100 / 100 / 94.4 | 14–232 |
+
+**Frontier statement:** an attack confined to ≤ 3 qubits is now decoded at **any depth**.
+
+### 15.5 Measurement panel diagnosis → v10
+- **Offline test** (`dev/open8/panel3.py`): 36g, p1 with 380 s at 96k shots.
+
+| Panel | Seed 21 | Seed 22 |
+|---|---|---|
+| f2def's adaptive panel, all three checkpoints (712 settings) | 0 | 18.3 |
+| f2def's checkpoint 1 (492 settings), then 228 random settings | 0 | 16.9 |
+| **uniform random, 720 settings** | **100** | **100** |
+
+- **Why:** f2def's parity learning measures in *families*, one random base setting plus 8 single-sign-flip variants (`0 +i 0 0 …` / `1 +i 0 0 …` / `0 -i 0 0 …`, same readout basis). That is ideal for learning Clifford parities and poor for likelihood search, which needs diverse directions. On non-frames the loop never completes and uses 492 of the 720-setting budget at checkpoint 1.
+- **How many settings frames need** (`dev/open8/f2cap.py`):
+
+| Frame | 90 settings | 180 | 270 |
+|---|---|---|---|
+| k=2 | ✗ (rank 9) | **100** (rank 13) | 100 |
+| Cup 2 frame A | ✗ (8) | **100** (13) | 100 |
+| merged | ✗ (9) | **100** (16) | 100 |
+| k=4 | ✗ (8) | ✗ (11) | **100** (12) |
+| public FRAME4 | ✗ (5) | ✗ (10) | **100** (12) |
+
+- **Classifier:** raw parity rank misleads because each idle qubit adds 2 trivial parities (`open_demo` rank 10, 3-qubit attack rank 10 at 90 settings). **Rank on the support** = rank − 2 × idle qubits: frames 10–16 at 180 settings, non-frames ≤ 4.
+- **v10 measurement:**
+  - Checkpoint 1: f2def probe with 180 settings / 16k shots.
+  - If it completed, or the support rank is ≥ 8, the attack is frame-like: f2def gets the rest of the block, as before.
+  - Otherwise the rest of the block goes to ~180 new uniformly random settings, and f2def is skipped at checkpoints 2–3, which get ~180 new random settings each (≈540 diverse settings in total).
+
+### 15.6 v10 results (`v10`, 34 encounters, mean 84.6, 1 zero, 0 crashes, max CPU 565 s)
+| Group | v10 | CPU s |
+|---|---|---|
+| Frame probe classifier | **correct on all 17 attack types** (frames incl. k=4 / FRAME4 via support rank 10–11 → f2def; everything else → random panel) | — |
+| Frames: k=2, k=4, FRAME4, Cup 2 frame A, merged | **100 on 10/10** | 23–234 |
+| `mixed` / `multilayer` / open_example 537 / edited `mixed` / `open_demo` / open_example 31 | 100 / 97.4–99.3 / 97.7–98.6 / **100** / 100 / 100 | **7–29** |
+| generic 24g / sparse 12g | **100, 100 / 100, 100** | 47–154 |
+| generic 36g (6 enc.) | 33.3 [0,0,**100**] ×3, 6.8, 71.6, 75.9 | 138–564 |
+| **generic 48g** | 0, **33.3 [0,0,100]** | 531–565 |
+| 72g deep on 3 qubits | 99.2, 97.5 | 34–39 |
+
+The random panel lets hard mode's checkpoint-3 pursuit decode 36-gate attacks, and **one 48-gate attack**.
+
+### 15.7 Validated submission (v10)
+`dev/build.py --profile quantum-duel-8q-open-0.7.1 --version v10 --files main.py opendef.py sim8.py pursuit.py subsys.py f2def.py tlib.json --cases local zz mixed multilayer --timeout 900`
+
+- **VALIDATED_LOCALLY, valid_for_upload: True**, 226,810 bytes zipped / 834,437 expanded.
+- The packaged code ran in fresh processes on the notebook's smoke cases: local 100, zz 100, mixed 100, multilayer 97.37.
+- Attack qualifier: VALIDATED.
+- Frozen copy: `quantum_duel_work/quantum-duel-8q-open-0.7.1/submission_v10_validated.zip`, sha256 `0a1cda0d1af1ec28c5356f94f5267f7b764047e2797e1a634ca2e526aaccbeec`.
+
+
+### 15.8 Broad validation of v10 (`broad_v10`, 59 families × 1 draw, 0 crashes, max CPU 597 s)
+| Families | f2def alone (sweep1) | v10 |
+|---|---|---|
+| exact frames: k ≤ 4, pair insertions ≤ 2, layered, public frame examples, merged, Cup 2 frame B | 100 | 100 |
+| sparse 2–24 gates | 0–100 (8–24 g: 0) | **90–100** |
+| `open_example` (default and 72/24) | 0 | **100** |
+| generic 72g with only 4 entanglers | 0 | 63.8 |
+| generic small-angle 72g | 0 | 30.2 |
+| generic 72g/12e, brick, angles 2.5–3.0; frames k ≥ 6; near-Clifford frames; pair_ins ≥ 6 | 0 | 0 |
+| **mean** | 36.7 | **62.3** |
+
+**Caveat for honest reporting:** the unbanded `generic` family at seed 11 (36/12 and 72/24) scored 100 / 99.8 in 12–19 s because `lab.generic` replays `open_example`'s RNG sequence, so the generator source recognised them as `open_example` seeds. That demonstrates seed recovery, not unknown-architecture decoding. The banded families used everywhere else, and our submitted attacks, have no such correspondence.
+
+**Final attacks vs v10:** 0.0 on all 6 encounters (both templates × 3 draws).
+
+## 16. Organizers' Championship Submission Check, edited templates, and v11 (Thursday night)
+
+### 16.1 The organizers' check notebook, run on our ZIP
+The organizers shared an optional notebook (`Quantum_Duel_Championship_Prep.ipynb`) that separates **execution ≠ inference ≠ synthesis ≠ submitted correction**. It reports the patch actually recorded at each checkpoint, its legality and size, and that checkpoint's ε and points.
+
+- **SDK:** the notebook's 34 embedded SDK files are byte-identical to our `_quantum_duel_sdk_0_7_2` (`diff -r`), so no rule, limit or scoring change.
+- **Headless runner:** `dev/open8/champ_check.py` executes the notebook's own helper cells (package check, SDK smoke runner, own-attack runner, evidence review) without Jupyter. Evidence goes to `dev/open8/data/champ_checks/`.
+- **Static check:** `STATIC_VALIDATED`; sha256 `0a1cda0d…aaccbeec` = `submission_v10_validated.zip`.
+- **Every case:** ZIP `MATCH`, Rules `MATCH`, all patches legal:
+
+| Case (seed) | cp1 | cp2 | cp3 | Recorded patch |
+|---|---|---|---|---|
+| local (41) | 100 (ε 1.9e-6) | 100 | 100 | 1 gate |
+| zz (41) | 100 | 100 | 100 | 8 g / 2 e |
+| mixed (41) | 100 (3.4e-4) | 100 | 100 | 18 g / 6 e |
+| multilayer (41) | 92.1 (1.44e-3) | 100 | 100 | 72 g / 24 e |
+| frame 4/41 (41, 42, 43) | 100 (4.6–8.0e-5) | 100 (**6.0–7.4e-4**) | 100 (3.9–4.6e-4) | 82–85 g / 32–36 e |
+| own attack 1, brick (73) | 0 (ε 0.99999) | 0 | 0 | 40–64 g / 24 e |
+| own attack 2, all-pairs (73) | 0 (ε 0.9999) | 0 | 0 | 56–57 g / 24 e |
+
+- **Our patch path:**
+  - The final pool filter `legal()` calls the same `validate(patch, **rules.validation_kwargs())` that `LocalSession.patch` applies.
+  - Each stage does an explicit `submit_patch` then `close_checkpoint`, using 3 of the 60 allowed patch updates.
+  - Models are circuits and the patch is their exact inverse, so there is no separate synthesis step in which an estimate can be lost. The one way it was lost before, unbounded angles, was fixed in v4 (§13.1).
+  - 99/99 v10 encounters completed, with no rejection lines in any log.
+- `lab.py` now records `cp_gates` / `cp_ents` per checkpoint, so a zero score can be read as an empty patch or a wrong patch.
+
+### 16.2 What the notebook exposed: refitting exact Clifford angles injected shot noise
+In the frame rows above, ε got **~10× worse after checkpoint 1**. Our own logs show this is systematic:
+
+- Of 30 logged encounters where `f2def:LEGAL_COMPILED` won checkpoint 1, `refit:previous` won checkpoint 2 in 27, and checkpoint 2 was worse in 23.
+- On a Clifford-only frame, ε went from 4e-15 to 3.4e-4.
+- **Cause:**
+  - At checkpoints 2 and 3 the stale-model refit re-estimated all ~82 angles, including the ±π/2 Clifford ones f2def knows exactly. That adds shot noise to every parameter: ε ≈ k/(c·N), 5e-4 at 64k shots and 3.5e-4 at 96k, which matches the observed 1/N scaling.
+  - BIC could not reject it, because `Model` counted k = 82 for both the exact model and its refit, so the refit won on raw NLL.
+- **No points were lost yet** (worst case 7.9e-4 < 1e-3), but a larger frame or a team's reused Cup 2 frame would sit at the threshold.
+- **Fix (v11):**
+  - `free_mask` treats angles that are multiples of π/2 as exact.
+  - `model_from_patch` counts only the free angles in k.
+  - The stale refit holds the exact angles fixed with equal L-BFGS-B bounds and re-estimates only the insertion angles.
+  - Models with continuous angles (pursuit, template, generator, subsys) are unaffected.
+
+### 16.3 p1 vs p3 (closed-form scoring, top-10, insert-only) — `data/p3.log`, generic band attacks, seeds 21–23
+
+| Shots / budget | Target | p1 | p3 |
+|---|---|---|---|
+| 64k / 200 s | 36 g | 58, 0, 0 | 100, 65, 0 |
+| 64k / 200 s | 48 g | 0, 0, 0 | 0, 0, 0 (ε 0.35–0.48 vs ~1.0) |
+| 96k / 400 s | 36 g | **100, 100, 100** | 100, 72.5, 28 |
+| 96k / 400 s | 48 g | 3.7, 0, 0 | **100**, 0, 0 |
+
+- **Totals:** at 96k shots the two score the same overall (304 vs 301 of 600), but they fail on different targets.
+- **p3's behaviour:** it stops on BIC after 160–300 s, having overshot the gate count (41–64 found for 36/48). Its misses are near-misses: ε 0.004–0.18, where p1's misses are at ~1.0.
+
+### 16.4 Polishing p3's near-misses — `data/polish.log`
+Each run used p3, then a 1000-iteration refit, then stepwise deletion, then a warm p2 continuation, all inside p1's budget.
+
+- The refit and deletion changed nothing: deletion removed 3–12 surplus gates at no gain.
+- The **warm p2 continuation** rescued 36 g/22 at 96k (28 → 100) and moved two 48 g cases from ε 0.17 to 0.04–0.06.
+- Of the 12 runs, 4 score 100, the same as raw p3.
+- **Verdict:** not worth the CPU in the defender, so p1 stays in hard mode.
+
+### 16.5 Edited public templates — `edits_v10` (v10, 16 encounters)
+These model a team that copies a notebook default and edits a few gates.
+
+| Edit | Edited `mixed` (18 g) | Edited `multilayer` (72 g) |
+|---|---|---|
+| delete 4 | 100, 80.7 | 99.6, 98.2 |
+| insert 4 | 100, 100 | not a legal attack (76 > 72 gates; spec error) |
+| change 3 axes | 100, 33.3 | **0, 0** |
+| retarget 2 | 100, 100 | **0, 0** |
+
+On the failures, the template screen ranked `bank:multilayer` first at separation 0.83–0.96, which v10 treats as no match. The fresh pursuit cannot reach 72 gates.
+
+### 16.6 Template-seeded repair (offline, `t_seeded.py`, `data/seeded.log`)
+Method: fit the nearest template (bounded, then free), then run p2 insert/delete from it with the **patch-sized caps (108 / 36)**, so it can insert past 72 gates before deleting.
+
+| Case | Separation | Template fit | Seeded p2 at 32k (CPU) | Then at 96k |
+|---|---|---|---|---|
+| multilayer, 3 axes, d1 | 0.84 | ε 0.51 | 85.0 (62 s; +7 −2 gates) | **100** |
+| multilayer, 3 axes, d2 | 0.82 | ε 0.50 | 96.9 (37 s) | **100** |
+| multilayer, retarget 2, d1 | 0.94 | ε 0.99 | 100 (69 s) | **100** |
+| multilayer, retarget 2, d2 | 0.95 | ε 0.86 | 96.0 (76 s) | **100** |
+| mixed, 3 axes, d1 | 1.00 | ε 0.82 | 100 (11 s) | 100 |
+| controls: multilayer, delete 4 | 0.50 / 0.72 | 91.7 / 96.5 | 0 insertions (unchanged) | 100 |
+
+- **The trigger:**
+  - Separation alone cannot trigger this, because near-matches (0.82–0.96, and 1.00 for the short `mixed`) overlap unrelated attacks (0.91–1.00).
+  - The **identity of the best-screened template** does separate them. Across every logged encounter (90+), an unrelated attack's best screen was always a generator instance (`open_example:S:…`, `multilayer:S`), never a named public example.
+- **Rule:** seed when there is no match, the template has ≥ 12 gates, and either the best template is a named public example (`bank:`, `notebook:`, `frame2:`, `frame4:`, `merged:`) or separation < 0.9.
+
+### 16.7 v11 changes
+1. Clifford-aware parameter count and refit (§16.2).
+2. **Template-seeded repair:**
+   - `TemplateSource.near` and `fit_near`; the pursuit engine `seed` (p2 with the patch-sized caps, 108 / 36); `PursuitSource.seed`.
+   - Checkpoint 1 seeds for 90 s (`SEED_BUDGET`) when there is a near match and the data are still unexplained.
+   - The fresh p2 run is skipped if the seeded model explains the data.
+   - A seeded lineage keeps its warm engine, and in hard mode checkpoint 3 continues the repair rather than starting a fresh p1.
+3. Unchanged for unrelated attacks: without a near match the code path is v10's.
+
+### 16.8 v11 regression (`v11`: the v10 set + the 7 legal edits + both final attacks, draws 1–2, 52 encounters, 0 crashes, max CPU 579 s)
+**Paired mean: v11 81.1 vs v10 72.9.**
+
+| Group | v10 | v11 | Note |
+|---|---|---|---|
+| multilayer, 3 axes changed | 0, 0 | **97.0, 97.5** | seeded; 74–75-gate patches; 71–77 s CPU |
+| multilayer, retarget 2 | 0, 0 | **89.7, 96.8** | seeded; d1 at ε 1–2e-3 on all three checkpoints |
+| mixed, 3 axes changed | 33.3, 100 | **83.1**, 100 | d1 stuck at ε 2e-3 (a misfit the z test cannot see, §15.3) |
+| other edits (delete 4, insert 4 into mixed, retarget 2 of mixed) | 80.7–100 | same | — |
+| frames (k2, k4, frame 4/41, Cup 2 frame A, merged) | 100 | 100 | **cp2–cp3 ε now 1e-9 to 4e-5** (was 3–8e-4) |
+| public / generator examples, 3-qubit 72 g, sparse, 24 g | 97.4–100 | same | — |
+| generic 36 g / 48 g (hard mode) | 0–75.9 | same ±4.5 | 36 g/21 d2 fell 6.8 → 2.3; runs have CPU-time deadlines, and both scores are failures |
+| our final attacks | 0 × 4 | 0 × 4 | — |
+
+### 16.9 Broad validation of v11 (`broad_v11`, the same 59 families × draw 3 as §15.8, 0 crashes, max CPU 583 s)
+- **Mean:** v11 62.7 vs v10 62.3. No family is more than 1 point worse.
+- **Better:** generic 72 g with 4 entanglers 63.8 → 86.2, small-angle 72 g 30.2 → 32.2, and 72 g with angles 2.5–3.0 went 0 → 3.6. These come from CPU-time variation, not from a new mechanism.
+- **Frame checkpoint-2 ε** (all 100-point frames): median **5.1e-4 → 5.9e-6**, max **7.1e-4 → 4.4e-5**. Frames now have a ~20× margin under the 1e-3 threshold, where they previously had ~1.4×.
+- **The near-match trigger fired once,** on a near-Clifford frame (k2, width 0.12) whose best screen was `frame4:37` at separation 1.00. The frame4 name made it count as a near match. It scored 0 before and after, so the only cost was 90 s of stage-1 CPU.
+
+### 16.10 v11 submission (validated)
+`dev/build.py --profile quantum-duel-8q-open-0.7.1 --version v11 --files main.py opendef.py sim8.py pursuit.py subsys.py f2def.py tlib.json --cases local zz mixed multilayer frame --timeout 900`
+
+- **VALIDATED_LOCALLY, valid_for_upload: True,** 228,053 bytes zipped / 839,095 expanded. Attack qualifier: VALIDATED.
+- **Smoke, now including the public `frame` case:** local 100, zz 100, mixed 100, multilayer 97.37, frame 100 (checkpoint-2 ε 3.5e-6, where v10 was 6.0e-4).
+- **Notebook package check:** `STATIC_VALIDATED`.
+- `submission.zip` = `submission_v11_validated.zip`, sha256 `a43340a38ddeef2369ceb4e1443e454b04f75bef9781adb9b7a043735e4127d3`. The v10 fallback is kept as `submission_v10_validated.zip`.

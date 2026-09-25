@@ -87,7 +87,7 @@ def frame(seed, k=2, ins_lo=0.3, ins_hi=0.9, width=0.0, layers=6, pair_width=0.0
     return dict(name=f"frame k{k} w{width} pw{pair_width} pins{pair_ins} / {seed}", gates=gates)
 
 
-def generic(seed, gates=72, ents=24, lo=0.5, hi=2.0, width=0.15, pairs="random", bands=None):
+def generic(seed, gates=72, ents=24, lo=0.5, hi=2.0, width=0.15, pairs="random", bands=None, qubits=None):
     """Continuous-angle random architecture, like open_example but tunable."""
     rng = np.random.default_rng(seed)
     slots = set(map(int, rng.choice(gates, ents, replace=False)))
@@ -102,12 +102,14 @@ def generic(seed, gates=72, ents=24, lo=0.5, hi=2.0, width=0.15, pairs="random",
                 t = sorted([a, (a + 1) % N])
             elif pairs == "all":
                 t = list(allpairs[int(rng.integers(len(allpairs)))])
+            elif qubits:
+                t = sorted(map(int, rng.choice(qubits, 2, replace=False)))
             else:
                 t = sorted(map(int, rng.choice(N, 2, replace=False)))
             pc += 1
             name = "r" + ax * 2
         else:
-            t = [int(rng.integers(N))]
+            t = [int(rng.choice(qubits))] if qubits else [int(rng.integers(N))]
             name = "r" + ax
         if bands:
             b = bands[int(rng.integers(len(bands)))]
@@ -116,7 +118,8 @@ def generic(seed, gates=72, ents=24, lo=0.5, hi=2.0, width=0.15, pairs="random",
             c = float(rng.uniform(lo, hi)) * int(rng.choice([-1, 1]))
         l, h = max(-math.pi, c - width), min(math.pi, c + width)
         out.append(dict(name=name, targets=t, low=l, high=h))
-    return dict(name=f"gen g{gates} e{ents} {'band' if bands else f'{lo}-{hi}'} {pairs} /{seed}", gates=out)
+    tag = f" q{len(qubits)}" if qubits else ""
+    return dict(name=f"gen g{gates} e{ents} {'band' if bands else f'{lo}-{hi}'} {pairs}{tag} /{seed}", gates=out)
 
 
 def sparse(seed, gates=6, ents=2):
@@ -212,6 +215,8 @@ def run_one(job):
         row.update(status="PASSED", points=res["recovery_points"],
                    cp_points=[c["recovery_points"] for c in cps],
                    cp_eps=[c["process_infidelity"] for c in cps],
+                   cp_gates=[len(c.get("patch") or []) for c in cps],
+                   cp_ents=[sum(len(g["targets"]) == 2 for g in c.get("patch") or []) for c in cps],
                    shots=res["spent_shots"], settings=res["distinct_settings"],
                    log=buf.getvalue()[-6000:])
     except BaseException as exc:
