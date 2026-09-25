@@ -1,0 +1,118 @@
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=5s  edge one_rx_pi @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=5s  edge one_rzz_minus_pi @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=5s  edge clifford_generic_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=18s  edge repeat_rx_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=33s  edge single_qubit_72 @1 
+PASSED            97.8 cp=[93.4, 100.0, 100.0] cpu=57s  edge locals_only_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=79s  edge diag_zz_z_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=185s  edge clifford_generic_4ins @1 
+PASSED            47.4 cp=[46.8, 47.5, 48.0] cpu=192s  edge boundary_72 @1 
+PASSED            95.6 cp=[86.7, 100.0, 100.0] cpu=211s  edge two_qubit_72 @1 
+PASSED            91.3 cp=[82.9, 94.6, 96.4] cpu=212s  edge one_pair_24ent @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=78s  edge diag_xx_x_36 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=24s  fuzz001 G10 E0 q8 few bands w0.1 @1 
+PASSED            98.3 cp=[94.8, 100.0, 100.0] cpu=34s  fuzz002 G15 E15 q3 line bands w1 @1 
+PASSED            68.4 cp=[61.9, 66.6, 76.6] cpu=86s  edge full_range_w2pi_24 @1 
+PASSED            82.7 cp=[75.2, 84.2, 88.6] cpu=53s  fuzz004 G22 E9 q8 few boundary w0.3 @1 
+PASSED            99.1 cp=[97.4, 100.0, 100.0] cpu=94s  fuzz000 G30 E5 q8 line bands w1 @1 
+PASSED            77.1 cp=[74.0, 76.9, 80.3] cpu=68s  fuzz003 G43 E10 q8 star boundary w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=5s  fuzz006 G14 E0 q5 random clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=115s  edge sandwich_23 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=5s  fuzz009 G15 E0 q8 star clifford w0 @1 
+PASSED            98.1 cp=[94.4, 100.0, 100.0] cpu=55s  fuzz005 G24 E24 q8 few small w0 @1 
+PASSED            98.7 cp=[96.0, 100.0, 100.0] cpu=48s  fuzz008 G20 E0 q5 few uniform w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  fuzz013 G28 E14 q2 star clifford w0 @1 
+PASSED            97.8 cp=[93.4, 100.0, 100.0] cpu=56s  fuzz010 G33 E0 q3 line small w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=103s  fuzz014 G8 E2 q5 random nearcliff w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=47s  fuzz016 G12 E12 q3 random uniform w1 @1 
+PASSED            92.2 cp=[76.7, 100.0, 100.0] cpu=206s  fuzz007 G47 E6 q2 line nearcliff w0 @1 
+PASSED            98.0 cp=[94.1, 100.0, 100.0] cpu=204s  fuzz011 G33 E9 q2 random boundary w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  fuzz018 G1 E0 q8 random nearcliff w0 @1 
+PASSED            41.3 cp=[32.0, 42.0, 49.8] cpu=543s  edge near_identity_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=39s  fuzz020 G20 E0 q5 line boundary w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  fuzz022 G4 E2 q8 line clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=22s  fuzz021 G11 E2 q5 star clifford w0 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=581s  edge ents_only_24 @1 
+PASSED            57.5 cp=[47.6, 57.5, 67.4] cpu=224s  fuzz015 G45 E24 q5 line boundary w0 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=572s  edge star_48 @1 
+PASSED            98.8 cp=[96.5, 100.0, 100.0] cpu=45s  fuzz023 G4 E0 q3 line bands w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=38s  fuzz025 G8 E1 q8 few nearcliff w1 @1 
+PASSED            99.8 cp=[99.5, 100.0, 100.0] cpu=81s  fuzz024 G8 E2 q5 line nearcliff w0 @1 
+PASSED            97.3 cp=[92.0, 100.0, 100.0] cpu=58s  fuzz028 G18 E2 q3 few uniform w0.1 @1 
+PASSED            98.9 cp=[96.7, 100.0, 100.0] cpu=57s  fuzz029 G20 E1 q3 star nearcliff w1 @1 
+PASSED            83.1 cp=[49.8, 99.6, 100.0] cpu=34s  fuzz031 G6 E3 q8 random boundary w0 @1 
+PASSED            97.9 cp=[93.7, 100.0, 100.0] cpu=52s  fuzz030 G42 E0 q3 star bands w0.3 @1 
+PASSED            90.8 cp=[72.4, 100.0, 100.0] cpu=206s  fuzz017 G69 E24 q2 line uniform w0.1 @1 
+PASSED            95.9 cp=[88.0, 99.9, 100.0] cpu=204s  fuzz019 G29 E24 q8 few nearcliff w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=47s  fuzz032 G3 E3 q8 few small w1 @1 
+PASSED            73.7 cp=[60.4, 60.6, 100.0] cpu=30s  fuzz036 G4 E1 q3 few boundary w0 @1 
+PASSED            92.4 cp=[79.2, 98.0, 100.0] cpu=46s  fuzz034 G16 E4 q8 random boundary w0 @1 
+PASSED            96.3 cp=[89.0, 100.0, 100.0] cpu=47s  fuzz035 G29 E0 q3 star boundary w0.3 @1 
+PASSED            93.2 cp=[91.3, 93.7, 94.7] cpu=61s  fuzz037 G29 E11 q8 few boundary w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=188s  fuzz027 G21 E21 q8 star clifford w0 @1 
+PASSED            97.0 cp=[91.1, 100.0, 100.0] cpu=32s  fuzz040 G19 E11 q3 star bands w0.1 @1 
+PASSED            56.6 cp=[53.3, 58.4, 58.0] cpu=219s  fuzz026 G34 E24 q8 line boundary w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=38s  fuzz041 G18 E18 q2 few uniform w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=67s  fuzz044 G12 E12 q8 random bands w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=5s  fuzz046 G25 E6 q8 random clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=200s  fuzz033 G14 E7 q2 line boundary w0 @1 
+PASSED            28.8 cp=[0.0, 0.0, 86.5] cpu=563s  fuzz012 G71 E12 q8 star nearcliff w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=47s  fuzz047 G17 E0 q5 line bands w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=27s  fuzz048 G23 E23 q8 few bands w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=23s  fuzz049 G1 E1 q8 few bands w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=4s  fuzz052 G1 E0 q5 line clifford w0 @1 
+PASSED            95.9 cp=[87.6, 100.0, 100.0] cpu=38s  fuzz050 G9 E1 q5 few boundary w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=212s  fuzz039 G10 E4 q2 line bands w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=183s  fuzz043 G16 E7 q8 few bands w0.1 @1 
+PASSED            97.0 cp=[91.0, 100.0, 100.0] cpu=36s  fuzz053 G13 E7 q8 star small w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=4s  fuzz056 G4 E0 q8 line clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=29s  fuzz057 G7 E4 q5 star bands w0 @1 
+PASSED            96.7 cp=[90.0, 100.0, 100.0] cpu=186s  fuzz045 G22 E10 q2 line bands w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=5s  fuzz059 G15 E8 q8 few clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=58s  fuzz055 G22 E3 q8 star bands w0.1 @1 
+PASSED            96.0 cp=[87.9, 100.0, 100.0] cpu=40s  fuzz061 G11 E11 q3 random bands w0.3 @1 
+PASSED            38.1 cp=[34.0, 35.0, 45.3] cpu=155s  fuzz051 G22 E22 q5 star bands w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=48s  fuzz064 G5 E2 q8 few uniform w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=124s  fuzz062 G7 E7 q2 star bands w0.3 @1 
+PASSED            95.8 cp=[87.5, 100.0, 100.0] cpu=35s  fuzz066 G63 E23 q3 random bands w0 @1 
+PASSED            99.7 cp=[99.2, 100.0, 100.0] cpu=55s  fuzz065 G26 E3 q3 star small w1 @1 
+PASSED            46.7 cp=[43.7, 47.9, 48.5] cpu=237s  fuzz054 G64 E18 q8 star boundary w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=31s  fuzz067 G11 E6 q8 few small w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=23s  fuzz069 G1 E1 q2 star uniform w1 @1 
+PASSED            93.5 cp=[80.5, 100.0, 100.0] cpu=216s  fuzz060 G64 E12 q2 random boundary w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=192s  fuzz063 G67 E0 q2 few small w0.1 @1 
+PASSED            22.3 cp=[0.0, 0.0, 66.8] cpu=467s  fuzz042 G30 E8 q8 star bands w0.3 @1 
+PASSED            91.9 cp=[75.7, 100.0, 100.0] cpu=47s  fuzz073 G3 E0 q5 star nearcliff w0.3 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=575s  fuzz038 G66 E19 q8 line bands w0.3 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=344s  fuzz058 G22 E22 q8 random bands w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=42s  fuzz075 G15 E0 q8 star bands w0 @1 
+PASSED            83.0 cp=[80.4, 84.1, 84.7] cpu=54s  fuzz076 G33 E18 q5 few nearcliff w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=50s  fuzz079 G3 E2 q8 line uniform w0.3 @1 
+PASSED            94.1 cp=[82.4, 100.0, 100.0] cpu=212s  fuzz072 G16 E4 q2 star uniform w0.1 @1 
+PASSED            95.7 cp=[87.2, 100.0, 100.0] cpu=214s  fuzz071 G32 E24 q2 star bands w0 @1 
+PASSED            72.3 cp=[67.8, 69.0, 80.0] cpu=71s  fuzz081 G32 E24 q5 line boundary w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=195s  fuzz078 G28 E0 q2 few bands w0.1 @1 
+PASSED            52.1 cp=[46.4, 53.1, 56.9] cpu=299s  fuzz074 G54 E24 q8 random small w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=46s  fuzz085 G18 E0 q8 line bands w0.1 @1 
+PASSED            99.8 cp=[99.5, 100.0, 100.0] cpu=56s  fuzz086 G36 E18 q3 few boundary w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=19s  fuzz088 G1 E0 q8 line bands w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=204s  fuzz080 G46 E0 q2 line small w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=135s  fuzz084 G36 E22 q8 few bands w0.1 @1 
+PASSED            97.1 cp=[91.3, 100.0, 100.0] cpu=37s  fuzz089 G49 E21 q3 star uniform w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=35s  fuzz092 G16 E0 q8 line uniform w1 @1 
+PASSED            65.7 cp=[48.0, 49.1, 100.0] cpu=491s  fuzz070 G12 E7 q8 star nearcliff w0 @1 
+PASSED            94.3 cp=[82.8, 100.0, 100.0] cpu=273s  fuzz083 G6 E2 q5 random uniform w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=31s  fuzz093 G13 E0 q8 few boundary w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  fuzz096 G64 E24 q8 few clifford w0 @1 
+PASSED            99.6 cp=[98.7, 100.0, 100.0] cpu=38s  fuzz094 G14 E0 q8 few uniform w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  fuzz097 G71 E23 q8 random clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=38s  fuzz095 G12 E0 q8 few uniform w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  fuzz098 G12 E12 q5 random clifford w0 @1 
+PASSED            31.7 cp=[18.8, 28.4, 48.0] cpu=565s  fuzz068 G63 E24 q8 few uniform w0.3 @1 
+PASSED            98.5 cp=[95.5, 100.0, 100.0] cpu=50s  fuzz099 G48 E0 q8 few nearcliff w1 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=567s  fuzz077 G38 E17 q8 random bands w0 @1 
+PASSED            22.0 cp=[0.0, 33.0, 33.2] cpu=401s  fuzz087 G34 E17 q8 line uniform w0 @1 
+PASSED            29.3 cp=[0.0, 20.7, 67.0] cpu=353s  fuzz090 G44 E24 q8 few bands w0 @1 
+PASSED             6.7 cp=[0.0, 0.0, 20.1] cpu=392s  fuzz091 G48 E15 q5 star nearcliff w0.3 @1 
+
+n=116 mean=85.8 zeros=5 fails=0

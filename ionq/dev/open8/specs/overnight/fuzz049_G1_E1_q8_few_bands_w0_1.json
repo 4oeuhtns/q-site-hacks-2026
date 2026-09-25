@@ -1,0 +1,1 @@
+{"name": "fuzz049 G1 E1 q8 few bands w0.1", "gates": [{"name": "rzz", "targets": [1, 7], "low": 1.424479619171404, "high": 1.524479619171404}]}

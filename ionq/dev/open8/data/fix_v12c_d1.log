@@ -1,0 +1,67 @@
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=89s  edit mixed delete12 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=179s  edit mixed delete12 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=200s  edit frame axis3 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=202s  edit frame delete4 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=204s  edit frame axis3 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=207s  edit frame swap6 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=218s  edit frame delete4 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=223s  edit frame swap6 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=21s  Merged same-qubit insertions near a quarter turn / 127 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  edge one_rx_pi @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  edge one_rzz_minus_pi @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=58s  frame k2 w0.0 pw0.0 pins0 / 11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=26s  edge repeat_rx_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  edge clifford_generic_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=48s  edge single_qubit_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=106s  Compile-hard frame A @1 
+PASSED            66.7 cp=[0.0, 100.0, 100.0] cpu=283s  edit frame retarget2 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=209s  Public frame 4 / 41 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=231s  frame k4 w0.0 pw0.0 pins0 / 11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  fuzz006 G14 E0 q5 random clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  fuzz009 G15 E0 q8 star clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=118s  edge diag_zz_z_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  fuzz013 G28 E14 q2 star clifford w0 @1 
+PASSED            95.6 cp=[86.7, 100.0, 100.0] cpu=234s  edge two_qubit_72 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=217s  edge clifford_generic_4ins @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=115s  edge diag_xx_x_36 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  fuzz018 G1 E0 q8 random nearcliff w0 @1 
+PASSED            91.3 cp=[82.9, 94.6, 96.4] cpu=227s  edge one_pair_24ent @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=24s  fuzz021 G11 E2 q5 star clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  fuzz022 G4 E2 q8 line clifford w0 @1 
+PASSED            98.8 cp=[96.5, 100.0, 100.0] cpu=55s  fuzz023 G4 E0 q3 line bands w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=114s  fuzz014 G8 E2 q5 random nearcliff w0 @1 
+PASSED            92.2 cp=[76.7, 100.0, 100.0] cpu=206s  fuzz007 G47 E6 q2 line nearcliff w0 @1 
+PASSED            99.8 cp=[99.5, 100.0, 100.0] cpu=93s  fuzz024 G8 E2 q5 line nearcliff w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=71s  fuzz027 G21 E21 q8 star clifford w0 @1 
+PASSED            73.7 cp=[60.4, 60.6, 100.0] cpu=41s  fuzz036 G4 E1 q3 few boundary w0 @1 
+PASSED            98.0 cp=[94.1, 100.0, 100.0] cpu=200s  fuzz011 G33 E9 q2 random boundary w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  fuzz046 G25 E6 q8 random clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=50s  fuzz041 G18 E18 q2 few uniform w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  fuzz052 G1 E0 q5 line clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  fuzz056 G4 E0 q8 line clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  fuzz059 G15 E8 q8 few clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=29s  fuzz049 G1 E1 q8 few bands w0.1 @1 
+PASSED            90.8 cp=[72.4, 100.0, 100.0] cpu=224s  fuzz017 G69 E24 q2 line uniform w0.1 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=593s  edit frame reverse0 v1 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=593s  edit frame reverse0 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=57s  fuzz064 G5 E2 q8 few uniform w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=28s  fuzz069 G1 E1 q2 star uniform w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=229s  fuzz033 G14 E7 q2 line boundary w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=154s  fuzz062 G7 E7 q2 star bands w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=235s  fuzz039 G10 E4 q2 line bands w0.1 @1 
+PASSED            96.7 cp=[90.0, 100.0, 100.0] cpu=225s  fuzz045 G22 E10 q2 line bands w0 @1 
+PASSED            91.9 cp=[75.7, 100.0, 100.0] cpu=59s  fuzz073 G3 E0 q5 star nearcliff w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=25s  fuzz088 G1 E0 q8 line bands w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  fuzz096 G64 E24 q8 few clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  fuzz097 G71 E23 q8 random clifford w0 @1 
+PASSED            93.5 cp=[80.5, 100.0, 100.0] cpu=239s  fuzz060 G64 E12 q2 random boundary w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  fuzz098 G12 E12 q5 random clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=204s  fuzz063 G67 E0 q2 few small w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=57s  fuzz079 G3 E2 q8 line uniform w0.3 @1 
+PASSED            95.7 cp=[87.2, 100.0, 100.0] cpu=237s  fuzz071 G32 E24 q2 star bands w0 @1 
+PASSED            94.1 cp=[82.4, 100.0, 100.0] cpu=229s  fuzz072 G16 E4 q2 star uniform w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=196s  fuzz078 G28 E0 q2 few bands w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=191s  fuzz080 G46 E0 q2 line small w0.3 @1 
+PASSED            65.7 cp=[48.0, 49.1, 100.0] cpu=271s  fuzz070 G12 E7 q8 star nearcliff w0 @1 
+
+n=65 mean=94.5 zeros=2 fails=0

@@ -1,0 +1,7 @@
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=11s  Merged same-qubit insertions near a quarter turn / 127 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=30s  frame k2 w0.0 pw0.0 pins0 / 11 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=69s  Compile-hard frame A @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=166s  Public frame 4 / 41 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=179s  frame k4 w0.0 pw0.0 pins0 / 11 @2 
+
+n=5 mean=100.0 zeros=0 fails=0

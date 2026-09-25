@@ -1,0 +1,6 @@
+start Fri Sep 25 01:12:01 EDT 2026 defender=/var/folders/bj/h0q73tx50cn2tmms1tv1zyh80000gn/T/tmp.N6YlkXLqmK/v11
+fuzz done Fri Sep 25 01:49:10 EDT 2026: n=116 mean=85.8 zeros=5 fails=0
+edits2 done Fri Sep 25 03:14:49 EDT 2026: n=126 mean=56.6 zeros=49 fails=0
+cap400 done Fri Sep 25 03:31:20 EDT 2026: n=52 mean=78.5 zeros=10 fails=0
+frontier done Fri Sep 25 03:59:03 EDT 2026
+ALL DONE Fri Sep 25 03:59:03 EDT 2026

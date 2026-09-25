@@ -1,0 +1,1 @@
+{"name": "fuzz052 G1 E0 q5 line clifford w0", "gates": [{"name": "ry", "targets": [2], "low": -3.141592653589793, "high": -3.141592653589793}]}

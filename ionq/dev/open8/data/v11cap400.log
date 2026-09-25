@@ -1,0 +1,54 @@
+PASSED            98.2 cp=[94.7, 100.0, 100.0] cpu=17s  Public continuous mu delete4 @2 
+PASSED            99.6 cp=[98.7, 100.0, 100.0] cpu=17s  Public continuous mu delete4 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=31s  Public open circuit  axis3 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  Public open circuit  delete4 @1 
+PASSED            80.7 cp=[42.1, 100.0, 100.0] cpu=10s  Public open circuit  delete4 @2 
+PASSED            96.8 cp=[90.3, 100.0, 100.0] cpu=81s  Public continuous mu retarget2 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=40s  Public open circuit  insert4 @1 
+PASSED            97.5 cp=[92.6, 100.0, 100.0] cpu=94s  Public continuous mu axis3 @2 
+PASSED            97.0 cp=[90.9, 100.0, 100.0] cpu=104s  Public continuous mu axis3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=100s  Public open circuit  retarget2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=109s  Public open circuit  retarget2 @2 
+PASSED            89.7 cp=[83.5, 90.7, 94.8] cpu=139s  Public continuous mu retarget2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=45s  frame k2 w0.0 pw0.0 pins0 / 11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=91s  Public open circuit  insert4 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=47s  frame k2 w0.0 pw0.0 pins0 / 11 @2 
+PASSED            83.1 cp=[81.3, 83.0, 85.1] cpu=219s  Public open circuit  axis3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=215s  frame k4 w0.0 pw0.0 pins0 / 11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=224s  frame k4 w0.0 pw0.0 pins0 / 11 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=219s  Public frame 4 / 41 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=17s  Merged same-qubit insertions near a quarter turn / 127 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=215s  Public frame 4 / 41 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=16s  Merged same-qubit insertions near a quarter turn / 127 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=369s  Deep continuous brick @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=379s  Deep continuous brick @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=86s  Compile-hard frame A @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=376s  Deep continuous all-pairs @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=368s  Deep continuous all-pairs @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=122s  Compile-hard frame A @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=100s  gen g24 e8 band random /21 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=121s  gen g24 e8 band random /21 @1 
+PASSED            71.6 cp=[65.0, 74.0, 75.9] cpu=134s  gen g36 e12 band random /23 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  Public open circuit / 31 @1 
+PASSED            76.9 cp=[55.1, 75.6, 100.0] cpu=180s  gen g36 e12 band random /23 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  Public open circuit / 31 @2 
+PASSED            97.4 cp=[92.3, 100.0, 100.0] cpu=17s  Public continuous multilayer / 37 @1 
+PASSED            99.3 cp=[97.8, 100.0, 100.0] cpu=18s  Public continuous multilayer / 37 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  Edited-range mixed @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  Edited-range mixed @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  Repeated-pair open example @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  Repeated-pair open example @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=49s  gen g12 e4 0.4-2.6 random /11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=47s  gen g12 e4 0.4-2.6 random /11 @2 
+PASSED            99.2 cp=[97.7, 100.0, 100.0] cpu=34s  gen g72 e24 band random q3 /41 @1 
+PASSED            97.5 cp=[92.5, 100.0, 100.0] cpu=38s  gen g72 e24 band random q3 /41 @2 
+PASSED            97.7 cp=[93.0, 100.0, 100.0] cpu=29s  Public open circuit / 537 @1 
+PASSED            98.6 cp=[95.7, 100.0, 100.0] cpu=29s  Public open circuit / 537 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=371s  gen g36 e12 band random /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=367s  gen g36 e12 band random /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=368s  gen g36 e12 band random /22 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=364s  gen g36 e12 band random /22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=365s  gen g48 e16 band random /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=367s  gen g48 e16 band random /21 @2 
+
+n=52 mean=78.5 zeros=10 fails=0

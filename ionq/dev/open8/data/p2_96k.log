@@ -1,0 +1,6 @@
+{"algo": "p2", "g": 36, "seed": 22, "draw": 1, "shots": 96000, "found": 42, "eps": 0.00029, "pts": 100.0, "cpu": 297, "stats": {"inserted": 48, "deleted": 6, "steps": 49}}
+{"algo": "p2", "g": 48, "seed": 21, "draw": 1, "shots": 96000, "found": 47, "eps": 0.00033, "pts": 100.0, "cpu": 311, "stats": {"inserted": 51, "deleted": 4, "steps": 52}}
+{"algo": "p2", "g": 36, "seed": 23, "draw": 1, "shots": 96000, "found": 38, "eps": 0.00443, "pts": 67.7, "cpu": 328, "stats": {"inserted": 56, "deleted": 18, "steps": 57}}
+{"algo": "p2", "g": 36, "seed": 21, "draw": 1, "shots": 96000, "found": 44, "eps": 0.00044, "pts": 100.0, "cpu": 363, "stats": {"inserted": 58, "deleted": 14, "steps": 59}}
+{"algo": "p2", "g": 48, "seed": 23, "draw": 1, "shots": 96000, "found": 56, "eps": 0.00039, "pts": 100.0, "cpu": 392, "stats": {"inserted": 63, "deleted": 7, "steps": 64}}
+{"algo": "p2", "g": 48, "seed": 22, "draw": 1, "shots": 96000, "found": 49, "eps": 0.54725, "pts": 0.0, "cpu": 403, "stats": {"inserted": 53, "deleted": 4, "steps": 53}}

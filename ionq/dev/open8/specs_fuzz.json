@@ -1,0 +1,466 @@
+[
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_one_rx_pi.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_one_rzz_minus_pi.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_locals_only_72.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_one_pair_24ent.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_ents_only_24.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_single_qubit_72.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_two_qubit_72.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_repeat_rx_72.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_clifford_generic_72.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_clifford_generic_4ins.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_near_identity_72.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_boundary_72.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_star_48.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_diag_zz_z_72.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_diag_xx_x_36.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_sandwich_23.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edge_full_range_w2pi_24.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz000_G30_E5_q8_line_bands_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz001_G10_E0_q8_few_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz002_G15_E15_q3_line_bands_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz003_G43_E10_q8_star_boundary_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz004_G22_E9_q8_few_boundary_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz005_G24_E24_q8_few_small_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz006_G14_E0_q5_random_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz007_G47_E6_q2_line_nearcliff_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz008_G20_E0_q5_few_uniform_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz009_G15_E0_q8_star_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz010_G33_E0_q3_line_small_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz011_G33_E9_q2_random_boundary_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz012_G71_E12_q8_star_nearcliff_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz013_G28_E14_q2_star_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz014_G8_E2_q5_random_nearcliff_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz015_G45_E24_q5_line_boundary_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz016_G12_E12_q3_random_uniform_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz017_G69_E24_q2_line_uniform_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz018_G1_E0_q8_random_nearcliff_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz019_G29_E24_q8_few_nearcliff_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz020_G20_E0_q5_line_boundary_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz021_G11_E2_q5_star_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz022_G4_E2_q8_line_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz023_G4_E0_q3_line_bands_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz024_G8_E2_q5_line_nearcliff_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz025_G8_E1_q8_few_nearcliff_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz026_G34_E24_q8_line_boundary_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz027_G21_E21_q8_star_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz028_G18_E2_q3_few_uniform_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz029_G20_E1_q3_star_nearcliff_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz030_G42_E0_q3_star_bands_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz031_G6_E3_q8_random_boundary_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz032_G3_E3_q8_few_small_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz033_G14_E7_q2_line_boundary_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz034_G16_E4_q8_random_boundary_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz035_G29_E0_q3_star_boundary_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz036_G4_E1_q3_few_boundary_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz037_G29_E11_q8_few_boundary_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz038_G66_E19_q8_line_bands_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz039_G10_E4_q2_line_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz040_G19_E11_q3_star_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz041_G18_E18_q2_few_uniform_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz042_G30_E8_q8_star_bands_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz043_G16_E7_q8_few_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz044_G12_E12_q8_random_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz045_G22_E10_q2_line_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz046_G25_E6_q8_random_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz047_G17_E0_q5_line_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz048_G23_E23_q8_few_bands_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz049_G1_E1_q8_few_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz050_G9_E1_q5_few_boundary_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz051_G22_E22_q5_star_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz052_G1_E0_q5_line_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz053_G13_E7_q8_star_small_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz054_G64_E18_q8_star_boundary_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz055_G22_E3_q8_star_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz056_G4_E0_q8_line_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz057_G7_E4_q5_star_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz058_G22_E22_q8_random_bands_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz059_G15_E8_q8_few_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz060_G64_E12_q2_random_boundary_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz061_G11_E11_q3_random_bands_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz062_G7_E7_q2_star_bands_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz063_G67_E0_q2_few_small_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz064_G5_E2_q8_few_uniform_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz065_G26_E3_q3_star_small_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz066_G63_E23_q3_random_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz067_G11_E6_q8_few_small_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz068_G63_E24_q8_few_uniform_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz069_G1_E1_q2_star_uniform_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz070_G12_E7_q8_star_nearcliff_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz071_G32_E24_q2_star_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz072_G16_E4_q2_star_uniform_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz073_G3_E0_q5_star_nearcliff_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz074_G54_E24_q8_random_small_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz075_G15_E0_q8_star_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz076_G33_E18_q5_few_nearcliff_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz077_G38_E17_q8_random_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz078_G28_E0_q2_few_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz079_G3_E2_q8_line_uniform_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz080_G46_E0_q2_line_small_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz081_G32_E24_q5_line_boundary_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz083_G6_E2_q5_random_uniform_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz084_G36_E22_q8_few_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz085_G18_E0_q8_line_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz086_G36_E18_q3_few_boundary_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz087_G34_E17_q8_line_uniform_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz088_G1_E0_q8_line_bands_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz089_G49_E21_q3_star_uniform_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz090_G44_E24_q8_few_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz091_G48_E15_q5_star_nearcliff_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz092_G16_E0_q8_line_uniform_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz093_G13_E0_q8_few_boundary_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz094_G14_E0_q8_few_uniform_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz095_G12_E0_q8_few_uniform_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz096_G64_E24_q8_few_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz097_G71_E23_q8_random_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz098_G12_E12_q5_random_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/fuzz099_G48_E0_q8_few_nearcliff_w1.json"
+}
+]

@@ -1,0 +1,506 @@
+[
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_axis1_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_axis1_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_axis3_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_axis3_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_axis6_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_axis6_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_retarget1_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_retarget1_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_retarget2_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_retarget2_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_retarget4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_retarget4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_delete4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_delete4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_delete12_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_delete12_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_insert4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_insert4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_shift4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_shift4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_widen10_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_widen10_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_negate0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_negate0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_reverse0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_reverse0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_swap6_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_swap6_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_combo0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_mixed_combo0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_axis1_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_axis1_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_axis3_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_axis3_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_axis6_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_axis6_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_retarget1_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_retarget1_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_retarget2_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_retarget2_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_retarget4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_retarget4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_delete4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_delete4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_delete12_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_delete12_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_shift4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_shift4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_widen10_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_widen10_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_negate0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_negate0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_reverse0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_reverse0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_swap6_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_swap6_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_combo0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_multilayer_combo0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_axis3_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_axis3_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_retarget2_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_retarget2_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_delete4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_delete4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_reverse0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_reverse0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_swap6_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_frame_swap6_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_axis1_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_axis1_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_axis3_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_axis3_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_axis6_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_axis6_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_retarget1_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_retarget1_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_retarget2_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_retarget2_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_retarget4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_retarget4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_delete4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_delete4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_delete12_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_delete12_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_insert4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_insert4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_shift4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_shift4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_widen10_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_widen10_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_negate0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_negate0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_reverse0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_reverse0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_swap6_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_swap6_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_combo0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_36_combo0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_axis1_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_axis1_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_axis3_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_axis3_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_axis6_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_axis6_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_retarget1_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_retarget1_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_retarget2_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_retarget2_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_retarget4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_retarget4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_delete4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_delete4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_delete12_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_delete12_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_shift4_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_shift4_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_widen10_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_widen10_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_negate0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_negate0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_reverse0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_reverse0_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_swap6_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_swap6_v2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_combo0_v1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/overnight/edit_ex23_72_combo0_v2.json"
+}
+]

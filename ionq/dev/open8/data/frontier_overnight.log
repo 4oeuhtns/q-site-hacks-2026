@@ -1,0 +1,36 @@
+{"algo": "p1", "g": 36, "seed": 26, "draw": 1, "shots": 96000, "found": 35, "eps": 0.00024, "pts": 100.0, "cpu": 233, "stats": null}
+{"algo": "p1", "g": 36, "seed": 24, "draw": 1, "shots": 96000, "found": 35, "eps": 0.00027, "pts": 100.0, "cpu": 248, "stats": null}
+{"algo": "p1", "g": 36, "seed": 27, "draw": 1, "shots": 96000, "found": 45, "eps": 0.00437, "pts": 68.0, "cpu": 371, "stats": null}
+{"algo": "p1", "g": 36, "seed": 25, "draw": 1, "shots": 96000, "found": 47, "eps": 0.01, "pts": 50.0, "cpu": 404, "stats": null}
+{"algo": "p1", "g": 36, "seed": 29, "draw": 1, "shots": 96000, "found": 46, "eps": 0.08878, "pts": 2.6, "cpu": 404, "stats": null}
+{"algo": "p1", "g": 36, "seed": 28, "draw": 1, "shots": 96000, "found": 49, "eps": 0.09896, "pts": 0.2, "cpu": 404, "stats": null}
+{"algo": "p1", "g": 48, "seed": 24, "draw": 1, "shots": 96000, "found": 42, "eps": 0.99555, "pts": 0.0, "cpu": 406, "stats": null}
+{"algo": "p1", "g": 48, "seed": 25, "draw": 1, "shots": 96000, "found": 46, "eps": 0.45833, "pts": 0.0, "cpu": 409, "stats": null}
+{"algo": "p2", "g": 36, "seed": 26, "draw": 1, "shots": 96000, "found": 32, "eps": 0.00022, "pts": 100.0, "cpu": 181, "stats": {"inserted": 32, "deleted": 0, "steps": 33}}
+{"algo": "p1", "g": 48, "seed": 26, "draw": 1, "shots": 96000, "found": 44, "eps": 0.99979, "pts": 0.0, "cpu": 406, "stats": null}
+{"algo": "p1", "g": 48, "seed": 27, "draw": 1, "shots": 96000, "found": 45, "eps": 0.09697, "pts": 0.7, "cpu": 404, "stats": null}
+{"algo": "p2", "g": 36, "seed": 24, "draw": 1, "shots": 96000, "found": 34, "eps": 0.00028, "pts": 100.0, "cpu": 251, "stats": {"inserted": 37, "deleted": 3, "steps": 38}}
+{"algo": "p2", "g": 36, "seed": 25, "draw": 1, "shots": 96000, "found": 43, "eps": 0.00835, "pts": 53.9, "cpu": 309, "stats": {"inserted": 45, "deleted": 2, "steps": 46}}
+{"algo": "p2", "g": 36, "seed": 27, "draw": 1, "shots": 96000, "found": 40, "eps": 0.00435, "pts": 68.1, "cpu": 321, "stats": {"inserted": 45, "deleted": 5, "steps": 46}}
+{"algo": "p1", "g": 48, "seed": 28, "draw": 1, "shots": 96000, "found": 41, "eps": 0.65554, "pts": 0.0, "cpu": 409, "stats": null}
+{"algo": "p1", "g": 48, "seed": 29, "draw": 1, "shots": 96000, "found": 42, "eps": 0.15528, "pts": 0.0, "cpu": 403, "stats": null}
+{"algo": "p2", "g": 36, "seed": 28, "draw": 1, "shots": 96000, "found": 44, "eps": 0.00037, "pts": 100.0, "cpu": 381, "stats": {"inserted": 49, "deleted": 5, "steps": 50}}
+{"algo": "p2", "g": 36, "seed": 29, "draw": 1, "shots": 96000, "found": 44, "eps": 0.00035, "pts": 100.0, "cpu": 400, "stats": {"inserted": 49, "deleted": 5, "steps": 50}}
+{"algo": "p2", "g": 48, "seed": 25, "draw": 1, "shots": 96000, "found": 37, "eps": 0.93999, "pts": 0.0, "cpu": 402, "stats": {"inserted": 41, "deleted": 4, "steps": 41}}
+{"algo": "p2", "g": 48, "seed": 24, "draw": 1, "shots": 96000, "found": 42, "eps": 0.9993, "pts": 0.0, "cpu": 408, "stats": {"inserted": 43, "deleted": 1, "steps": 43}}
+{"algo": "p2", "g": 48, "seed": 26, "draw": 1, "shots": 96000, "found": 45, "eps": 0.00132, "pts": 93.9, "cpu": 379, "stats": {"inserted": 47, "deleted": 2, "steps": 48}}
+{"algo": "p2", "g": 48, "seed": 27, "draw": 1, "shots": 96000, "found": 41, "eps": 0.61136, "pts": 0.0, "cpu": 409, "stats": {"inserted": 43, "deleted": 2, "steps": 43}}
+{"algo": "p3", "g": 36, "seed": 26, "draw": 1, "shots": 96000, "found": 31, "eps": 0.0002, "pts": 100.0, "cpu": 100, "stats": {"inserted": 31, "deleted": 0, "steps": 32}}
+{"algo": "p2", "g": 48, "seed": 28, "draw": 1, "shots": 96000, "found": 46, "eps": 0.16438, "pts": 0.0, "cpu": 402, "stats": {"inserted": 48, "deleted": 2, "steps": 48}}
+{"algo": "p3", "g": 36, "seed": 24, "draw": 1, "shots": 96000, "found": 43, "eps": 0.00028, "pts": 100.0, "cpu": 223, "stats": {"inserted": 43, "deleted": 0, "steps": 44}}
+{"algo": "p2", "g": 48, "seed": 29, "draw": 1, "shots": 96000, "found": 48, "eps": 0.16269, "pts": 0.0, "cpu": 407, "stats": {"inserted": 49, "deleted": 1, "steps": 49}}
+{"algo": "p3", "g": 36, "seed": 27, "draw": 1, "shots": 96000, "found": 40, "eps": 0.00424, "pts": 68.6, "cpu": 159, "stats": {"inserted": 40, "deleted": 0, "steps": 41}}
+{"algo": "p3", "g": 36, "seed": 25, "draw": 1, "shots": 96000, "found": 47, "eps": 0.00769, "pts": 55.7, "cpu": 204, "stats": {"inserted": 47, "deleted": 0, "steps": 48}}
+{"algo": "p3", "g": 36, "seed": 29, "draw": 1, "shots": 96000, "found": 47, "eps": 0.00042, "pts": 100.0, "cpu": 226, "stats": {"inserted": 47, "deleted": 0, "steps": 48}}
+{"algo": "p3", "g": 48, "seed": 26, "draw": 1, "shots": 96000, "found": 42, "eps": 0.00129, "pts": 94.4, "cpu": 183, "stats": {"inserted": 42, "deleted": 0, "steps": 43}}
+{"algo": "p3", "g": 36, "seed": 28, "draw": 1, "shots": 96000, "found": 56, "eps": 0.04349, "pts": 18.1, "cpu": 339, "stats": {"inserted": 56, "deleted": 0, "steps": 57}}
+{"algo": "p3", "g": 48, "seed": 28, "draw": 1, "shots": 96000, "found": 48, "eps": 0.16375, "pts": 0.0, "cpu": 214, "stats": {"inserted": 48, "deleted": 0, "steps": 49}}
+{"algo": "p3", "g": 48, "seed": 27, "draw": 1, "shots": 96000, "found": 52, "eps": 0.10858, "pts": 0.0, "cpu": 249, "stats": {"inserted": 52, "deleted": 0, "steps": 53}}
+{"algo": "p3", "g": 48, "seed": 29, "draw": 1, "shots": 96000, "found": 55, "eps": 0.01514, "pts": 41.0, "cpu": 268, "stats": {"inserted": 55, "deleted": 0, "steps": 56}}
+{"algo": "p3", "g": 48, "seed": 25, "draw": 1, "shots": 96000, "found": 57, "eps": 0.43688, "pts": 0.0, "cpu": 339, "stats": {"inserted": 57, "deleted": 0, "steps": 58}}
+{"algo": "p3", "g": 48, "seed": 24, "draw": 1, "shots": 96000, "found": 64, "eps": 0.35689, "pts": 0.0, "cpu": 404, "stats": {"inserted": 64, "deleted": 0, "steps": 64}}

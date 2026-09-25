@@ -806,3 +806,173 @@ Method: fit the nearest template (bounded, then free), then run p2 insert/delete
 - **Smoke, now including the public `frame` case:** local 100, zz 100, mixed 100, multilayer 97.37, frame 100 (checkpoint-2 ε 3.5e-6, where v10 was 6.0e-4).
 - **Notebook package check:** `STATIC_VALIDATED`.
 - `submission.zip` = `submission_v11_validated.zip`, sha256 `a43340a38ddeef2369ceb4e1443e454b04f75bef9781adb9b7a043735e4127d3`. The v10 fallback is kept as `submission_v10_validated.zip`.
+
+## 17. Overnight attack generation (Friday 01:12–03:59) and v12
+
+### 17.1 What ran
+A second Claude session built and queued this run (`gen_overnight.py`, `queue_overnight.sh`, `overnight_report.py`) against a **frozen copy of the v11 ZIP**. The sets:
+
+- **`fuzz`:** 116 legal attacks. 100 are random over the whole grammar: 1–72 gates, 2/3/5/8-qubit supports, random, line, star and few-pair topologies, and uniform, band, small, Clifford, near-Clifford and ±π-boundary angles. 16 are edge cases.
+- **`edits2`:** 126 edited public templates, from 15 edit types × 2 variants on `mixed`, `multilayer`, `ex23_36` (the SDK default `open_example(rules)`), `ex23_72` and `frame`.
+- **`v11cap400`:** the v11 set with `ENCOUNTER_CAP` 400.
+- **Offline p1/p2/p3** on seeds 24–29.
+
+**Review:**
+- The design is sound: a frozen ZIP, decision-relevant stages first, SDK legality checked, 8 workers as in every earlier run, and `caffeinate` to keep the Mac awake.
+- Training a learned "regression model" instead was rejected, for three reasons:
+  - The estimator is already maximum likelihood; failures come from the structure search.
+  - There is no training data that matches opponents' private architectures.
+  - The runner has no deep-learning stack and the deadline is the same day.
+
+### 17.2 Results (v11)
+| Set | n | Mean | Zeros | Crashes | Max CPU |
+|---|---|---|---|---|---|
+| fuzz | 116 | 85.8 | 5 | 0 | 581 s |
+| edits2 | 126 | 56.6 | 49 | 0 | **679 s** (over the cap) |
+| v11 set at cap 400 | 52 | 78.5 (vs 81.1 at 600) | 10 | 0 | 379 s |
+
+- **fuzz:**
+  - ≤ 11 gates: 97.6.
+  - 12–23 gates: 92.8.
+  - The zeros ≤ 24 gates are all-entangler circuits (`ents_only_24`, a 22-entangler fuzz case). Also zero: `star_48`.
+  - Weak spots: near-identity 72 g 41.3, ±π-boundary 72 g 47.4.
+- **cap 400:**
+  - The only losses are the hard-mode 36/48 g checkpoint-3 successes (4 × 33.3 → 0).
+  - Everything else is identical.
+  - This is the price of timeout insurance if the official limit turns out lower.
+- **Offline, 96k shots / 400 s, seeds 24–29:**
+
+  | Target | p1 | p2 | p3 |
+  |---|---|---|---|
+  | 36 g | 53.5 (2/6 solved) | **87.0 (4/6)** | 73.7 (3/6) |
+  | 48 g | 0.1 (0/6) | 15.7 (1/6) | 22.6 (1/6) |
+
+### 17.3 Diagnosis of the edits2 zeros (from the per-encounter logs)
+1. **Rejected shortlist fits were never repaired (~18 zeros).**
+   - Examples: multilayer axis1/axis3/retarget1/retarget2, and ex23_36 axis1/retarget/insert4/combo.
+   - In each, the screen found the right template (separation 0.47–0.80), and the fit was then rejected at z = 17–117 because a few edited gates misfit.
+   - The rejected key was dropped from the shortlist, but v11 seeded only screen-level near matches (`separation ≥ 0.8`). These fell through to a fresh pursuit, which cannot reach 36–72 gates.
+2. **The SDK default was not "named."**
+   - `open_example(rules)` defaults to seed 23 / 36 g / 12 e, so `open_example:23:*` is the most likely starting point for a team's own attack.
+   - It is a generator-instance key, so near matches at separation 0.91–0.98 did not trigger (ex23_72 axis3/axis6/delete12/retarget4/combo).
+3. **Whole-circuit edits:**
+   - With every angle **negated**, or the gate order **reversed**, the attack screens as unrelated (best key `multilayer:91`/`multilayer:27`, separation 1.00).
+   - Angle shifts of +0.4 rad on the 72-gate default also screen as unrelated (not fixed).
+4. **False near-match trigger:** `frame4:37` was the best screen (separation ~1.00) of several unrelated attacks and triggered 90 s of useless seeding.
+5. **CPU over the cap:**
+   - An edited frame that still looks frame-like (reverse, retarget2) keeps f2def running at every checkpoint.
+   - f2def's own synthesis, fit and fallback budgets (150/100/60 + 45 + 20 s) are not under `ENCOUNTER_CAP`.
+   - Stage CPU was 337 → 554 → 679 s.
+
+### 17.4 v12 changes
+1. **A rejected template fit becomes a repair seed.** A shortlisted template whose fit is rejected (z ≥ 10) becomes `near`, and its fitted angles seed the insert/delete repair directly. Seeding may now happen once at checkpoint 1 or 2.
+2. **The list of named public templates:** `bank:mixed`, `bank:multilayer`, `notebook:`, `open_example:23:*` (the SDK default), `open_example:31:*`, `multilayer:37`, plus the variants below. Frame templates are removed.
+3. **Screen variants** `neg:`, `rev:` and `inv:` (all angles negated, reversed order, and both = the exact inverse) for 6 public templates: 18 extra screen entries.
+4. **f2def CPU guard at checkpoints 2–3.**
+   - f2def's synthesis/fit/fallback budgets are scaled to `ENCOUNTER_CAP − used − reserve` (reserve 120 s at checkpoint 2, 30 s at checkpoint 3).
+   - f2def is skipped when less than 30 s would be left.
+   - They are reset every stage, because module globals persist across encounters in one process.
+   - On normal frames nothing changes, because checkpoint 2 starts with ≥ 280 s available.
+- **Smoke:**
+
+  | Case | v11 | v12 |
+  |---|---|---|
+  | ex23_36 negate | 0 | **98.5** (11 s) |
+  | multilayer axis1 | 0 | **97.5** (58 s) |
+5. **Hard-mode checkpoint-3 engine p1 → p2.** Pairing all 96k / 400 s offline runs (seeds 21–29):
+
+   | Target | p1 solved (sum) | p2 solved (sum) | p3 solved (sum) |
+   |---|---|---|---|
+   | 36 g | 5/9 (621) | **6/9 (790)** | 4/9 (643) |
+   | 48 g | 0/9 (4) | **3/9 (294)** | 2/9 (235) |
+
+   The v5 choice of p1 rested on seeds 21–23 only, where p1 went 3/3 and p2 had not been run at 96k.
+
+### 17.5 v12 regression (edits2 / v11 set / fuzz, from a frozen snapshot) and the v12.1 corrections
+| Set | v11 | v12 | Zeros v11 → v12 | Max CPU v11 → v12 |
+|---|---|---|---|---|
+| edits2 (126) | 56.6 | **84.2** | 49 → 15 | 679 → **589** |
+| v11 set (52) | 81.1 | 79.4 | 5 → 7 | 579 → 587 |
+| fuzz (116) | 85.8 | 85.6 | 5 → 5 | 581 → 576 |
+
+- **Rejected fit → seed, and the SDK default as a named template:**
+  - These turned 0 into 92–100 on every multilayer axis/retarget edit and on most `open_example:23` (36 g and 72 g) edits.
+  - Every trigger from a named, non-variant template was a gain or neutral: 31 gains, 0 losses.
+- **The p2 hard-mode engine failed inside the defender.**
+  - On the same attacks, v11's p1 made 4 checkpoint-3 successes (36 g/21 d1, 36 g/22 d1 + d2, 48 g/21 d2); v12's p2 kept 1.
+  - Example, 36 g/21: p1 reached NLL 56,441 at 96k (at the truth); p2 got stuck at 158,612.
+  - The offline advantage (§17.4 item 5) did not transfer to the defender's data (f2def probe + 540 random settings at uneven shot counts).
+  - **Reverted to p1.**
+- **The screen variants as repair seeds were harmful.**
+  - `inv:bank:multilayer` at separation 0.98 seeded a wrong 68-gate model onto fuzz000, which won on BIC (99.1 → 59.3).
+  - `neg:open_example:23:36:12` outranked the base on an axis edit (100 → 79.3).
+- **v12.1:**
+  - Variants are removed from the named list; they still serve exact matches below 0.8.
+  - `fit_near` fits both angle orientations (centres and negated centres) and keeps the lower NLL.
+  - The checkpoint-3 engine goes back to p1.
+- Rerun as `*_v12b`.
+
+### 17.6 v12.1 regression (`*_v12b`), and a bug found in it
+| Set | v11 | v12.1 | Better / worse (> 5 pts) | Max CPU |
+|---|---|---|---|---|
+| edits2 (126) | 56.6 | **84.8** | 39 / 4 | 579 s |
+| v11 set (52) | 81.1 | 80.4 | 0 / 1 (hard-mode 36 g/22 d1, 33.3 → 0) | 580 s |
+| fuzz (116) | 85.8 | 85.5 | 3 / 5 | 576 s |
+
+- **Two fuzz cases lost exactly the same points in v12 and v12.1** (fuzz007 92.2 → 86.2, fuzz060 93.5 → 88.3). Identical numbers mean a systematic change, not timing noise.
+- **Their logs show `f2def:EXCEPTION_KEPT_LAST` at checkpoints 2–3:** a `TypeError` in f2def's shot allocation.
+- **Cause: variable shadowing.**
+  - The v12 CPU guard stored f2def's CPU allowance in `avail`, which in `run_defender` already holds the block's *shots*.
+  - It then assigned `bridge.remaining = avail`, so f2def got a float of CPU seconds as its shot budget and raised.
+- **Effect:**
+  - 70 of 294 encounters (all where f2def runs at checkpoint 2 or 3); never in v11.
+  - f2def's share of the block went to the random panel instead, and f2def contributed no new model.
+  - Frames solved at checkpoint 1 kept 100, via the carried-over model.
+  - **The CPU guard was therefore never actually exercised,** and the lower CPU on edited frames came from f2def failing early.
+- **Fix:** the guard uses its own variable (`f2_cpu`).
+- **Rerun:** exactly the 70 affected encounters (`fix_v12c`). The other 224 never entered the guard branch (`run_f2 and stage > 1`), so their v12.1 results stand.
+
+### 17.7 After the fix (`fix_v12c`, 70 encounters): v12.1 vs v11 on all 294
+| Set | v11 | v12.1 + fix | Zeros | Better / worse (> 5 pts) |
+|---|---|---|---|---|
+| edits2 (126) | 56.6 | **85.4** | 49 → 14 | 39 / 3 |
+| v11 set (52) | 81.1 | 80.4 | 5 → 6 | 0 / 1 |
+| fuzz (116) | 85.8 | 85.7 | 5 → 5 | 2 / 2 |
+| **all 294** | **72.5** | **84.6** | | |
+
+- **Health:** 0 f2def exceptions, 0 crashes, max CPU 593 s. Nothing over the cap, including the edited frames that reached 679 s in v11 (now 593 s).
+- **The remaining losses:**
+  - Hard-mode 36 g/22 d1 (33.3 → 0), and two deep fuzz partials (−6 and −13). These are all CPU-deadline pursuit runs with run-to-run variance.
+  - **multilayer retarget4 v1, 93.4 → 37.5 — systematic.**
+    - The two-orientation `fit_near` started the repair from a different basin.
+    - The repaired model landed at z = 3.5, just above `GOOD_Z` = 3, which set hard mode, and the warm-only continuation stayed at ε ≈ 0.02.
+    - v12, with a single orientation, reached z = 0.5 and 93.4.
+- **v12.2:** the second (negated) start is used only when the near key is itself a `neg:`/`inv:` variant, the only case where the orientation is ambiguous. The 41 encounters seeded from a screen-level near match were rerun (`near_v12d`); rejected-fit seeds do not call the fit.
+
+### 17.8 v12.2 final (`near_v12d` merged): all 294 encounters vs v11
+| Set | v11 | v12.2 | Zeros | Better / worse (> 5 pts) | Max CPU |
+|---|---|---|---|---|---|
+| edits2 (126) | 56.6 | **85.9** | 49 → 14 | 39 / 1 | 593 s |
+| v11 set (52) | 81.1 | 80.4 | 5 → 6 | 0 / 1 | 580 s |
+| fuzz (116) | 85.8 | 85.7 | 5 → 5 | 2 / 2 | 576 s |
+| **all 294** | **72.5** | **84.8** | | | |
+
+- **multilayer retarget4 v1 is back to 93.4**; axis6 v2 went 91.6 → 96.6.
+- **The remaining losses:**
+  - Edited frame reverse0 v2 fell 14.4 → 0. v11 earned those points at 675 s CPU, over our cap, so this is the intended trade.
+  - Three CPU-deadline pursuit runs: hard-mode 36 g/22 d1 and two deep fuzz partials. For these cases the code path is v11's apart from 18 more screen entries.
+- **v12 components retained:**
+  - A rejected template fit becomes a repair seed.
+  - The SDK default `open_example:23:*` (plus seed 31 and multilayer 37) counts as a named template; frame templates are dropped.
+  - neg/rev/inv screen variants, used for exact matches only.
+  - The f2def CPU guard at checkpoints 2–3 (fixed).
+  - The two-orientation near fit, used only for `neg:`/`inv:` keys.
+  - p1 kept for hard mode.
+
+### 17.9 v12 submission (validated)
+`dev/build.py --profile quantum-duel-8q-open-0.7.1 --version v12 --files main.py opendef.py sim8.py pursuit.py subsys.py f2def.py tlib.json --cases local zz mixed multilayer frame --timeout 900`
+
+- **VALIDATED_LOCALLY, valid_for_upload: True.** Attack qualifier VALIDATED; notebook package check `STATIC_VALIDATED`.
+- **Smoke:** local 100, zz 100, mixed 100, multilayer 97.37, frame 100. Per-checkpoint ε is identical to v11, and on the frame f2def now runs at checkpoints 2–3 without the exception.
+- **`submission.zip` = `submission_v12_validated.zip`,** sha256 `847c5e4a59e14d49e2d5bea74844db1617a0a725c769081e0fe5653b68edbefe`.
+- **Fallbacks:** `submission_v11_validated.zip` (`a43340a3…`) and `submission_v10_validated.zip` (`0a1cda0d…`).

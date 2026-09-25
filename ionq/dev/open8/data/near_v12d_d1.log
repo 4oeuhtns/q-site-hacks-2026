@@ -1,0 +1,41 @@
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=22s  edit mixed delete4 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=30s  edit mixed insert4 v2 @1 
+PASSED            95.3 cp=[86.3, 99.4, 100.0] cpu=43s  edit multilayer shift4 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=48s  edit multilayer delete12 v1 @1 
+PASSED            95.3 cp=[86.3, 99.4, 100.0] cpu=43s  edit multilayer shift4 v2 @1 
+PASSED            98.0 cp=[94.0, 100.0, 100.0] cpu=85s  edit multilayer retarget2 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=61s  edit ex23_36 axis3 v1 @1 
+PASSED            99.0 cp=[97.0, 100.0, 100.0] cpu=131s  edit multilayer axis6 v1 @1 
+PASSED            98.4 cp=[95.2, 100.0, 100.0] cpu=106s  edit multilayer retarget4 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=52s  edit ex23_36 axis3 v2 @1 
+PASSED            96.6 cp=[89.8, 100.0, 100.0] cpu=139s  edit multilayer axis6 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=151s  edit mixed delete12 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=45s  edit ex23_36 shift4 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=51s  edit ex23_36 delete12 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=64s  edit ex23_36 axis6 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=45s  edit ex23_36 shift4 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=68s  edit ex23_36 insert4 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=74s  edit ex23_36 axis6 v1 @1 
+PASSED            93.4 cp=[80.2, 100.0, 100.0] cpu=191s  edit multilayer retarget4 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=57s  edit ex23_72 axis1 v2 @1 
+PASSED            98.8 cp=[96.4, 100.0, 100.0] cpu=63s  edit ex23_72 retarget2 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=86s  edit ex23_72 axis3 v2 @1 
+PASSED            96.6 cp=[89.7, 100.0, 100.0] cpu=107s  edit ex23_72 axis3 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=65s  edit ex23_72 delete12 v1 @1 
+PASSED            98.3 cp=[94.9, 100.0, 100.0] cpu=105s  edit ex23_72 retarget1 v1 @1 
+PASSED            99.9 cp=[99.8, 100.0, 100.0] cpu=66s  edit ex23_72 delete4 v1 @1 
+PASSED            97.3 cp=[91.8, 100.0, 100.0] cpu=127s  edit ex23_72 axis6 v2 @1 
+PASSED            99.2 cp=[97.5, 100.0, 100.0] cpu=64s  edit ex23_72 delete12 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=57s  edit ex23_72 widen10 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=57s  edit ex23_72 widen10 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=38s  Public open circuit  insert4 @1 
+PASSED            97.0 cp=[90.9, 100.0, 100.0] cpu=109s  Public continuous mu axis3 @1 
+PASSED            99.4 cp=[98.2, 100.0, 100.0] cpu=151s  edit ex23_72 combo0 v2 @1 
+PASSED            78.9 cp=[64.5, 84.8, 87.3] cpu=193s  edit ex23_72 retarget4 v1 @1 
+PASSED            89.7 cp=[83.5, 90.7, 94.8] cpu=134s  Public continuous mu retarget2 @1 
+PASSED            83.1 cp=[81.3, 83.0, 85.1] cpu=176s  Public open circuit  axis3 @1 
+PASSED            99.3 cp=[97.9, 100.0, 100.0] cpu=184s  fuzz034 G16 E4 q8 random boundary w0 @1 
+PASSED            15.9 cp=[15.5, 16.1, 16.1] cpu=567s  edit multilayer combo0 v2 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=507s  edit ex23_72 combo0 v1 @1 
+
+n=39 mean=93.1 zeros=1 fails=0

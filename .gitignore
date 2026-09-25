@@ -30,3 +30,5 @@ Thumbs.db
 # NOTE: ionq/_quantum_duel_sdk_0_7_2/ is deliberately TRACKED even though the
 # notebook generates it. Keeping it in the repo means a fresh clone can run
 # dev/harness.py and dev/build.py without opening Jupyter first.
+ionq/quantum_duel_work/quantum-duel-8q-open-0.7.1/local_validation_report_v12.json
+ionq/quantum_duel_work/dev/open8/data/champ_checks/*.json

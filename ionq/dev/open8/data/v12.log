@@ -1,0 +1,54 @@
+PASSED            98.2 cp=[94.7, 100.0, 100.0] cpu=16s  Public continuous mu delete4 @2 
+PASSED            99.6 cp=[98.7, 100.0, 100.0] cpu=17s  Public continuous mu delete4 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=27s  Public open circuit  retarget2 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=29s  Public open circuit  retarget2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  Public open circuit  delete4 @1 
+PASSED            80.7 cp=[42.1, 100.0, 100.0] cpu=9s  Public open circuit  delete4 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=58s  Public open circuit  axis3 @2 
+PASSED            96.8 cp=[90.3, 100.0, 100.0] cpu=70s  Public continuous mu retarget2 @2 
+PASSED            97.5 cp=[92.6, 100.0, 100.0] cpu=83s  Public continuous mu axis3 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=37s  Public open circuit  insert4 @1 
+PASSED            97.0 cp=[90.9, 100.0, 100.0] cpu=93s  Public continuous mu axis3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=38s  Public open circuit  insert4 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=16s  frame k2 w0.0 pw0.0 pins0 / 11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=18s  frame k2 w0.0 pw0.0 pins0 / 11 @2 
+PASSED            89.7 cp=[83.5, 90.7, 94.8] cpu=132s  Public continuous mu retarget2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=60s  frame k4 w0.0 pw0.0 pins0 / 11 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=69s  frame k4 w0.0 pw0.0 pins0 / 11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=73s  Public frame 4 / 41 @1 
+PASSED            83.1 cp=[81.3, 83.0, 85.1] cpu=229s  Public open circuit  axis3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  Merged same-qubit insertions near a quarter turn / 127 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=67s  Public frame 4 / 41 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=62s  Compile-hard frame A @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  Merged same-qubit insertions near a quarter turn / 127 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=95s  Compile-hard frame A @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=105s  gen g24 e8 band random /21 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=126s  gen g24 e8 band random /21 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=587s  Deep continuous brick @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=585s  Deep continuous brick @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=576s  Deep continuous all-pairs @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=584s  Deep continuous all-pairs @1 
+PASSED            33.3 cp=[0.0, 0.0, 100.0] cpu=423s  gen g36 e12 band random /22 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  Public open circuit / 31 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  Public open circuit / 31 @2 
+PASSED            71.6 cp=[65.0, 74.0, 75.9] cpu=141s  gen g36 e12 band random /23 @2 
+PASSED            97.4 cp=[92.3, 100.0, 100.0] cpu=18s  Public continuous multilayer / 37 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=10s  Edited-range mixed @1 
+PASSED            99.3 cp=[97.8, 100.0, 100.0] cpu=19s  Public continuous multilayer / 37 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=9s  Edited-range mixed @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  Repeated-pair open example @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=583s  gen g36 e12 band random /21 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=8s  Repeated-pair open example @2 
+PASSED            75.9 cp=[52.4, 75.3, 100.0] cpu=188s  gen g36 e12 band random /23 @1 
+PASSED            99.2 cp=[97.7, 100.0, 100.0] cpu=34s  gen g72 e24 band random q3 /41 @1 
+PASSED             7.0 cp=[0.0, 0.0, 21.1] cpu=570s  gen g36 e12 band random /21 @2 
+PASSED            97.5 cp=[92.5, 100.0, 100.0] cpu=39s  gen g72 e24 band random q3 /41 @2 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=52s  gen g12 e4 0.4-2.6 random /11 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=48s  gen g12 e4 0.4-2.6 random /11 @2 
+PASSED            97.7 cp=[93.0, 100.0, 100.0] cpu=25s  Public open circuit / 537 @1 
+PASSED            98.6 cp=[95.7, 100.0, 100.0] cpu=24s  Public open circuit / 537 @2 
+PASSED             9.4 cp=[0.0, 0.0, 28.2] cpu=566s  gen g36 e12 band random /22 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=566s  gen g48 e16 band random /21 @2 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=570s  gen g48 e16 band random /21 @1 
+
+n=52 mean=79.4 zeros=7 fails=0

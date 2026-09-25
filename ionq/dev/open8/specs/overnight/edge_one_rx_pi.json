@@ -1,0 +1,1 @@
+{"name": "edge one_rx_pi", "gates": [{"name": "rx", "targets": [0], "low": 3.141592653589793, "high": 3.141592653589793}]}
