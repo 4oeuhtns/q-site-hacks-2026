@@ -1,0 +1,1 @@
+{"name": "hold fuzz106 G2 E0 q8 line bands w0", "gates": [{"name": "rx", "targets": [0], "low": 1.0738085809590492, "high": 1.0738085809590492}, {"name": "ry", "targets": [2], "low": -0.7649651176726324, "high": -0.7649651176726324}]}

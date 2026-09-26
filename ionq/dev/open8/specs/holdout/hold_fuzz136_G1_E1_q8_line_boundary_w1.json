@@ -1,0 +1,1 @@
+{"name": "hold fuzz136 G1 E1 q8 line boundary w1", "gates": [{"name": "rzz", "targets": [2, 3], "low": 2.618110623496099, "high": 3.141592653589793}]}

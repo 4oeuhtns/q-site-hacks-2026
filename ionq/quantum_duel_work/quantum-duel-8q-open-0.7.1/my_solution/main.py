@@ -5,7 +5,7 @@ _HERE = str(Path(__file__).resolve().parent)
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
 
-from opendef import run_defender  # noqa: E402
+from opendef import run_defender
 
 
 def run(client, rules):

@@ -976,3 +976,104 @@ A second Claude session built and queued this run (`gen_overnight.py`, `queue_ov
 - **Smoke:** local 100, zz 100, mixed 100, multilayer 97.37, frame 100. Per-checkpoint ε is identical to v11, and on the frame f2def now runs at checkpoints 2–3 without the exception.
 - **`submission.zip` = `submission_v12_validated.zip`,** sha256 `847c5e4a59e14d49e2d5bea74844db1617a0a725c769081e0fe5653b68edbefe`.
 - **Fallbacks:** `submission_v11_validated.zip` (`a43340a3…`) and `submission_v10_validated.zip` (`0a1cda0d…`).
+
+### 17.10 Is v12 overfit? A held-out test, with the decision rule stated before the results
+There are two senses of overfitting.
+
+- **Within an encounter (fitting shot noise):**
+  - It is controlled by BIC (ln N per parameter), and every local score is the *true* process error against the hidden attack, so it cannot hide.
+  - It was caught twice this way: the Clifford refit (§16.2) and the variant seed that won on BIC with a wrong 68-gate model (§17.5).
+- **Design overfitting to our own test sets:**
+  - v12's edits2 score (85.9) is **in-sample**: the fixes were designed from those 126 failures, and the fuzz and v11 sets shaped two further decisions.
+  - What argues against it: the fixes are general mechanisms, and non-target sets did not degrade. But the size of the gain has not been measured out of sample.
+
+**Held-out set** (`gen_holdout.py`, `specs_holdout.json`, 87 attacks, generated after v12 was frozen and not inspected):
+
+| Part | Content |
+|---|---|
+| Edits (48) | 10 edit types on 5 bases. New instances (rng variant 3); edit types and sizes never used: qubit relabelling, angle scaling ×0.8, axis2, retarget3, delete8, insert2, shift2, widen5, swap3, combo2 (axis1 + retarget1 + delete2); one base not used in design (`open_example` seed 23 at 18 g). |
+| Fuzz (39) | New fuzz seeds 100–139. |
+
+- **Run:** both validated ZIPs (v11 `a43340a3…`, v12 `847c5e4a…`) run concurrently, 4 workers each, on draw 1 (`holdout_v11`, `holdout_v12`).
+- **Decision rule, fixed in advance:**
+  - Upload v12 if its paired held-out mean is ≥ v11's and there is no systematic class of losses, meaning no repeated loss pattern across an edit type or base.
+  - Otherwise keep v11.
+  - A single loss in a CPU-deadline pursuit run is noise, and repeated losses of one kind are not.
+
+**Held-out result** (`holdout_v11` vs `holdout_v12`, 87 paired, 0 crashes, max CPU 588 / 577 s):
+
+| Part | v11 | v12 | Zeros | v12 better / worse (> 5 pts) |
+|---|---|---|---|---|
+| Edits (48) | 79.8 | **90.1** | 9 → 4 | 5 / 0 |
+| Fuzz (39) | 92.3 | 91.4 | 1 → 1 | 0 / 1 |
+| **All (87)** | **85.4** | **90.7** | 10 → 5 | 5 / 1 |
+
+- **All 5 gains came from edits never seen in design,** each through the repair path: ex23_36 retarget3 and combo2, ex23_72 delete8, multilayer axis2 and retarget3. All went from 0 to 97–100.
+- **The one loss (fuzz124, 66.7 → 34.1):**
+  - Identical checkpoint-1 decisions (same screen, generator top, and p2 model with NLL 30,159.9).
+  - The runs diverged only in the 30 s CPU-deadline warm continuation at checkpoint 2, and v12's stage 1 ran slower (106 s vs 69 s of CPU for the same work).
+  - v12 then solved it at checkpoint 3.
+  - Per the rule, this is noise.
+- **Decision (by the rule above): v12.** It is already `submission.zip`.
+- **Shared gaps (both 0 or equal):**
+  - A **qubit relabelling** of a public template (0/0 on ex23_36, multilayer, ex23_72): the screen compares targets literally.
+  - ex23_72 retarget3 (0/0), ex23_18 widen5 (62/62), and mixed scale8 (82/82).
+- **Caveat:** the held-out set was made with the same edit generator on mostly the same public bases, so it measures generalisation to new *instances and edit types*, not to arbitrary opponent designs.
+
+## 18. The official runtime limit, oracle latency, and v13 (Friday afternoon)
+
+### 18.1 What we learned
+- **The organizers' answer (Discord, 16:34):** "each defender gets up to **600 seconds per encounter**." Whether this is wall-clock or CPU time was not stated.
+  - A per-encounter limit enforced by the runner is almost surely wall-clock, like the SDK smoke runner's subprocess `timeout`.
+  - The student notebook says a timeout "is not a completed synchronous defender run"; what happens to already-closed checkpoints is unknown.
+- **LocalSession has no time limit at all** (no timing code in `local.py` or `smoke_worker.py`). The 600 s was **our own** `ENCOUNTER_CAP`, on CPU time (`time.process_time()`), which left *no* margin.
+- **Rated runs reach the oracle over HTTP.**
+  - `qduel_sdk/client.py`: "A fresh in-cluster TCP connection per request costs ~1 ms against ~30 ms of oracle work", with retries and back-off on 429/502/503/504.
+  - Our encounters make 900–2,700 requests (the notebook check recorded 898–902 actions for continuous attacks, 2,327–2,728 for frames and warm-ups).
+  - That is **~28–84 s of wall time invisible to a CPU-time cap.**
+  - v12's heaviest encounters (~580–593 s CPU) would therefore finish at ~610–665 s wall on the server: **timeouts**. Templates, repairs and normal frames finish in 20–300 s and are safe.
+- **Threads:** the defender code is single-threaded; numpy/scipy BLAS threads depend on the runner's environment.
+  - Measured locally with the v12 ZIP (`thread_probe.py`), threads unset vs pinned to 1:
+
+    | Case | Unset: wall / CPU (CPU ÷ wall) | Pinned: wall / CPU | Points |
+    |---|---|---|---|
+    | multilayer | 9.8 / 42.0 s (4.3) | 7.5 / 7.5 s | 97.37 both |
+    | frame | 57 / 343 s (6.0, 11 native threads) | 149 / 141 s | 100 both |
+
+  - With unpinned threads on a multi-core machine, a CPU-time cap runs out after 2.4–5.6× less work: safe for timeouts, but budget-bound runs lose search time.
+
+### 18.2 v13 change
+- **The encounter clock is `used()` = max(CPU, wall) since `run()` began.**
+  - Wall catches oracle latency and scheduling; CPU catches inflation from unpinned BLAS threads.
+  - It is used everywhere the encounter budget is checked: the f2def guard, generator and seeding gates, the pursuit plan, and the stale refit.
+- **`ENCOUNTER_CAP` 600 → 540 s,** leaving 60 s for process start-up and imports before `run()`, the last step's overshoot, and oracle retries.
+- **The stale-model refit** must now start before the cap; it previously ran up to cap + 60 s.
+- **Test harness:** `lab.py` gained `LAB_LATENCY_MS` (each client call sleeps first: wall time without CPU time).
+  - v13 was run on the v11 set (draws 1–2) + 4 edited frames + 2 long repairs at **35 ms** and 4 workers (`v13lat`).
+  - Criterion: every `run()` under 600 s wall, and scores in line with v12.
+
+### 18.3 v13 results and submission
+- **Latency test (`v13lat`,** 58 encounters at 35 ms per client call and 4 workers):
+  - 0 crashes. **Max `run()` wall 516 s** (none over 570 s); max CPU 477 s.
+  - Paired against v12.2 without latency: **80.8 vs 76.5**, 4 better / 0 worse. Two edited frames went 0 → 100, and hard-mode 36 g/22 kept its checkpoint-3 successes.
+  - The heaviest runs are our own attacks and an unsolvable edited frame, at 506–516 s wall.
+- **Build:** `dev/build.py … --version v13 … --cases local zz mixed multilayer frame --timeout 900`
+  - **VALIDATED_LOCALLY, valid_for_upload: True.**
+  - Smoke: local 100, zz 100, mixed 100, multilayer 97.37, frame 100. Package check `STATIC_VALIDATED`.
+- **`submission.zip` = `submission_v13_validated.zip`,** sha256 `ccdb04605b3b97eb0d097949224e120c764b49ca34a1b0e1c76d06efab72a21a`.
+- **Fallbacks:** v12 `847c5e4a…`, v11 `a43340a3…`, v10 `0a1cda0d…`.
+
+### 18.4 Cleaned submission (v13c)
+- **Comments:**
+  - The fully commented v13 sources are kept in `dev/open8/solution_v13_documented/`.
+  - In the packaged sources, all 133 `#` comments were stripped mechanically (tokenizer-based), and every file's AST was verified identical before and after.
+  - One docstring that cited this log was shortened.
+- **Logging:**
+  - `opendef.log()` is off by default; `OPENDEF_VERBOSE=1` turns it back on for lab diagnostics.
+  - f2def's traceback and patch-rejection prints were removed.
+  - Against the documented v13, pursuit, sim8, subsys and main are AST-identical ignoring docstrings, and f2def differs only by the removed prints.
+- **Build:**
+  - VALIDATED_LOCALLY, valid_for_upload: True. Smoke: local 100, zz 100, mixed 100, multilayer 97.37, frame 100. Package check `STATIC_VALIDATED`.
+  - The packaged `opendef.py` contains no `#`.
+- **`submission.zip` = `submission_v13c_validated.zip`,** sha256 `83f742975e97305b999e13a517e941802d63a7bbd12ea6afa1030ba0e67fb870`.
+- **Fallbacks:** v13 `ccdb0460…` (same logic, commented), v12 `847c5e4a…`.

@@ -1,0 +1,350 @@
+[
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_axis2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_retarget3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_delete8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_insert2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_shift2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_widen5.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_swap3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_combo20.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_permute0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_mixed_scale8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_multilayer_axis2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_multilayer_retarget3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_multilayer_delete8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_multilayer_shift2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_multilayer_widen5.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_multilayer_swap3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_multilayer_combo20.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_multilayer_permute0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_multilayer_scale8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_axis2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_retarget3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_delete8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_insert2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_shift2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_widen5.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_swap3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_combo20.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_permute0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_18_scale8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_axis2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_retarget3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_delete8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_insert2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_shift2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_widen5.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_swap3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_combo20.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_permute0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_36_scale8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_72_axis2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_72_retarget3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_72_delete8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_72_shift2.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_72_widen5.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_72_swap3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_72_combo20.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_72_permute0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_ex23_72_scale8.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz100_G36_E4_q2_star_uniform_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz101_G39_E13_q8_line_bands_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz102_G9_E2_q2_few_nearcliff_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz103_G20_E0_q5_star_small_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz104_G4_E0_q8_line_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz105_G50_E24_q3_few_uniform_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz106_G2_E0_q8_line_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz107_G6_E6_q8_star_bands_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz108_G35_E12_q8_few_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz109_G3_E1_q8_random_bands_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz110_G21_E0_q5_random_small_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz111_G22_E2_q5_star_boundary_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz112_G19_E11_q8_line_boundary_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz113_G4_E0_q5_random_small_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz114_G29_E5_q3_star_small_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz115_G24_E9_q3_few_bands_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz116_G20_E20_q3_line_uniform_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz117_G18_E5_q5_line_boundary_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz118_G2_E1_q8_few_nearcliff_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz119_G3_E0_q3_few_bands_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz120_G54_E11_q8_random_small_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz121_G18_E7_q8_line_uniform_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz122_G54_E24_q8_line_bands_w0_1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz123_G64_E0_q8_line_boundary_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz124_G14_E8_q8_random_bands_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz125_G2_E1_q8_random_bands_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz126_G27_E4_q8_random_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz127_G4_E3_q3_line_small_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz128_G18_E0_q5_star_boundary_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz129_G12_E3_q8_few_nearcliff_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz130_G13_E0_q8_line_uniform_w0_3.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz131_G12_E4_q5_line_bands_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz132_G43_E21_q5_few_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz133_G42_E10_q5_random_clifford_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz134_G60_E24_q3_star_small_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz136_G1_E1_q8_line_boundary_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz137_G68_E24_q8_few_small_w1.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz138_G33_E0_q5_line_uniform_w0.json"
+},
+{
+"family": "file",
+"path": "dev/open8/specs/holdout/hold_fuzz139_G25_E4_q3_star_small_w0_3.json"
+}
+]

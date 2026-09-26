@@ -1,0 +1,1 @@
+{"name": "hold fuzz118 G2 E1 q8 few nearcliff w0.3", "gates": [{"name": "rz", "targets": [1], "low": 2.991592653589793, "high": 3.141592653589793}, {"name": "ryy", "targets": [0, 4], "low": 1.320267397083832, "high": 1.6202673970838317}]}

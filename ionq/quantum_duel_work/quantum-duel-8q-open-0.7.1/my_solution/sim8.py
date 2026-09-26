@@ -18,7 +18,6 @@ KET = {
     'Y+': np.array([1, 1j], complex) * _S2, 'Y-': np.array([1, -1j], complex) * _S2,
 }
 ALIAS = {'0': 'Z+', '1': 'Z-', '+': 'X+', '-': 'X-', '+i': 'Y+', '-i': 'Y-'}
-# Readout: rows are <+|, <-| of the basis, so outcome 0 is the +1 eigenvalue.
 READ = {b: np.stack([KET[b + '+'], KET[b + '-']]).conj() for b in 'XYZ'}
 
 
@@ -49,15 +48,15 @@ class Data:
 
     def __init__(self, preps, bases, counts, n):
         self.n = n
-        self.counts = np.asarray(counts, dtype=float)          # (S, 2**n)
+        self.counts = np.asarray(counts, dtype=float)
         self.N = self.counts.sum()
         S = len(preps)
         psi = np.ones((1, S), complex)
         for q in range(n):
-            v = np.stack([KET[ALIAS.get(p[q], p[q])] for p in preps], axis=1)  # (2,S)
+            v = np.stack([KET[ALIAS.get(p[q], p[q])] for p in preps], axis=1)
             psi = (psi[:, None, :] * v[None, :, :]).reshape(-1, S)
         self.psi0 = np.ascontiguousarray(psi)
-        self.read = [np.stack([READ[b[q]] for b in bases]) for q in range(n)]  # n x (S,2,2)
+        self.read = [np.stack([READ[b[q]] for b in bases]) for q in range(n)]
         nz = self.counts > 0
         self.const = float((self.counts[nz] * np.log(self.counts[nz] / self.counts.sum(1, keepdims=True).repeat(1 << n, 1)[nz])).sum())
 
@@ -90,7 +89,7 @@ def nll(ops, angles, data, grad=False, floor=1e-12):
     """Negative log-likelihood of the counts (minus the saturated constant)."""
     psiK = forward(ops, angles, data.psi0)
     phi = data.readout(psiK)
-    p = phi.real ** 2 + phi.imag ** 2                    # (2**n, S)
+    p = phi.real ** 2 + phi.imag ** 2
     c = data.counts.T
     pc = np.maximum(p, floor)
     value = -float((c * np.log(pc)).sum()) + data.const
@@ -104,7 +103,6 @@ def nll(ops, angles, data, grad=False, floor=1e-12):
         rows, ph = ops[k]
         a = angles[k]
         ca, sa = math.cos(a / 2), math.sin(a / 2)
-        # undo gate k on psi to get its input
         psi = ca * psi + 1j * sa * (ph * psi[rows])
         Ppsi = ph * psi[rows]
         d = -0.5 * sa * psi - 0.5j * ca * Ppsi
@@ -130,8 +128,6 @@ def records_to_data(records, n):
     return Data([k[0] for k in keys], [k[1] for k in keys], np.stack([agg[k] for k in keys]), n)
 
 
-# ---------------------------------------------------------------- numba fast path
-# States are (S, 2**n) here: one contiguous row per setting.
 try:
     import numba as _nb
 
@@ -151,7 +147,6 @@ try:
 
     @_nb.njit(cache=False)
     def _readout(st, mats, n):
-        # mats: (S, n, 2, 2); applies per-qubit 2x2 to each row
         S, D = st.shape
         for j in range(S):
             for q in range(n):
@@ -167,7 +162,6 @@ try:
 
     @_nb.njit(cache=False)
     def _grad_term(lam, psi, rows, ph, c, s):
-        # returns 2 Re <lam, dG psi>, dG psi = -0.5 s psi - 0.5 i c P psi
         S, D = psi.shape
         acc = 0.0
         for j in range(S):
@@ -178,7 +172,7 @@ try:
         return 2.0 * acc
 
     HAVE_NUMBA = True
-except Exception:  # pragma: no cover
+except Exception:
     HAVE_NUMBA = False
 
 
@@ -187,12 +181,12 @@ class FastData:
 
     def __init__(self, preps, bases, counts, n):
         self.n = n
-        self.counts = np.ascontiguousarray(np.asarray(counts, dtype=float))  # (S, D)
+        self.counts = np.ascontiguousarray(np.asarray(counts, dtype=float))
         self.N = self.counts.sum()
         S = len(preps)
         psi = np.ones((S, 1), complex)
         for q in range(n):
-            v = np.stack([KET[ALIAS.get(p[q], p[q])] for p in preps])  # (S,2)
+            v = np.stack([KET[ALIAS.get(p[q], p[q])] for p in preps])
             psi = (psi[:, :, None] * v[:, None, :]).reshape(S, -1)
         self.psi0 = np.ascontiguousarray(psi)
         self.mats = np.ascontiguousarray(np.stack([[READ[b[q]] for q in range(n)] for b in bases]))
@@ -246,7 +240,7 @@ def fast_nll(ops, angles, data, grad=False, floor=1e-12):
         rows, ph = ops[k]
         a = angles[k]
         c, s = math.cos(a / 2), math.sin(a / 2)
-        _rot(st, rows, ph, c, -s)          # undo gate k
+        _rot(st, rows, ph, c, -s)
         out[k] = _grad_term(lam, st, rows, ph, c, s)
         _rot(lam, rows, ph, c, -s)
     return value, out

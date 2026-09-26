@@ -38,19 +38,12 @@ from duelkit.recovery8.algebra_cliffords import clifford_atlas
 from duelkit.recovery8.pauli_compile import row_image, clifford_absorb, merge_locals, qgate
 from duelkit.recovery8.clifford_pair import pair_synthesis
 
-# CPU seconds of synthesis search per checkpoint, on top of learning.
 SYNTH_BUDGET = 90.0
-# Per-checkpoint synthesis budgets: later checkpoints mostly replay cached networks.
 STAGE_BUDGET = {1: 150.0, 2: 100.0, 3: 60.0}
-# CPU seconds for the rotation-dropping fallback when no exact network fits.
 FALLBACK_BUDGET = 20.0
-# Tail-synthesis trials per network, cycled across search rounds (stock uses 4, then 32).
 TAIL_TRIALS = (4, 8, 32)
-# Candidates whose BIC is this close to the best describe the same data equally well.
 BIC_MARGIN = 50.0
-# Fresh random starts for the residual-algebra fit at every checkpoint.
 FRESH_STARTS = 40
-# Fresh starts run in chunks of this size until FIT_BUDGET CPU seconds pass.
 FIT_CHUNK = 4
 FIT_BUDGET = 45.0
 
@@ -127,7 +120,6 @@ def search(options, n, gate_cap, ent_cap, deadline, rng, cache=None):
     best = None
     rounds = 0
     cache = {} if cache is None else cache
-    # Replay networks that were legal at an earlier checkpoint, with the new angles.
     for non, rows, lost in options:
         hit = cache.get(option_key(non, rows))
         if hit is None:
@@ -157,14 +149,14 @@ def search(options, n, gate_cap, ent_cap, deadline, rng, cache=None):
             if best is None or score < best[0]:
                 best = (score, gs, lost)
             if best[0][0] == 0 and best[2] == 0:
-                return best, rounds + 1  # any legal exact patch scores the same
+                return best, rounds + 1
             if time.process_time() > deadline:
                 break
         rounds += 1
         if time.process_time() > deadline:
             break
         if best and best[0][0] == 0 and not any(o[2] == 0 for o in options):
-            break  # lossy-only search: first legal is the least-loss legal found so far
+            break
     return best, rounds
 
 
@@ -188,8 +180,7 @@ class Frame2Recovery(Recovery):
     def checkpoint(self, client):
         try:
             return self._checkpoint(client)
-        except Exception as exc:  # keep the encounter alive on any learner failure
-            import traceback; traceback.print_exc(limit=6, file=sys.stderr)
+        except Exception as exc:
             return self.patch, {'status': 'EXCEPTION_KEPT_LAST', 'error': f'{type(exc).__name__}: {exc}'[:200]}
 
     def _submit_candidates(self, options, meta, start):
@@ -198,7 +189,6 @@ class Frame2Recovery(Recovery):
         lossless = [o for o in options if o[2] == 0]
         best, rounds = search(lossless, self.n, self.gc, self.ec, deadline, rng, self.net_cache)
         if best is None or best[0][0]:
-            # Nothing lossless fits: allow dropping rotations, smallest first.
             lossy = [o for o in options if o[2] > 0]
             fallback, more = search(lossy, self.n, self.gc, self.ec, time.process_time() + FALLBACK_BUDGET, rng, self.net_cache)
             rounds += more
@@ -235,9 +225,6 @@ class Frame2Recovery(Recovery):
         if rank == 2 * n:
             rows = complete_images(self.parity.pairs, n)
             options = [([], pure_tail_rows(rows, n), 0.0)]
-            # Exact support learning cannot see a rotation within ~0.1 rad of a
-            # quarter turn (e.g. two insertions merged through a same-axis pair).
-            # Look for it in the violations of the learned stabilizer map.
             try:
                 found = residual_rotation(rows, client.records, n, np.random.default_rng(self.seed))
             except Exception as exc:
@@ -268,11 +255,6 @@ class Frame2Recovery(Recovery):
             data[key] += np.array(r['counts'])
         settings = [{'prep': list(a), 'basis': list(b)} for a, b in data]
         counts = np.stack(list(data.values()))
-        # Warm start alone can pin a wrong basin across checkpoints; always race it
-        # against a fresh multi-start fit and keep the lower count likelihood.
-        # Warm start first (cheap), then fresh starts in chunks until the fit
-        # deadline: the full 40 starts cost up to ~240 CPU s per checkpoint on
-        # continuous-angle attacks, which other pool sources solve in seconds.
         fits = []
         if self.oldx is not None:
             fits.append(m.fit(settings, counts, seed=self.seed + client.stage, starts=5, xold=self.oldx))
@@ -329,7 +311,6 @@ class Frame2Recovery(Recovery):
 
 
 STAB = {'0': ('Z', 1), '1': ('Z', -1), '+': ('X', 1), '-': ('X', -1), '+i': ('Y', 1), '-i': ('Y', -1)}
-# Accept a residual rotation only when it beats the pure Clifford by this much log-likelihood.
 RESIDUAL_MIN_GAIN = 20.0
 
 
@@ -452,7 +433,6 @@ def residual_rotation(rows, records, n, rng):
     base = loglik(0.0)
     mag = 2 * np.arcsin(np.sqrt(p))
     d0 = max((mag, -mag), key=loglik)
-    # Golden-section refinement of d around the violation-rate estimate.
     a, b = d0 - 0.5 * abs(d0) - 0.02, d0 + 0.5 * abs(d0) + 0.02
     g = (np.sqrt(5) - 1) / 2
     c, e = b - g * (b - a), a + g * (b - a)
@@ -525,7 +505,7 @@ def run_defender(client, rules):
             converted = tuple(converted)
             validate(converted, **rules.validation_kwargs())
             last = converted
-        except Exception as exc:  # keep the last legal patch
-            print(f'f2def: patch rejected at stage {stage}: {type(exc).__name__}: {exc}'[:300], file=sys.stderr)
+        except Exception:
+            pass
         client.submit_patch(last, note='frame2 hardened recovery; ' + str(meta.get('status', 'checkpoint')))
         client.close_checkpoint()

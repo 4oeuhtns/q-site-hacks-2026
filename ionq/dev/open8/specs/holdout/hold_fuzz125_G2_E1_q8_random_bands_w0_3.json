@@ -1,0 +1,1 @@
+{"name": "hold fuzz125 G2 E1 q8 random bands w0.3", "gates": [{"name": "rz", "targets": [5], "low": -0.7019113797005628, "high": -0.4019113797005628}, {"name": "rzz", "targets": [4, 6], "low": -1.5373780313162497, "high": -1.23737803131625}]}

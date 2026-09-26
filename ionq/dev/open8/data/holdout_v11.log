@@ -1,0 +1,89 @@
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=29s  hold mixed delete8 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  hold mixed shift2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  hold mixed widen5 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=44s  hold mixed retarget3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=6s  hold mixed swap3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=67s  hold mixed axis2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=46s  hold mixed permute0 @1 
+PASSED            82.4 cp=[47.3, 100.0, 100.0] cpu=45s  hold mixed scale8 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=114s  hold mixed insert2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=106s  hold mixed combo20 @1 
+PASSED            98.1 cp=[94.3, 100.0, 100.0] cpu=44s  hold multilayer delete8 @1 
+PASSED            96.8 cp=[90.5, 100.0, 100.0] cpu=12s  hold multilayer shift2 @1 
+PASSED            98.6 cp=[95.7, 100.0, 100.0] cpu=13s  hold multilayer widen5 @1 
+PASSED            99.8 cp=[99.5, 100.0, 100.0] cpu=13s  hold multilayer swap3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=55s  hold multilayer combo20 @1 
+PASSED            97.1 cp=[91.3, 100.0, 100.0] cpu=13s  hold multilayer scale8 @1 
+PASSED            99.7 cp=[99.2, 100.0, 100.0] cpu=103s  hold ex23_18 axis2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=89s  hold ex23_18 retarget3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=34s  hold ex23_18 delete8 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=127s  hold ex23_18 insert2 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  hold multilayer axis2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=73s  hold ex23_18 shift2 @1 
+PASSED            61.8 cp=[59.5, 62.8, 63.2] cpu=7s  hold ex23_18 widen5 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=7s  hold ex23_18 swap3 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=588s  hold multilayer retarget3 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  hold multilayer permute0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=75s  hold ex23_18 permute0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=71s  hold ex23_18 scale8 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=106s  hold ex23_18 combo20 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=13s  hold ex23_36 delete8 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=10s  hold ex23_36 insert2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=44s  hold ex23_36 axis2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=10s  hold ex23_36 shift2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=10s  hold ex23_36 widen5 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=11s  hold ex23_36 swap3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=10s  hold ex23_36 scale8 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=79s  hold ex23_72 axis2 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=574s  hold ex23_36 retarget3 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=579s  hold ex23_36 permute0 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=584s  hold ex23_36 combo20 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=15s  hold ex23_72 widen5 @1 
+PASSED            99.6 cp=[98.9, 100.0, 100.0] cpu=15s  hold ex23_72 swap3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=52s  hold ex23_72 shift2 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=572s  hold ex23_72 retarget3 @1 
+PASSED            97.5 cp=[92.4, 100.0, 100.0] cpu=63s  hold ex23_72 combo20 @1 
+PASSED            98.7 cp=[96.2, 100.0, 100.0] cpu=58s  hold ex23_72 scale8 @1 
+PASSED            90.7 cp=[82.4, 89.8, 100.0] cpu=202s  hold fuzz100 G36 E4 q2 star uniform w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=23s  hold fuzz102 G9 E2 q2 few nearcliff w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=30s  hold fuzz103 G20 E0 q5 star small w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=3s  hold fuzz104 G4 E0 q8 line clifford w0 @1 
+PASSED            99.1 cp=[97.3, 100.0, 100.0] cpu=25s  hold fuzz105 G50 E24 q3 few uniform w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=21s  hold fuzz106 G2 E0 q8 line bands w0 @1 
+PASSED            40.0 cp=[0.0, 20.1, 100.0] cpu=340s  hold fuzz101 G39 E13 q8 line bands w1 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=569s  hold ex23_72 delete8 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=134s  hold fuzz107 G6 E6 q8 star bands w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=33s  hold fuzz109 G3 E1 q8 random bands w1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=24s  hold fuzz110 G21 E0 q5 random small w0.1 @1 
+PASSED            97.6 cp=[92.7, 100.0, 100.0] cpu=85s  hold fuzz108 G35 E12 q8 few bands w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=26s  hold fuzz111 G22 E2 q5 star boundary w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=17s  hold fuzz113 G4 E0 q5 random small w1 @1 
+PASSED            96.4 cp=[92.9, 96.3, 100.0] cpu=30s  hold fuzz112 G19 E11 q8 line boundary w0.3 @1 
+PASSED            99.1 cp=[97.3, 100.0, 100.0] cpu=35s  hold fuzz114 G29 E5 q3 star small w0.1 @1 
+PASSED            98.3 cp=[94.9, 100.0, 100.0] cpu=26s  hold fuzz116 G20 E20 q3 line uniform w0.3 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=567s  hold ex23_72 permute0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=32s  hold fuzz115 G24 E9 q3 few bands w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=18s  hold fuzz119 G3 E0 q3 few bands w1 @1 
+PASSED            89.2 cp=[81.1, 86.3, 100.0] cpu=22s  hold fuzz118 G2 E1 q8 few nearcliff w0.3 @1 
+PASSED            96.0 cp=[87.9, 100.0, 100.0] cpu=32s  hold fuzz117 G18 E5 q5 line boundary w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=37s  hold fuzz121 G18 E7 q8 line uniform w1 @1 
+PASSED            94.5 cp=[90.3, 93.0, 100.0] cpu=38s  hold fuzz123 G64 E0 q8 line boundary w0.3 @1 
+PASSED            57.4 cp=[49.8, 59.2, 63.2] cpu=78s  hold fuzz120 G54 E11 q8 random small w0.1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=31s  hold fuzz125 G2 E1 q8 random bands w0.3 @1 
+PASSED            96.7 cp=[90.0, 100.0, 100.0] cpu=36s  hold fuzz127 G4 E3 q3 line small w1 @1 
+PASSED            89.6 cp=[81.6, 87.2, 100.0] cpu=66s  hold fuzz126 G27 E4 q8 random bands w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=24s  hold fuzz128 G18 E0 q5 star boundary w1 @1 
+PASSED            66.7 cp=[0.0, 100.0, 100.0] cpu=108s  hold fuzz124 G14 E8 q8 random bands w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=22s  hold fuzz130 G13 E0 q8 line uniform w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=3s  hold fuzz132 G43 E21 q5 few clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=35s  hold fuzz129 G12 E3 q8 few nearcliff w0.3 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=4s  hold fuzz133 G42 E10 q5 random clifford w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=25s  hold fuzz131 G12 E4 q5 line bands w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=14s  hold fuzz136 G1 E1 q8 line boundary w1 @1 
+PASSED            97.0 cp=[91.1, 100.0, 100.0] cpu=33s  hold fuzz134 G60 E24 q3 star small w0 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=25s  hold fuzz138 G33 E0 q5 line uniform w0 @1 
+PASSED            95.0 cp=[85.1, 100.0, 100.0] cpu=58s  hold fuzz137 G68 E24 q8 few small w1 @1 
+PASSED            95.2 cp=[85.5, 100.0, 100.0] cpu=32s  hold fuzz139 G25 E4 q3 star small w0.3 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=564s  hold fuzz122 G54 E24 q8 line bands w0.1 @1 
+
+n=87 mean=85.4 zeros=10 fails=0

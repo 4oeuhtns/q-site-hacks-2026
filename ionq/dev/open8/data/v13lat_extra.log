@@ -1,0 +1,8 @@
+PASSED            66.7 cp=[0.0, 100.0, 100.0] cpu=212s  edit frame retarget2 v2 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=249s  edit frame reverse0 v1 @1 
+PASSED           100.0 cp=[100.0, 100.0, 100.0] cpu=249s  edit frame reverse0 v2 @1 
+PASSED            91.8 cp=[85.7, 89.6, 100.0] cpu=50s  edit multilayer axis3 v1 @1 
+PASSED            97.7 cp=[93.1, 100.0, 100.0] cpu=81s  edit multilayer retarget4 v1 @1 
+PASSED             0.0 cp=[0.0, 0.0, 0.0] cpu=468s  edit frame retarget2 v1 @1 
+
+n=6 mean=76.0 zeros=1 fails=0

@@ -1,0 +1,37 @@
+ruleset  : quantum-duel-8q-open-0.7.1 (8 qubits, 96000 shots)
+source   : /Users/aoeuhtns/Documents/q-site-hacks-2026/ionq/quantum_duel_work/quantum-duel-8q-open-0.7.1/my_solution
+packaging: main.py, opendef.py, sim8.py, pursuit.py, subsys.py, f2def.py, tlib.json
+attack   : 'Deep continuous brick'  72 gates, 24 entanglers
+attack   : 'Deep continuous all-pairs'  72 gates, 24 entanglers
+
+building ...
+validating ...
+
+status           : VALIDATED_LOCALLY
+valid_for_upload : True
+sha256           : 83f742975e97305b999e13a517e941802d63a7bbd12ea6afa1030ba0e67fb870
+size             : 225519 bytes zipped, 833619 expanded
+  member         : attacks.json        33326 B  24a6ddead3eccc2c
+  member         : f2def.py            21871 B  5649bae51c9cdcdb
+  member         : main.py               237 B  79debc4d811f5b0d
+  member         : opendef.py          27161 B  1f68cf221199f6f1
+  member         : pursuit.py          12092 B  bc6ab5c1cd71f8a0
+  member         : qduel.json             58 B  3635d32ad4d3efb7
+  member         : sim8.py             10023 B  290aeb998856efff
+  member         : submission.json       684 B  392ade7f37933c80
+  member         : subsys.py            3474 B  d5c146a76863f237
+  member         : tlib.json          724693 B  54e4e985bbd151ce
+attack_check     : VALIDATED (Pauli cancellation/parameter normalization plus eight paired...)
+
+case            seed    status   points
+-----------------------------------------
+local             41    PASSED   100.00
+zz                41    PASSED   100.00
+mixed             41    PASSED   100.00
+multilayer        41    PASSED    97.37
+frame             41    PASSED   100.00
+-----------------------------------------
+PASSED means the program completed, not that it recovers well.
+
+archive: /Users/aoeuhtns/Documents/q-site-hacks-2026/ionq/quantum_duel_work/quantum-duel-8q-open-0.7.1/submission.zip
+report : /Users/aoeuhtns/Documents/q-site-hacks-2026/ionq/quantum_duel_work/quantum-duel-8q-open-0.7.1/local_validation_report.json

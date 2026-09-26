@@ -184,6 +184,25 @@ def load_defender(path):
 
 
 _DEF = {}
+# Rated runs reach the oracle over HTTP (~31 ms per request, SDK client.py). With
+# LAB_LATENCY_MS set, every client call sleeps first: wall time without CPU time.
+LATENCY = float(os.environ.get("LAB_LATENCY_MS", "0")) / 1000.0
+_NETWORK = {"query", "query_batch", "query_experiment", "status", "submit_patch", "close_checkpoint", "finish"}
+
+
+class LatentClient:
+    def __init__(self, client):
+        self._client = client
+
+    def __getattr__(self, name):
+        attr = getattr(self._client, name)
+        if name not in _NETWORK or not LATENCY:
+            return attr
+
+        def call(*a, **k):
+            time.sleep(LATENCY)
+            return attr(*a, **k)
+        return call
 
 
 def run_one(job):
@@ -208,7 +227,9 @@ def run_one(job):
         import io
         buf = io.StringIO()
         with contextlib.redirect_stderr(buf), contextlib.redirect_stdout(buf):
-            _DEF[defender](sess.client(), RULES)
+            t_run = time.time()
+            _DEF[defender](LatentClient(sess.client()), RULES)
+            row["run_wall"] = time.time() - t_run
         sess.client().finish()
         res = sess.result()
         cps = res["checkpoint_scores"]

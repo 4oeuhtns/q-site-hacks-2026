@@ -30,7 +30,7 @@ try:
                     acc += v.real
             out[c] = 2.0 * acc
         return out
-except Exception:  # pragma: no cover
+except Exception:
     _cand_grads = None
 
 
@@ -95,7 +95,6 @@ class Pursuit:
             v = sim8.fast_nll(ops, x, data)
             if v < best[0]:
                 best = (v, t)
-        # polish just the new angle
         from scipy.optimize import minimize_scalar
         def f(t):
             x = np.concatenate([angles[:pos], [t], angles[pos:]])
