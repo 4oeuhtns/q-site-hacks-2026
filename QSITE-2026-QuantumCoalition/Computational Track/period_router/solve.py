@@ -38,6 +38,23 @@ def forward_backward(program: list[tuple], placement: dict[int, int], chip: Chip
 
 
 def solve(program: list[tuple], hardware_graph: nx.Graph) -> tuple[dict[int, int], list[tuple]]:
+    """
+    Args:
+        program: list of tuples
+            ("2Q", i, j) = two-qubit gate between logical qubits i and j
+            ("1Q", i)    = single-qubit gate on logical qubit i
+        hardware_graph: networkx.Graph
+            Nodes are physical qubit indices, edges are connections
+
+    Returns:
+        initial_placement: dict
+            Maps logical qubit index → physical qubit index
+            e.g. {0: 5, 1: 6, 2: 9, 3: 10}
+        routed_program: list of tuples
+            Same format as input, but on PHYSICAL qubits,
+            with ("SWAP", p, q) operations inserted as needed.
+            Every ("2Q", p, q) must have (p,q) as an edge in hardware_graph.
+    """
     chip = make_chip(hardware_graph)
     best: tuple[dict[int, int], list[tuple]] | None = None
 
