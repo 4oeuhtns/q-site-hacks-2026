@@ -1,6 +1,6 @@
 # Plan in Periods: Qubit Placement and Routing
 
-*[Team names]* · QSITE 2026 Quantum Coalition · Computational Track
+*Aoeuhtns* · QSITE 2026 Quantum Coalition · Computational Track
 
 ## 1. Problem
 
