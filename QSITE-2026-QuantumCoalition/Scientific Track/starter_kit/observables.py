@@ -38,7 +38,13 @@ def _expval_from_matrix(state: np.ndarray, matrix: np.ndarray) -> float:
 
 
 def order_parameter_summary(state: np.ndarray, n_qubits: int) -> dict[str, float]:
-    """Compute simple finite-size observables for the Z/Z/X ANNNI convention."""
+    """Compute finite-size observables for the Z/Z/X ANNNI convention.
+
+    ``antiphase_string_mean`` is a product of two separately measured nearest-neighbor
+    correlators, retained for compatibility with the starter notebook. It is not a
+    four-body expectation value or a unique antiphase order parameter. Use the
+    negative next-nearest-neighbor correlator for the antiphase analysis instead.
+    """
     z_values = [_expval_from_matrix(state, _single_site_operator(n_qubits, i, "z")) for i in range(n_qubits)]
     x_values = [_expval_from_matrix(state, _single_site_operator(n_qubits, i, "x")) for i in range(n_qubits)]
     zz_nearest = [
